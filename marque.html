@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>City News Ticker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .news-ticker {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-color: #f1f5f9;
+      height: 50px;
+      overflow: hidden;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .ticker-label {
+      padding: 0 15px;
+      background-color: white;
+      color: rgb(88, 53, 213);
+      font-weight: 600;
+      font-size: 17px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+    }
+
+    .ticker-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-move {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: scroll-left 40s linear infinite; /* slower speed */
+    }
+
+    .ticker-move a {
+      margin: 0 10px;
+      color: #0f172a;
+      text-decoration: none;
+      padding: 10px;
+      border-left: 2px solid blue;
+      transition: color 0.3s;
+    }
+
+    .ticker-move a:hover {
+      color: #4f46e5;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .paused {
+      animation-play-state: paused !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="news-ticker">
+    <div class="ticker-label">City News</div>
+    <div class="ticker-container">
+      <div class="ticker-move" id="tickerMove">
+        <a href="#">Powerful Earthquake Shakes City Center</a>
+        <a href="#">Mayor Announces New Public Park</a>
+        <a href="#">City Buses Get Free Wi-Fi Starting Today</a>
+        <a href="#">Road Closures on Friday Due to Parade</a>
+        <a href="#">Local School Wins Robotics Championship</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ticker = document.getElementById('tickerMove');
+
+    ticker.addEventListener('mouseenter', () => {
+      ticker.classList.add('paused');
+    });
+
+    ticker.addEventListener('mouseleave', () => {
+      ticker.classList.remove('paused');
+    });
+  </script>
+
+</body>
+</html>

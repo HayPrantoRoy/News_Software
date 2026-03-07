@@ -1,0 +1,649 @@
+<!-- Privacy Policy Popup -->
+<div id="privacyPopup" class="policy-popup-overlay" onclick="closePrivacyPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-shield-alt"></i> Privacy Policy for Hindus News</h2>
+            <button class="policy-popup-close" onclick="closePrivacyPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <p class="policy-website"><i class="fas fa-globe"></i> Website: <a href="http://hindus-news.com" target="_blank">http://hindus-news.com</a></p>
+            
+            <p>Your privacy is important to us. It is Hindus News's policy to respect your privacy regarding any information we may collect from you across our website, http://hindus-news.com and other sites we own and operate.</p>
+            
+            <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+            
+            <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy.</p>
+            
+            <h3><i class="fas fa-database"></i> Information We Collect</h3>
+            <p>Hindus News collects the information on a user upon the user's access to the Hindus News website â€“</p>
+            <ul>
+                <li>by registering to the site or Apps,</li>
+                <li>subscribing to the newsletter,</li>
+                <li>responding to a survey or participating in a competition,</li>
+                <li>logging-in to a site or page, etc.</li>
+            </ul>
+            
+            <h3><i class="fas fa-user-circle"></i> What personal information do we collect?</h3>
+            <p>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, phone number or other details to help you with your experience.</p>
+            
+            <h3><i class="fas fa-lock"></i> How Do We Protect Your Information?</h3>
+            <p>We do not use vulnerability scanning and/or scanning to PCI standards. We do not use Malware Scanning. Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential.</p>
+            
+            <p>In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology. We implement a variety of security measures when a user enters, submits, or accesses their information to maintain the safety of your personal information. All transactions are processed through a gateway provider and are not stored or processed on our servers.</p>
+            
+            <h3><i class="fas fa-exclamation-triangle"></i> Special Precaution</h3>
+            <p>There lies, in the name of Hindus News, multiple fake websites and facebook pages and unauthorized/ unwanted facebook groups in online. Hindus News shall hold no responsibility for any content generated, published or shared in those fake websites, unauthorized pages & groups in social media.</p>
+            
+            <h3><i class="fas fa-cookie-bite"></i> Do We Use 'Cookies'?</h3>
+            <p>Hindus News does not collect any user data based on cookies, nor does it store any sort of user information that may be personal to the user. If a third party associated with the Hindus News website collects user cookies upon your visit to the Hindus News website, Hindus News does not control the use of these cookies therefore you should check the relevant third-party website.</p>
+            
+            <h3><i class="fas fa-share-alt"></i> Third-Party Disclosure</h3>
+            <p>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it's release is appropriate to comply with the law, enforce our site policies, or protect ours or others' rights, property or safety. However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</p>
+            
+            <h3><i class="fas fa-external-link-alt"></i> Third-Party Links</h3>
+            <p>Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</p>
+            
+            <h3><i class="fab fa-google"></i> Google</h3>
+            <p>Google's advertising requirements can be summed up by Google's Advertising Principles. They are put in place to provide a positive experience for users. <a href="https://support.google.com/adwordspolicy/answer/1316548?hl=en" target="_blank">Learn more</a></p>
+            
+            <h3><i class="fas fa-chart-line"></i> Google Analytics</h3>
+            <p>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualise and personalise the ads of its own advertising network.</p>
+            
+            <p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from sharing information with Google Analytics about visits activity.</p>
+            
+            <p>For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: <a href="https://policies.google.com/privacy?hl=en" target="_blank">https://policies.google.com/privacy?hl=en</a></p>
+            
+            <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+            <p>For privacy concerns, the contact point is:</p>
+            <p><strong>Email:</strong> <a href="mailto:hindusnewsbd@gmail.com">hindusnewsbd@gmail.com</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Ads Popup -->
+<div id="adsPopup" class="policy-popup-overlay" onclick="closeAdsPopup(event)">
+    <div class="policy-popup-container" style="max-width: 900px;" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-ad"></i> à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦¤à¦¾à¦²à¦¿à¦•à¦¾</h2>
+            <button class="policy-popup-close" onclick="closeAdsPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content" style="padding: 15px; text-align: center;">
+            <img src="https://hindus-news.com/img/ads.jpeg" alt="à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦¤à¦¾à¦²à¦¿à¦•à¦¾" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+</div>
+
+<!-- Ekadashi Popup -->
+<div id="ekadashiPopup" class="policy-popup-overlay" onclick="closeEkadashiPopup(event)">
+    <div class="policy-popup-container" style="max-width: 900px;" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-calendar-alt"></i> à¦à¦•à¦¾à¦¦à¦¶à§€ à§¨à§¦à§¨à§¬</h2>
+            <button class="policy-popup-close" onclick="closeEkadashiPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content" style="padding: 15px; text-align: center;">
+            <img src="https://hindus-news.com/img/akadishi.jpeg" alt="à¦à¦•à¦¾à¦¦à¦¶à§€ à§¨à§¦à§¨à§¬" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+</div>
+
+<!-- Scriptures Popup -->
+<div id="scripturesPopup" class="policy-popup-overlay" onclick="closeScripturesPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-book-open"></i> à¦§à¦°à§à¦®à§€à¦¯à¦¼ à¦—à§à¦°à¦¨à§à¦¥</h2>
+            <button class="policy-popup-close" onclick="closeScripturesPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <p style="background: #fff8f0; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6600;">à¦†à¦ªà¦¨à¦¾à¦° à¦œà¦¨à§à¦¯ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦¹à¦¿à¦¨à§à¦¦à§ à¦§à¦°à§à¦®à¦—à§à¦°à¦¨à§à¦¥à§‡à¦° à¦•à¦¿à¦›à§ à¦¨à¦¿à¦°à§à¦­à¦°à¦¯à§‹à¦—à§à¦¯ à¦“à¦¯à¦¼à§‡à¦¬à¦¸à¦¾à¦‡à¦Ÿ à¦à¦¬à¦‚ à¦ªà¦¿à¦¡à¦¿à¦à¦« à¦²à¦¿à¦‚à¦• à¦¨à¦¿à¦šà§‡ à¦¦à§‡à¦“à¦¯à¦¼à¦¾ à¦¹à¦²à§‹à¥¤ à¦à¦–à¦¾à¦¨à§‡ à¦†à¦ªà¦¨à¦¿ à¦—à§€à¦¤à¦¾, à¦°à¦¾à¦®à¦¾à¦¯à¦¼à¦£, à¦®à¦¹à¦¾à¦­à¦¾à¦°à¦¤, à¦¬à§‡à¦¦ à¦à¦¬à¦‚ à¦ªà§à¦°à¦¾à¦¨ à¦ªà¦¡à¦¼à¦¤à§‡ à¦¬à¦¾ à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à¦¬à§‡à¦¨à¥¤</p>
+            
+            <h3><i class="fas fa-om"></i> à§§. à¦¶à§à¦°à§€à¦®à¦¦à§à¦­à¦—à¦¬à¦¦à§à¦—à§€à¦¤à¦¾ (Srimad Bhagavad Gita)</h3>
+            <p>à¦—à§€à¦¤à¦¾ à¦¹à¦²à§‹ à¦¹à¦¿à¦¨à§à¦¦à§ à¦§à¦°à§à¦®à§‡à¦° à¦®à§‚à¦² à¦—à§à¦°à¦¨à§à¦¥à¥¤ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦—à§€à¦¤à¦¾ à¦ªà¦¡à¦¼à¦¾à¦° à¦œà¦¨à§à¦¯ à¦¨à¦¿à¦šà§‡à¦° à¦²à¦¿à¦‚à¦•à¦—à§à¦²à§‹ à¦¦à§‡à¦–à§à¦¨:</p>
+            <ul>
+                <li><strong>à¦—à§€à¦¤à¦¾ à¦¸à§à¦ªà§à¦°à§€à¦® (à¦‡à¦¸à§à¦•à¦¨):</strong> à¦à¦–à¦¾à¦¨à§‡ à¦†à¦ªà¦¨à¦¿ à¦¶à§à¦²à§‹à¦• à¦à¦¬à¦‚ à¦¤à¦¾à§Žà¦ªà¦°à§à¦¯à¦¸à¦¹ à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦—à§€à¦¤à¦¾ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦ªà¦¡à¦¼à¦¤à§‡ à¦ªà¦¾à¦°à¦¬à§‡à¦¨à¥¤<br><a href="https://vedabase.io/bn/library/bg/" target="_blank"><i class="fas fa-external-link-alt"></i> à¦à¦–à¦¾à¦¨à§‡ à¦ªà¦¡à¦¼à§à¦¨</a></li>
+                <li><strong>à¦—à§€à¦¤à¦¾ à¦ªà¦¿à¦¡à¦¿à¦à¦« (Gita Press):</strong> à¦—à§€à¦¤à¦¾ à¦ªà§à¦°à§‡à¦¸à§‡à¦° à¦†à¦¸à¦² à¦¬à¦¾à¦‚à¦²à¦¾ à¦…à¦¨à§à¦¬à¦¾à¦¦à¥¤<br><a href="https://archive.org/details/SrimadBhagavadGita_201607/mode/2up" target="_blank"><i class="fas fa-download"></i> à¦ªà¦¿à¦¡à¦¿à¦à¦« à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡ à¦•à¦°à§à¦¨</a></li>
+            </ul>
+            
+            <h3><i class="fas fa-feather-alt"></i> à§¨. à¦°à¦¾à¦®à¦¾à¦¯à¦¼à¦£ à¦“ à¦®à¦¹à¦¾à¦­à¦¾à¦°à¦¤ (Ramayana & Mahabharata)</h3>
+            <p>à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦•à§ƒà¦¤à§à¦¤à¦¿à¦¬à¦¾à¦¸à§€ à¦°à¦¾à¦®à¦¾à¦¯à¦¼à¦£ à¦à¦¬à¦‚ à¦•à¦¾à¦¶à§€à¦°à¦¾à¦® à¦¦à¦¾à¦¸à§‡à¦° à¦®à¦¹à¦¾à¦­à¦¾à¦°à¦¤ à¦¸à¦¬à¦šà§‡à¦¯à¦¼à§‡ à¦œà¦¨à¦ªà§à¦°à¦¿à¦¯à¦¼à¥¤</p>
+            <ul>
+                <li><strong>à¦¬à¦¾à¦²à§à¦®à§€à¦•à¦¿ à¦°à¦¾à¦®à¦¾à¦¯à¦¼à¦£ (à¦¬à¦¾à¦‚à¦²à¦¾ à¦…à¦¨à§à¦¬à¦¾à¦¦):</strong><br><a href="https://archive.org/details/ValmikiRamayanBengali/mode/2up" target="_blank"><i class="fas fa-external-link-alt"></i> à¦…à¦¨à¦²à¦¾à¦‡à¦¨ à¦ªà¦¡à¦¼à§à¦¨ à¦¬à¦¾ à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡ à¦•à¦°à§à¦¨</a></li>
+                <li><strong>à¦•à¦¾à¦¶à§€à¦°à¦¾à¦® à¦¦à¦¾à¦¸à§‡à¦° à¦®à¦¹à¦¾à¦­à¦¾à¦°à¦¤ (à¦¸à¦®à¦—à§à¦°):</strong><br><a href="https://archive.org/details/MahabharataKashiramDas" target="_blank"><i class="fas fa-download"></i> à¦®à¦¹à¦¾à¦­à¦¾à¦°à¦¤ à¦ªà¦¿à¦¡à¦¿à¦à¦« à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡</a></li>
+            </ul>
+            
+            <h3><i class="fas fa-scroll"></i> à§©. à¦¬à§‡à¦¦ à¦“ à¦‰à¦ªà¦¨à¦¿à¦·à¦¦ (Vedas & Upanishads)</h3>
+            <p>à¦šà¦¾à¦° à¦¬à§‡à¦¦ à¦à¦¬à¦‚ à¦ªà§à¦°à¦§à¦¾à¦¨ à¦‰à¦ªà¦¨à¦¿à¦·à¦¦à¦—à§à¦²à§‹ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦ªà¦¡à¦¼à¦¾à¦° à¦œà¦¨à§à¦¯:</p>
+            <ul>
+                <li><strong>à¦¬à§‡à¦¦ à¦¸à¦®à¦—à§à¦° (à¦‹à¦—à§à¦¬à§‡à¦¦, à¦¸à¦¾à¦®à¦¬à§‡à¦¦, à¦¯à¦œà§à¦°à§à¦­à§‡à¦¦, à¦…à¦¥à¦°à§à¦¬à¦¬à§‡à¦¦):</strong> à¦¹à¦°à¦« à¦ªà§à¦°à¦•à¦¾à¦¶à¦¨à§€à¦° à¦¬à¦¿à¦–à§à¦¯à¦¾à¦¤ à¦…à¦¨à§à¦¬à¦¾à¦¦à¥¤<br><a href="https://archive.org/details/RigVedaSamhita_Bengali" target="_blank"><i class="fas fa-download"></i> à¦‹à¦—à§à¦¬à§‡à¦¦ à¦¸à¦‚à¦¹à¦¿à¦¤à¦¾ à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡</a></li>
+                <li><strong>à¦‰à¦ªà¦¨à¦¿à¦·à¦¦ à¦—à§à¦°à¦¨à§à¦¥à¦¾à¦¬à¦²à§€ (à¦…à¦–à¦£à§à¦¡):</strong> à¦¸à§à¦¬à¦¾à¦®à§€ à¦—à¦®à§à¦­à§€à¦°à¦¾à¦¨à¦¨à§à¦¦ (à¦°à¦¾à¦®à¦•à§ƒà¦·à§à¦£ à¦®à¦ ) à¦…à¦¨à§‚à¦¦à¦¿à¦¤à¥¤<br><a href="https://archive.org/details/UpanishadGranthavaliVol1SwamiGambhiriananda" target="_blank"><i class="fas fa-external-link-alt"></i> à¦‰à¦ªà¦¨à¦¿à¦·à¦¦ à¦ªà¦¡à¦¼à§à¦¨</a></li>
+            </ul>
+            
+            <h3><i class="fas fa-praying-hands"></i> à§ª. à¦¶à§à¦°à§€à¦°à¦¾à¦®à¦•à§ƒà¦·à§à¦£ à¦“ à¦¬à¦¿à¦¬à§‡à¦•à¦¾à¦¨à¦¨à§à¦¦ à¦¸à¦¾à¦¹à¦¿à¦¤à§à¦¯</h3>
+            <p>à¦¬à¦¾à¦™à¦¾à¦²à¦¿ à¦¹à¦¿à¦¨à§à¦¦à§à¦¦à§‡à¦° à¦œà¦¨à§à¦¯ à¦à¦‡ à¦—à§à¦°à¦¨à§à¦¥à¦—à§à¦²à§‹ à¦…à¦¤à§à¦¯à¦¨à§à¦¤ à¦—à§à¦°à§à¦¤à§à¦¬à¦ªà§‚à¦°à§à¦£:</p>
+            <ul>
+                <li><strong>à¦¶à§à¦°à§€à¦¶à§à¦°à§€à¦°à¦¾à¦®à¦•à§ƒà¦·à§à¦£à¦•à¦¥à¦¾à¦®à§ƒà¦¤:</strong> à¦¶à§à¦°à§€ à¦® -à¦à¦° à¦²à§‡à¦–à¦¾ à¦®à§‚à¦² à¦¬à¦‡à¥¤<br><a href="https://archive.org/details/SriSriRamakrishnaKathamrita" target="_blank"><i class="fas fa-download"></i> à¦•à¦¥à¦¾à¦®à§ƒà¦¤ à¦ªà¦¿à¦¡à¦¿à¦à¦«</a></li>
+                <li><strong>à¦¸à§à¦¬à¦¾à¦®à§€ à¦¬à¦¿à¦¬à§‡à¦•à¦¾à¦¨à¦¨à§à¦¦à§‡à¦° à¦¬à¦¾à¦£à§€ à¦“ à¦°à¦šà¦¨à¦¾:</strong><br><a href="https://archive.org/details/SwamiVivekanandaBaniORachanaVol1" target="_blank"><i class="fas fa-external-link-alt"></i> à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦°à¦šà¦¨à¦¾à¦¬à¦²à§€</a></li>
+            </ul>
+            
+            <h3><i class="fas fa-archive"></i> à§«. à¦…à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦ªà§à¦°à¦¾à¦£ à¦“ à¦§à¦°à§à¦®à¦—à§à¦°à¦¨à§à¦¥à§‡à¦° à¦¸à¦‚à¦—à§à¦°à¦¹</h3>
+            <p>à¦¯à¦¦à¦¿ à¦†à¦ªà¦¨à¦¿ à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼ à¦¸à¦¬ à¦¬à¦‡ à¦ªà§‡à¦¤à§‡ à¦šà¦¾à¦¨, à¦¤à¦¬à§‡ à¦à¦‡ à¦¸à¦¾à¦‡à¦Ÿà¦—à§à¦²à§‹ à¦¦à§‡à¦–à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¦¨:</p>
+            <ul>
+                <li><strong>à¦¶à§à¦°à§€à¦®à¦¦ à¦­à¦¾à¦—à¦¬à¦¤ à¦®à¦¹à¦¾à¦ªà§à¦°à¦¾à¦£:</strong><br><a href="https://archive.org/details/SrimadBhagavatamMahapurana-BengaliTranslation" target="_blank"><i class="fas fa-download"></i> à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡ à¦²à¦¿à¦‚à¦•</a></li>
+                <li><strong>à¦†à¦°à§à¦•à¦¾à¦‡à¦­ à¦¡à¦Ÿ à¦…à¦°à§à¦— (Archive.org):</strong> à¦à¦–à¦¾à¦¨à§‡ à¦¸à¦¾à¦°à§à¦š à¦¬à¦•à§à¦¸à§‡ "Bangla Hindu Book" à¦²à¦¿à¦–à¦²à§‡ à¦¹à¦¾à¦œà¦¾à¦° à¦¹à¦¾à¦œà¦¾à¦° à¦¬à¦‡ à¦ªà¦¾à¦¬à§‡à¦¨à¥¤</li>
+            </ul>
+            
+            <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                <p style="margin: 0;"><i class="fas fa-mobile-alt" style="color: #4CAF50;"></i> <strong>à¦®à§‹à¦¬à¦¾à¦‡à¦² à¦…à§à¦¯à¦¾à¦ª à¦ªà¦°à¦¾à¦®à¦°à§à¦¶:</strong><br>à¦†à¦ªà¦¨à¦¿ à¦¯à¦¦à¦¿ à¦®à§‹à¦¬à¦¾à¦‡à¦²à§‡ à¦ªà¦¡à¦¼à¦¤à§‡ à¦ªà¦›à¦¨à§à¦¦ à¦•à¦°à§‡à¦¨, à¦¤à¦¬à§‡ Google Play Store à¦ à¦—à¦¿à¦¯à¦¼à§‡ <strong>"Bengali Gita"</strong> à¦¬à¦¾ <strong>"Sanatan Dharma Books"</strong> à¦²à¦¿à¦–à§‡ à¦¸à¦¾à¦°à§à¦š à¦¦à¦¿à¦²à§‡ à¦…à¦¨à§‡à¦• à¦­à¦¾à¦²à§‹ à¦…à§à¦¯à¦¾à¦ª à¦ªà¦¾à¦¬à§‡à¦¨ à¦¯à§‡à¦–à¦¾à¦¨à§‡ à¦‡à¦¨à§à¦Ÿà¦¾à¦°à¦¨à§‡à¦Ÿ à¦›à¦¾à¦¡à¦¼à¦¾à¦“ à¦ªà¦¡à¦¼à¦¾ à¦¯à¦¾à¦¯à¦¼à¥¤</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Us Popup -->
+<div id="aboutPopup" class="policy-popup-overlay" onclick="closeAboutPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-info-circle"></i> à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¸à¦®à§à¦ªà¦°à§à¦•à§‡ (About Us)</h2>
+            <button class="policy-popup-close" onclick="closeAboutPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h3 style="font-size: 24px; color: #ff0000; margin-bottom: 5px;"><i>Voice of Hinduism</i></h3>
+                <p style="font-size: 16px; color: #666;">à¦¸à§à¦¬à¦¾à¦—à¦¤à¦® à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News)-à¦à¥¤</p>
+            </div>
+            
+            <h3><i class="fas fa-users"></i> à¦†à¦®à¦¾à¦¦à§‡à¦° à¦ªà¦°à¦¿à¦šà¦¯à¦¼</h3>
+            <p>"à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ" à¦à¦•à¦Ÿà¦¿ à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦…à¦°à¦¾à¦œà¦¨à§ˆà¦¤à¦¿à¦• à¦à¦¬à¦‚ à¦®à¦¾à¦¨à¦¬à¦¾à¦§à¦¿à¦•à¦¾à¦°à§‡à¦° à¦­à¦¿à¦¤à§à¦¤à¦¿à¦¤à§‡ à¦ªà¦°à¦¿à¦šà¦¾à¦²à¦¿à¦¤ à¦…à¦¨à¦²à¦¾à¦‡à¦¨ à¦¨à¦¿à¦‰à¦œ à¦ªà§‹à¦°à§à¦Ÿà¦¾à¦²à¥¤ à¦†à¦®à¦°à¦¾ à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦¶à§‡à¦· à¦°à¦¾à¦œà¦¨à§ˆà¦¤à¦¿à¦• à¦¦à¦² à¦¬à¦¾ à¦®à¦¤à¦¾à¦¦à¦°à§à¦¶à§‡à¦° à¦®à§à¦–à¦ªà¦¾à¦¤à§à¦° à¦¨à¦‡à¥¤ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦…à¦¬à¦¸à§à¦¥à¦¾à¦¨ à¦¸à¦°à§à¦¬à¦¦à¦¾ à¦¸à¦¤à§à¦¯, à¦¨à§à¦¯à¦¾à¦¯à¦¼ à¦à¦¬à¦‚ à¦®à¦¾à¦¨à¦¬à¦¾à¦§à¦¿à¦•à¦¾à¦°à§‡à¦° à¦ªà¦•à§à¦·à§‡à¥¤</p>
+            
+            <h3><i class="fas fa-bullseye"></i> à¦†à¦®à¦¾à¦¦à§‡à¦° à¦²à¦•à§à¦·à§à¦¯ à¦“ à¦‰à¦¦à§à¦¦à§‡à¦¶à§à¦¯</h3>
+            <p>à¦†à¦®à¦¾à¦¦à§‡à¦° à¦®à§‚à¦² à¦²à¦•à§à¦·à§à¦¯ à¦…à¦¤à§à¦¯à¦¨à§à¦¤ à¦¸à§à¦¸à§à¦ªà¦·à§à¦Ÿâ€”à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦¸à¦‚à¦–à§à¦¯à¦¾à¦²à¦˜à§ à¦¹à¦¿à¦¨à§à¦¦à§ à¦¸à¦®à§à¦ªà§à¦°à¦¦à¦¾à¦¯à¦¼à§‡à¦° à¦¬à¦¾à¦¸à§à¦¤à¦¬ à¦¸à¦®à¦¸à§à¦¯à¦¾, à¦¤à¦¾à¦¦à§‡à¦° à¦“à¦ªà¦° à¦¹à¦“à¦¯à¦¼à¦¾ à¦¬à¦¿à¦­à¦¿à¦¨à§à¦¨ à¦¨à¦¿à¦°à§à¦¯à¦¾à¦¤à¦¨, à¦¬à§ˆà¦·à¦®à§à¦¯ à¦à¦¬à¦‚ à¦¤à¦¾à¦¦à§‡à¦° à¦¨à§à¦¯à¦¾à¦¯à§à¦¯ à¦…à¦§à¦¿à¦•à¦¾à¦°à§‡à¦° à¦¬à¦¿à¦·à¦¯à¦¼à¦—à§à¦²à§‹ à¦¸à¦¾à¦¹à¦¸à¦¿à¦•à¦¤à¦¾à¦° à¦¸à¦¾à¦¥à§‡ à¦¤à§à¦²à§‡ à¦§à¦°à¦¾à¥¤</p>
+            <p>à¦†à¦®à¦°à¦¾ à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à¦¿, à¦¸à¦®à¦¾à¦œà§‡à¦° à¦ªà¦¿à¦›à¦¿à¦¯à¦¼à§‡ à¦ªà¦¡à¦¼à¦¾ à¦¬à¦¾ à¦¨à¦¿à¦ªà§€à¦¡à¦¼à¦¿à¦¤ à¦œà¦¨à¦—à§‹à¦·à§à¦ à§€à¦° à¦•à¦£à§à¦ à¦¸à§à¦¬à¦° à¦¹à¦¯à¦¼à§‡ à¦“à¦ à¦¾à¦‡ à¦¸à¦‚à¦¬à¦¾à¦¦à¦®à¦¾à¦§à§à¦¯à¦®à§‡à¦° à¦…à¦¨à§à¦¯à¦¤à¦® à¦ªà§à¦°à¦§à¦¾à¦¨ à¦¦à¦¾à¦¯à¦¼à¦¿à¦¤à§à¦¬à¥¤ à¦†à¦®à¦°à¦¾ à¦¸à§‡à¦‡ à¦¦à¦¾à¦¯à¦¼à¦¿à¦¤à§à¦¬ à¦ªà¦¾à¦²à¦¨à§‡ à¦ªà§à¦°à¦¤à¦¿à¦¶à§à¦°à§à¦¤à¦¿à¦¬à¦¦à§à¦§à¥¤ à¦†à¦®à¦°à¦¾ à¦•à§‡à¦¬à¦² à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà¦°à¦¿à¦¬à§‡à¦¶à¦¨ à¦•à¦°à¦¿ à¦¨à¦¾, à¦¬à¦°à¦‚ à¦¸à¦‚à¦¬à¦¾à¦¦à§‡à¦° à¦ªà§‡à¦›à¦¨à§‡à¦° à¦¸à¦¤à§à¦¯ à¦˜à¦Ÿà¦¨à¦¾à¦Ÿà¦¿ à¦¬à¦¸à§à¦¤à§à¦¨à¦¿à¦·à§à¦ à¦­à¦¾à¦¬à§‡ à¦ªà¦¾à¦ à¦•à§‡à¦° à¦¸à¦¾à¦®à¦¨à§‡ à¦‰à¦ªà¦¸à§à¦¥à¦¾à¦ªà¦¨ à¦•à¦°à¦¾à¦° à¦šà§‡à¦·à§à¦Ÿà¦¾ à¦•à¦°à¦¿à¥¤</p>
+            
+            <h3><i class="fas fa-handshake"></i> à¦†à¦®à¦¾à¦¦à§‡à¦° à¦…à¦™à§à¦—à§€à¦•à¦¾à¦°</h3>
+            <p>à¦†à¦®à¦°à¦¾ à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà¦°à¦¿à¦¬à§‡à¦¶à¦¨à§‡ à¦¨à¦¿à¦°à¦ªà§‡à¦•à§à¦·à¦¤à¦¾ à¦à¦¬à¦‚ à¦¸à¦°à§à¦¬à§‹à¦šà§à¦š à¦ªà§‡à¦¶à¦¾à¦¦à¦¾à¦°à¦¿à¦¤à§à¦¬ à¦¬à¦œà¦¾à¦¯à¦¼ à¦°à¦¾à¦–à¦¤à§‡ à¦¬à¦¦à§à¦§à¦ªà¦°à¦¿à¦•à¦°à¥¤ à¦†à¦¬à§‡à¦—à§‡à¦° à¦Šà¦°à§à¦§à§à¦¬à§‡ à¦‰à¦ à§‡ à¦¸à¦ à¦¿à¦• à¦¤à¦¥à§à¦¯ à¦“ à¦ªà§à¦°à¦®à¦¾à¦£à¦­à¦¿à¦¤à§à¦¤à¦¿à¦• à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà§à¦°à¦šà¦¾à¦°à¦‡ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¨à§€à¦¤à¦¿à¥¤ à¦¸à¦¾à¦®à§à¦ªà§à¦°à¦¦à¦¾à¦¯à¦¼à¦¿à¦• à¦¸à¦®à§à¦ªà§à¦°à§€à¦¤à¦¿ à¦¬à¦œà¦¾à¦¯à¦¼ à¦°à¦¾à¦–à¦¾ à¦à¦¬à¦‚ à¦¸à¦‚à¦–à§à¦¯à¦¾à¦²à¦˜à§à¦¦à§‡à¦° à¦…à¦§à¦¿à¦•à¦¾à¦° à¦°à¦•à§à¦·à¦¾à¦¯à¦¼ à¦†à¦®à¦°à¦¾ à¦¸à¦°à§à¦¬à¦¦à¦¾ à¦¸à§‹à¦šà§à¦šà¦¾à¦° à¦¥à¦¾à¦•à¦¬à¥¤</p>
+            
+            <p style="background: #fff8f0; padding: 15px; border-radius: 8px; border-left: 4px solid #ff0000; font-style: italic; text-align: center;">à¦¸à¦¤à§à¦¯ à¦“ à¦¨à§à¦¯à¦¾à¦¯à¦¼à§‡à¦° à¦ªà¦¥à§‡ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦à¦‡ à¦¯à¦¾à¦¤à§à¦°à¦¾à¦¯à¦¼ à¦†à¦ªà¦¨à¦¾à¦°à¦¾ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¸à¦™à§à¦—à§€ à¦¹à¦¬à§‡à¦¨, à¦à¦Ÿà¦¾à¦‡ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦ªà§à¦°à¦¤à§à¦¯à¦¾à¦¶à¦¾à¥¤</p>
+            
+            <h3><i class="fas fa-address-book"></i> à¦¯à§‹à¦—à¦¾à¦¯à§‹à¦—</h3>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                <p style="margin-bottom: 10px;"><i class="fas fa-globe" style="color: #ff0000; width: 25px;"></i> <strong>à¦“à¦¯à¦¼à§‡à¦¬à¦¸à¦¾à¦‡à¦Ÿ:</strong> <a href="http://www.hindus-news.com" target="_blank">www.hindus-news.com</a></p>
+                <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: #ff0000; width: 25px;"></i> <strong>à¦‡à¦®à§‡à¦‡à¦²:</strong> <a href="mailto:hindusnewsbd@gmail.com">hindusnewsbd@gmail.com</a></p>
+                <p style="margin-bottom: 0;"><i class="fas fa-phone" style="color: #ff0000; width: 25px;"></i> <strong>à¦«à§‹à¦¨:</strong> <a href="tel:+8801890890920">+880 1890890920</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ads Policy Popup -->
+<div id="adsPolicyPopup" class="policy-popup-overlay" onclick="closeAdsPolicyPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-bullhorn"></i> à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾</h2>
+            <button class="policy-popup-close" onclick="closeAdsPolicyPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <p class="policy-website"><i class="fas fa-newspaper"></i> <strong>à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News)</strong></p>
+            
+            <p style="font-style: italic; background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #ff0000;">"à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ" à¦¤à¦¾à¦° à¦ªà¦¾à¦ à¦• à¦à¦¬à¦‚ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾ à¦‰à¦­à¦¯à¦¼à§‡à¦° à¦ªà§à¦°à¦¤à¦¿ à¦¶à§à¦°à¦¦à§à¦§à¦¾à¦¶à§€à¦²à¥¤ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦…à¦¨à¦²à¦¾à¦‡à¦¨ à¦ªà§‹à¦°à§à¦Ÿà¦¾à¦²à§‡ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦•à§à¦·à§‡à¦¤à§à¦°à§‡ à¦à¦•à¦Ÿà¦¿ à¦¸à§à¦¬à¦šà§à¦› à¦“ à¦ªà§‡à¦¶à¦¾à¦¦à¦¾à¦° à¦¸à¦®à§à¦ªà¦°à§à¦• à¦¬à¦œà¦¾à¦¯à¦¼ à¦°à¦¾à¦–à¦¾à¦° à¦²à¦•à§à¦·à§à¦¯à§‡ à¦†à¦®à¦°à¦¾ à¦¨à¦¿à¦®à§à¦¨à¦²à¦¿à¦–à¦¿à¦¤ à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾ à¦…à¦¨à§à¦¸à¦°à¦£ à¦•à¦°à¦¿à¥¤ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦•à§à¦¤à¦¿ à¦¬à¦¾ à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¸à¦¾à¦‡à¦Ÿà§‡ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦ªà§à¦°à¦¦à¦¾à¦¨à§‡ à¦‡à¦šà§à¦›à§à¦• à¦¹à¦²à§‡, à¦¤à¦¾à¦¦à§‡à¦° à¦à¦‡ à¦¶à¦°à§à¦¤à¦¾à¦¬à¦²à§€ à¦®à§‡à¦¨à§‡ à¦šà¦²à¦¤à§‡ à¦¹à¦¬à§‡à¥¤</p>
+            
+            <h3><i class="fas fa-balance-scale"></i> à§§. à¦¸à¦¾à¦§à¦¾à¦°à¦£ à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾ à¦“ à¦¸à¦®à§à¦ªà¦¾à¦¦à¦•à§€à¦¯à¦¼ à¦¸à§à¦¬à¦¾à¦§à§€à¦¨à¦¤à¦¾</h3>
+            <ul>
+                <li><strong>à¦¸à¦®à§à¦ªà¦¾à¦¦à¦•à§€à¦¯à¦¼ à¦¸à§à¦¬à¦¾à¦§à§€à¦¨à¦¤à¦¾:</strong> à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œà§‡à¦° à¦¸à¦®à§à¦ªà¦¾à¦¦à¦•à§€à¦¯à¦¼ à¦¨à§€à¦¤à¦¿ à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¸à§à¦¬à¦¾à¦§à§€à¦¨à¥¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦¸à¦¾à¦¥à§‡ à¦¸à¦‚à¦¬à¦¾à¦¦ à¦¬à¦¾ à¦¸à¦®à§à¦ªà¦¾à¦¦à¦•à§€à¦¯à¦¼ à¦®à¦¤à¦¾à¦®à¦¤à§‡à¦° à¦•à§‹à¦¨à§‹ à¦¸à¦®à§à¦ªà¦°à§à¦• à¦¨à§‡à¦‡à¥¤ à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾ à¦…à¦°à§à¦¥à§‡à¦° à¦¬à¦¿à¦¨à¦¿à¦®à¦¯à¦¼à§‡ à¦¸à¦‚à¦¬à¦¾à¦¦à§‡à¦° à¦¬à¦¿à¦·à¦¯à¦¼à¦¬à¦¸à§à¦¤à§ à¦¬à¦¾ à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà¦°à¦¿à¦¬à§‡à¦¶à¦¨à¦•à§‡ à¦ªà§à¦°à¦­à¦¾à¦¬à¦¿à¦¤ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à¦¬à§‡à¦¨ à¦¨à¦¾à¥¤</li>
+                <li><strong>à¦¸à¦‚à¦¬à¦¾à¦¦ à¦¬à¦¨à¦¾à¦® à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨:</strong> à¦¸à¦‚à¦¬à¦¾à¦¦ à¦à¦¬à¦‚ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦®à¦§à§à¦¯à§‡ à¦¸à§à¦ªà¦·à§à¦Ÿ à¦ªà¦¾à¦°à§à¦¥à¦•à§à¦¯ à¦¬à¦œà¦¾à¦¯à¦¼ à¦°à¦¾à¦–à¦¾ à¦¹à¦¬à§‡à¥¤ à¦¯à¦¦à¦¿ à¦•à§‹à¦¨à§‹ à¦•à¦¨à¦Ÿà§‡à¦¨à§à¦Ÿ à¦…à¦°à§à¦¥à§‡à¦° à¦¬à¦¿à¦¨à¦¿à¦®à¦¯à¦¼à§‡ à¦ªà§à¦°à¦•à¦¾à¦¶à¦¿à¦¤ à¦¹à¦¯à¦¼ (Advertorial à¦¬à¦¾ Sponsored Content), à¦¤à¦¬à§‡ à¦¤à¦¾ à¦¸à§à¦ªà¦·à§à¦Ÿà¦­à¦¾à¦¬à§‡ 'à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨' (Advertisement), 'à¦ªà§à¦°à¦¯à§‹à¦œà¦¿à¦¤' (Sponsored), à¦¬à¦¾ 'à¦¸à§Œà¦œà¦¨à§à¦¯à§‡' (Powered by) à¦¹à¦¿à¦¸à§‡à¦¬à§‡ à¦šà¦¿à¦¹à§à¦¨à¦¿à¦¤ à¦¥à¦¾à¦•à¦¬à§‡à¥¤</li>
+            </ul>
+            
+            <h3><i class="fas fa-ban"></i> à§¨. à¦¨à¦¿à¦·à¦¿à¦¦à§à¦§ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¸à¦®à§‚à¦¹</h3>
+            <p>à¦†à¦®à¦°à¦¾ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦—à§à¦°à¦¹à¦£ à¦¬à¦¾ à¦ªà§à¦°à¦¤à§à¦¯à¦¾à¦–à§à¦¯à¦¾à¦¨ à¦•à¦°à¦¾à¦° à¦…à¦§à¦¿à¦•à¦¾à¦° à¦¸à¦‚à¦°à¦•à§à¦·à¦£ à¦•à¦°à¦¿à¥¤ à¦¨à¦¿à¦®à§à¦¨à¦²à¦¿à¦–à¦¿à¦¤ à¦§à¦°à¦¨à§‡à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¸à¦¾à¦‡à¦Ÿà§‡ à¦ªà§à¦°à¦•à¦¾à¦¶ à¦•à¦°à¦¾ à¦¹à¦¬à§‡ à¦¨à¦¾:</p>
+            <ul>
+                <li><strong>à¦¬à§‡à¦†à¦‡à¦¨à¦¿ à¦“ à¦¨à¦¿à¦·à¦¿à¦¦à§à¦§ à¦ªà¦£à§à¦¯:</strong> à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦ªà§à¦°à¦šà¦²à¦¿à¦¤ à¦†à¦‡à¦¨à§‡ à¦¨à¦¿à¦·à¦¿à¦¦à§à¦§ à¦•à§‹à¦¨à§‹ à¦ªà¦£à§à¦¯ à¦¬à¦¾ à¦¸à§‡à¦¬à¦¾à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ (à¦¯à§‡à¦®à¦¨: à¦®à¦¾à¦¦à¦•, à¦…à¦¬à§ˆà¦§ à¦…à¦¸à§à¦¤à§à¦°, à¦šà§‹à¦°à¦¾à¦šà¦¾à¦²à¦¾à¦¨à¦•à§ƒà¦¤ à¦ªà¦£à§à¦¯ à¦‡à¦¤à§à¦¯à¦¾à¦¦à¦¿)à¥¤</li>
+                <li><strong>à¦…à¦¶à§à¦²à§€à¦²à¦¤à¦¾ à¦“ à¦•à§à¦°à§à¦šà¦¿:</strong> à¦…à¦¶à§à¦²à§€à¦², à¦•à§à¦°à§à¦šà¦¿à¦ªà§‚à¦°à§à¦£, à¦¯à§Œà¦¨ à¦‰à¦¦à§à¦¦à§€à¦ªà¦• à¦›à¦¬à¦¿ à¦¬à¦¾ à¦¬à¦¾à¦°à§à¦¤à¦¾ à¦¸à¦®à§à¦¬à¦²à¦¿à¦¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¥¤</li>
+                <li><strong>à¦¸à¦¾à¦®à§à¦ªà§à¦°à¦¦à¦¾à¦¯à¦¼à¦¿à¦• à¦¸à¦®à§à¦ªà§à¦°à§€à¦¤à¦¿:</strong> à¦•à§‹à¦¨à§‹ à¦¨à¦¿à¦°à§à¦¦à¦¿à¦·à§à¦Ÿ à¦§à¦°à§à¦®, à¦¬à¦°à§à¦£, à¦—à§‹à¦·à§à¦ à§€ à¦¬à¦¾ à¦¸à¦®à§à¦ªà§à¦°à¦¦à¦¾à¦¯à¦¼à§‡à¦° à¦ªà§à¦°à¦¤à¦¿ à¦¬à¦¿à¦¦à§à¦¬à§‡à¦· à¦›à¦¡à¦¼à¦¾à¦¯à¦¼ à¦¬à¦¾ à¦¸à¦¾à¦®à§à¦ªà§à¦°à¦¦à¦¾à¦¯à¦¼à¦¿à¦• à¦¸à¦®à§à¦ªà§à¦°à§€à¦¤à¦¿ à¦¬à¦¿à¦¨à¦·à§à¦Ÿ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à§‡ à¦à¦®à¦¨ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¥¤</li>
+                <li><strong>à¦œà§à¦¯à¦¼à¦¾ à¦“ à¦¬à¦¾à¦œà¦¿:</strong> à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦§à¦°à¦¨à§‡à¦° à¦œà§à¦¯à¦¼à¦¾, à¦¬à§‡à¦Ÿà¦¿à¦‚ à¦¸à¦¾à¦‡à¦Ÿ à¦¬à¦¾ à¦²à¦Ÿà¦¾à¦°à¦¿à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ (à¦¸à¦°à¦•à¦¾à¦°à¦¿ à¦…à¦¨à§à¦®à§‹à¦¦à¦¨ à¦¬à§à¦¯à¦¤à§€à¦¤)à¥¤</li>
+                <li><strong>à¦­à§à¦² à¦¤à¦¥à§à¦¯ à¦“ à¦ªà§à¦°à¦¤à¦¾à¦°à¦£à¦¾:</strong> à¦ªà¦¾à¦ à¦•à¦¦à§‡à¦° à¦¬à¦¿à¦­à§à¦°à¦¾à¦¨à§à¦¤ à¦•à¦°à¦¤à§‡ à¦ªà¦¾à¦°à§‡ à¦à¦®à¦¨ à¦®à¦¿à¦¥à§à¦¯à¦¾ à¦¤à¦¥à§à¦¯, à¦…à¦¬à§ˆà¦œà§à¦žà¦¾à¦¨à¦¿à¦• à¦¦à¦¾à¦¬à¦¿ à¦¬à¦¾ à¦ªà§à¦°à¦¤à¦¾à¦°à¦£à¦¾à¦®à§‚à¦²à¦• à¦†à¦°à§à¦¥à¦¿à¦• à¦¸à§à¦•à¦¿à¦®à§‡à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¥¤</li>
+                <li><strong>à¦®à¦¾à¦¨à¦¹à¦¾à¦¨à¦¿à¦•à¦°:</strong> à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦•à§à¦¤à¦¿ à¦¬à¦¾ à¦ªà§à¦°à¦¤à¦¿à¦·à§à¦ à¦¾à¦¨à§‡à¦° à¦¸à¦®à§à¦®à¦¾à¦¨à¦¹à¦¾à¦¨à¦¿ à¦•à¦°à§‡ à¦à¦®à¦¨ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¥¤</li>
+                <li><strong>à¦°à¦¾à¦œà¦¨à§ˆà¦¤à¦¿à¦• à¦†à¦•à§à¦°à¦®à¦£:</strong> à¦‰à¦¸à¦•à¦¾à¦¨à¦¿à¦®à§‚à¦²à¦• à¦¬à¦¾ à¦†à¦•à§à¦°à¦®à¦£à¦¾à¦¤à§à¦®à¦• à¦°à¦¾à¦œà¦¨à§ˆà¦¤à¦¿à¦• à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¥¤</li>
+            </ul>
+            
+            <h3><i class="fas fa-user-tie"></i> à§©. à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾à¦° à¦¦à¦¾à¦¯à¦¼à¦¬à¦¦à§à¦§à¦¤à¦¾</h3>
+            <ul>
+                <li><strong>à¦¤à¦¥à§à¦¯à§‡à¦° à¦¸à¦¤à§à¦¯à¦¤à¦¾:</strong> à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡ à¦¬à§à¦¯à¦¬à¦¹à§ƒà¦¤ à¦›à¦¬à¦¿, à¦¤à¦¥à§à¦¯, à¦¦à¦¾à¦¬à¦¿ à¦¬à¦¾ à¦¬à¦¿à¦¬à§ƒà¦¤à¦¿à¦° à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¦à¦¾à¦¯à¦¼à¦­à¦¾à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾à¦°à¥¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦¬à¦¿à¦·à¦¯à¦¼à¦¬à¦¸à§à¦¤à§ à¦•à§‹à¦¨à§‹ à¦•à¦ªà¦¿à¦°à¦¾à¦‡à¦Ÿ à¦¬à¦¾ à¦Ÿà§à¦°à§‡à¦¡à¦®à¦¾à¦°à§à¦• à¦†à¦‡à¦¨ à¦²à¦™à§à¦˜à¦¨ à¦•à¦°à¦›à§‡ à¦•à¦¿à¦¨à¦¾, à¦¤à¦¾ à¦¨à¦¿à¦¶à§à¦šà¦¿à¦¤ à¦•à¦°à¦¾à¦° à¦¦à¦¾à¦¯à¦¼à¦¿à¦¤à§à¦¬ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾à¦°à¥¤</li>
+                <li><strong>à¦†à¦‡à¦¨à¦¿ à¦à¦¾à¦®à§‡à¦²à¦¾:</strong> à¦ªà§à¦°à¦•à¦¾à¦¶à¦¿à¦¤ à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦•à¦¾à¦°à¦£à§‡ à¦¯à¦¦à¦¿ à¦•à§‹à¦¨à§‹ à¦†à¦‡à¦¨à¦¿ à¦œà¦Ÿà¦¿à¦²à¦¤à¦¾ à¦¸à§ƒà¦·à§à¦Ÿà¦¿ à¦¹à¦¯à¦¼, à¦¤à¦¬à§‡ à¦¤à¦¾à¦° à¦¸à¦®à¦¸à§à¦¤ à¦¦à¦¾à¦¯à¦¼ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾à¦•à§‡ à¦¬à¦¹à¦¨ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦ à¦¬à¦¿à¦·à¦¯à¦¼à§‡ à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦•à§‹à¦¨à§‹à¦­à¦¾à¦¬à§‡à¦‡ à¦¦à¦¾à¦¯à¦¼à§€ à¦¥à¦¾à¦•à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+            </ul>
+            
+            <h3><i class="fas fa-edit"></i> à§ª. à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦¬à¦¾à¦¤à¦¿à¦² à¦“ à¦¸à¦‚à¦¶à§‹à¦§à¦¨à§‡à¦° à¦…à¦§à¦¿à¦•à¦¾à¦°</h3>
+            <p>à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¸à¦®à¦¯à¦¼, à¦•à§‹à¦¨à§‹ à¦•à¦¾à¦°à¦£ à¦¦à¦°à§à¦¶à¦¾à¦¨à§‹ à¦¬à§à¦¯à¦¤à¦¿à¦°à§‡à¦•à§‡ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦¬à¦¾à¦¤à¦¿à¦², à¦¸à§à¦¥à¦—à¦¿à¦¤ à¦¬à¦¾ à¦¸à¦‚à¦¶à§‹à¦§à¦¨ à¦•à¦°à¦¾à¦° à¦ªà§‚à¦°à§à¦£ à¦…à¦§à¦¿à¦•à¦¾à¦° à¦¸à¦‚à¦°à¦•à§à¦·à¦£ à¦•à¦°à§‡à¥¤ à¦¯à¦¦à¦¿ à¦•à§‹à¦¨à§‹ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾à¦° à¦ªà¦°à¦¿à¦ªà¦¨à§à¦¥à§€ à¦¬à¦²à§‡ à¦®à¦¨à§‡ à¦¹à¦¯à¦¼, à¦¤à¦¬à§‡ à¦¤à¦¾ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦ªà¦°à§‡à¦“ à¦¸à¦°à¦¿à¦¯à¦¼à§‡ à¦¨à§‡à¦“à¦¯à¦¼à¦¾ à¦¹à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¥¤</p>
+            
+            <h3><i class="fas fa-credit-card"></i> à§«. à¦®à§‚à¦²à§à¦¯ à¦ªà¦°à¦¿à¦¶à§‹à¦§ à¦“ à¦…à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦¶à¦°à§à¦¤</h3>
+            <p>à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦ªà§‚à¦°à§à¦¬à§‡ à¦¨à¦¿à¦°à§à¦§à¦¾à¦°à¦¿à¦¤ à¦®à§‚à¦²à§à¦¯ (à¦°à§‡à¦Ÿ à¦•à¦¾à¦°à§à¦¡ à¦…à¦¨à§à¦¯à¦¾à¦¯à¦¼à§€ à¦¬à¦¾ à¦†à¦²à§‹à¦šà¦¨à¦¾à¦° à¦­à¦¿à¦¤à§à¦¤à¦¿à¦¤à§‡) à¦…à¦—à§à¦°à¦¿à¦® à¦ªà¦°à¦¿à¦¶à§‹à¦§ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦®à§‚à¦²à§à¦¯ à¦¤à¦¾à¦²à¦¿à¦•à¦¾ (Rate Card) à¦¬à¦¾à¦œà¦¾à¦°à§‡à¦° à¦ªà¦°à¦¿à¦¸à§à¦¥à¦¿à¦¤à¦¿à¦° à¦“à¦ªà¦° à¦­à¦¿à¦¤à§à¦¤à¦¿ à¦•à¦°à§‡ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¸à¦®à¦¯à¦¼ à¦ªà¦°à¦¿à¦¬à¦°à§à¦¤à¦¨ à¦¹à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¥¤</p>
+            
+            <h3><i class="fas fa-exclamation-triangle"></i> à§¬. à¦¦à¦¾à¦¬à¦¿à¦¤à§à¦¯à¦¾à¦— (Disclaimer)</h3>
+            <p style="background: #fff5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #ff0000;">à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ à¦¶à§à¦§à§à¦®à¦¾à¦¤à§à¦° à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦à¦•à¦Ÿà¦¿ à¦®à¦¾à¦§à§à¦¯à¦®à¥¤ à¦ªà§à¦°à¦•à¦¾à¦¶à¦¿à¦¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦•à§‹à¦¨à§‹ à¦ªà¦£à§à¦¯à§‡à¦° à¦—à§à¦£à¦®à¦¾à¦¨, à¦¸à§‡à¦¬à¦¾à¦° à¦¨à¦¿à¦¶à§à¦šà¦¯à¦¼à¦¤à¦¾ à¦¬à¦¾ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à¦¦à¦¾à¦¤à¦¾à¦° à¦¦à¦¾à¦¬à¦¿à¦° à¦¸à¦¤à§à¦¯à¦¤à¦¾ à¦¸à¦®à§à¦ªà¦°à§à¦•à§‡ à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦•à§‹à¦¨à§‹ à¦ªà§à¦°à¦•à¦¾à¦° à¦œà¦¾à¦®à¦¾à¦¨à¦¤ à¦¬à¦¾ à¦¨à¦¿à¦¶à§à¦šà¦¯à¦¼à¦¤à¦¾ à¦ªà§à¦°à¦¦à¦¾à¦¨ à¦•à¦°à§‡ à¦¨à¦¾à¥¤ à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦“à¦ªà¦° à¦­à¦¿à¦¤à§à¦¤à¦¿ à¦•à¦°à§‡ à¦•à§‹à¦¨à§‹ à¦²à§‡à¦¨à¦¦à§‡à¦¨ à¦•à¦°à¦¾à¦° à¦†à¦—à§‡ à¦ªà¦¾à¦ à¦•à¦¦à§‡à¦° à¦¨à¦¿à¦œ à¦¦à¦¾à¦¯à¦¼à¦¿à¦¤à§à¦¬à§‡ à¦¯à¦¾à¦šà¦¾à¦‡-à¦¬à¦¾à¦›à¦¾à¦‡ à¦•à¦°à¦¾à¦° à¦ªà¦°à¦¾à¦®à¦°à§à¦¶ à¦¦à§‡à¦“à¦¯à¦¼à¦¾ à¦¹à¦²à§‹à¥¤</p>
+            
+            <p style="text-align: center; margin-top: 20px; font-weight: 600; color: #666;"><i class="fas fa-info-circle"></i> à¦à¦‡ à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¸à¦®à¦¯à¦¼ à¦ªà¦°à¦¿à¦¬à¦°à§à¦¤à¦¨ à¦¬à¦¾ à¦ªà¦°à¦¿à¦®à¦¾à¦°à§à¦œà¦¨à§‡à¦° à¦…à¦§à¦¿à¦•à¦¾à¦° à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦¸à¦‚à¦°à¦•à§à¦·à¦£ à¦•à¦°à§‡à¥¤</p>
+        </div>
+    </div>
+</div>
+
+<!-- Comment Policy Popup -->
+<div id="commentPolicyPopup" class="policy-popup-overlay" onclick="closeCommentPolicyPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-comments"></i> à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾</h2>
+            <button class="policy-popup-close" onclick="closeCommentPolicyPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <p class="policy-website" style="border-left-color: #ff6b00;"><i class="fas fa-newspaper"></i> <strong>à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News)</strong></p>
+            
+            <p style="font-style: italic; background: #fff8f0; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6b00;">à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News) à¦ªà¦¾à¦ à¦•à¦¦à§‡à¦° à¦®à¦¤à¦¾à¦®à¦¤à¦•à§‡ à¦—à§à¦°à§à¦¤à§à¦¬ à¦¦à§‡à¦¯à¦¼à¥¤ à¦¤à¦¬à§‡ à¦à¦•à¦Ÿà¦¿ à¦¸à§à¦¸à§à¦¥ à¦“ à¦¨à¦¿à¦°à¦¾à¦ªà¦¦ à¦†à¦²à§‹à¦šà¦¨à¦¾à¦° à¦ªà¦°à¦¿à¦¬à§‡à¦¶ à¦¬à¦œà¦¾à¦¯à¦¼ à¦°à¦¾à¦–à¦¾à¦° à¦œà¦¨à§à¦¯, à¦†à¦®à¦¾à¦¦à§‡à¦° à¦¸à¦¾à¦‡à¦Ÿà§‡ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¾à¦° à¦•à§à¦·à§‡à¦¤à§à¦°à§‡ à¦¨à¦¿à¦®à§à¦¨à¦²à¦¿à¦–à¦¿à¦¤ à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾ à¦…à¦¨à§à¦¸à¦°à¦£ à¦•à¦°à¦¾ à¦¬à¦¾à¦§à§à¦¯à¦¤à¦¾à¦®à§‚à¦²à¦•:</p>
+            
+            <h3><i class="fas fa-list-check"></i> à¦¨à§€à¦¤à¦¿à¦®à¦¾à¦²à¦¾ à¦¸à¦®à§‚à¦¹</h3>
+            <ul class="comment-rules">
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦ªà¦¾à¦ à¦•à¦¦à§‡à¦° à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¸à¦‚à¦¬à¦¾à¦¦à§‡à¦° à¦¬à¦¿à¦·à¦¯à¦¼ à¦¬à¦¾ à¦¬à¦¿à¦·à¦¯à¦¼à¦¬à¦¸à§à¦¤à§à¦° à¦¸à¦¾à¦¥à§‡ à¦ªà§à¦°à¦¾à¦¸à¦™à§à¦—à¦¿à¦• à¦¹à¦¤à§‡ à¦¹à¦¬à§‡à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦ªà§à¦°à¦šà¦²à¦¿à¦¤ à¦†à¦‡à¦¨ à¦²à¦™à§à¦˜à¦¨ à¦•à¦°à§‡ à¦•à§‹à¦¨à§‹ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦•à§à¦¤à¦¿, à¦œà¦¾à¦¤à¦¿, à¦—à§‹à¦·à§à¦ à§€ à¦¬à¦¾ à¦­à¦¾à¦·à¦¾à¦° à¦ªà§à¦°à¦¤à¦¿ à¦…à¦¬à¦®à¦¾à¦¨à¦¨à¦¾à¦®à§‚à¦²à¦• à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à§‹à¦¨à§‹ à¦§à¦°à§à¦® à¦¬à¦¾ à¦•à¦¾à¦°à¦“ à¦…à¦¨à§à¦­à§‚à¦¤à¦¿à¦¤à§‡ à¦†à¦˜à¦¾à¦¤ à¦¦à¦¿à¦¤à§‡ à¦ªà¦¾à¦°à§‡ à¦à¦®à¦¨ à¦•à§‹à¦¨à§‹ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦•à§à¦¤à¦¿à¦•à§‡ à¦¹à§‡à¦¯à¦¼ à¦•à¦°à¦¤à§‡ à¦…à¦¬à¦®à¦¾à¦¨à¦¨à¦¾à¦®à§‚à¦²à¦•à¦­à¦¾à¦¬à§‡ à¦•à§‹à¦¨à§‹ à¦ªà§à¦°à¦¾à¦£à§€à¦¬à¦¾à¦šà¦• à¦¨à¦¾à¦® à¦¦à§‡à¦“à¦¯à¦¼à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à§‹à¦¨à§‹ à¦¬à§à¦¯à¦•à§à¦¤à¦¿à¦° à¦¨à¦¾à¦® à¦¬à¦¿à¦•à§ƒà¦¤ à¦•à¦°à§‡ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦®à¦¨à§à¦¤à¦¬à§à¦¯à§‡ à¦…à¦¶à§à¦²à§€à¦² à¦“ à¦…à¦¶à¦¾à¦²à§€à¦¨ à¦‡à¦™à§à¦—à¦¿à¦¤à¦ªà§‚à¦°à§à¦£ à¦¶à¦¬à§à¦¦ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à¦¾à¦‰à¦•à§‡ à¦¬à§à¦¯à¦•à§à¦¤à¦¿à¦—à¦¤à¦­à¦¾à¦¬à§‡ à¦†à¦•à§à¦°à¦®à¦£ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦•à¦¾à¦‰à¦•à§‡ à¦­à¦¯à¦¼ à¦¦à§‡à¦–à¦¾à¦¨à§‹ à¦¬à¦¾ à¦¹à§à¦®à¦•à¦¿ à¦¦à§‡à¦“à¦¯à¦¼à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦‰à¦¦à§à¦¦à§‡à¦¶à§à¦¯à¦®à§‚à¦²à¦•, à¦†à¦ªà¦¤à§à¦¤à¦¿à¦•à¦° à¦¬à¦¾ à¦‡à¦™à§à¦—à¦¿à¦¤à¦ªà§‚à¦°à§à¦£ à¦¨à¦¾à¦® à¦¬à¦¾ à¦›à¦¦à§à¦®à¦¨à¦¾à¦® à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦¨à¦¿à¦‰à¦œà§‡à¦° à¦®à¦¨à§à¦¤à¦¬à§à¦¯à§‡ à¦•à§‹à¦¨à§‹ à¦²à¦¿à¦‚à¦• à¦¶à§‡à¦¯à¦¼à¦¾à¦° à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦¬à¦¾à¦‚à¦²à¦¾ à¦¹à¦°à¦«à§‡ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦¹à¦°à¦«à§‡ à¦¬à¦¾à¦‚à¦²à¦¾ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦•à¦°à¦²à§‡ (Banglish) à¦¤à¦¾ à¦¬à¦¾à¦¤à¦¿à¦² à¦•à¦°à¦¾ à¦¹à¦¬à§‡à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦…à¦¸à¦‚à¦²à¦—à§à¦¨ à¦¬à¦¾à¦•à§à¦¯à§‡à¦° à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦ªà§à¦°à¦•à¦¾à¦¶ à¦•à¦°à¦¾ à¦¹à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-check-circle" style="color: #ff6b00;"></i> à¦¦à§ƒà¦·à§à¦Ÿà¦¿à¦•à¦Ÿà§ à¦­à§à¦² à¦¬à¦¾ à¦…à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¬à¦¾à¦•à§à¦¯à§‡à¦° à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¸à¦®à§à¦ªà¦¾à¦¦à¦¨à¦¾ à¦¸à¦¾à¦ªà§‡à¦•à§à¦·à§‡ à¦ªà§à¦°à¦•à¦¾à¦¶ à¦¹à¦¤à§‡ à¦ªà¦¾à¦°à§‡à¥¤</li>
+            </ul>
+            
+            <h3><i class="fas fa-exclamation-circle"></i> à¦¦à¦¾à¦¬à¦¿à¦¤à§à¦¯à¦¾à¦— à¦“ à¦…à¦§à¦¿à¦•à¦¾à¦°</h3>
+            <ul class="disclaimer-list">
+                <li><i class="fas fa-angle-right" style="color: #ff0000;"></i> à¦ªà¦¾à¦ à¦•à¦¦à§‡à¦° à¦¦à§à¦¬à¦¾à¦°à¦¾ à¦ªà§à¦°à¦•à¦¾à¦¶à¦¿à¦¤ à¦•à§‹à¦¨à§‹ à¦®à¦¤à¦¾à¦®à¦¤à§‡à¦° à¦œà¦¨à§à¦¯ à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News) à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦¦à¦¾à¦¯à¦¼à¦¬à¦¦à§à¦§ à¦¥à¦¾à¦•à¦¬à§‡ à¦¨à¦¾à¥¤</li>
+                <li><i class="fas fa-angle-right" style="color: #ff0000;"></i> à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News) à¦•à¦°à§à¦¤à§ƒà¦ªà¦•à§à¦· à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¬à¦¾à¦¤à¦¿à¦²à§‡à¦° à¦…à¦§à¦¿à¦•à¦¾à¦° à¦°à¦¾à¦–à§‡à¥¤</li>
+                <li><i class="fas fa-angle-right" style="color: #ff0000;"></i> à¦•à§‹à¦¨à§‹ à¦‡à¦¸à§à¦¯à§à¦¤à§‡ à¦ªà¦¾à¦ à¦•à§‡à¦° à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦®à§à¦›à§‡ à¦¦à§‡à¦“à¦¯à¦¼à¦¾à¦° à¦…à¦§à¦¿à¦•à¦¾à¦° à¦¸à¦‚à¦°à¦•à§à¦·à¦£ à¦•à¦°à§‡ à¦¹à¦¿à¦¨à§à¦¦à§à¦¸ à¦¨à¦¿à¦‰à¦œ (Hindus News)à¥¤</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Terms of Use Popup -->
+<div id="termsPopup" class="policy-popup-overlay" onclick="closeTermsPopup(event)">
+    <div class="policy-popup-container" onclick="event.stopPropagation()">
+        <div class="policy-popup-header">
+            <h2><i class="fas fa-file-contract"></i> Terms of Use</h2>
+            <button class="policy-popup-close" onclick="closeTermsPopup()">&times;</button>
+        </div>
+        <div class="policy-popup-content">
+            <p class="policy-website"><i class="fas fa-calendar-alt"></i> Last Updated: 27-1-2026 | <i class="fas fa-globe"></i> Website: <a href="http://hindus-news.com" target="_blank">http://hindus-news.com</a></p>
+            
+            <h3><i class="fas fa-check-circle"></i> 1. Acceptance of Terms</h3>
+            <p>Welcome to Hindus News. Please read these Terms of Use ("Terms", "Terms of Use") carefully before using the http://hindus-news.com website (the "Service") operated by Hindus News ("us", "we", or "our").</p>
+            <p>By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service. These Terms apply to all visitors, users, and others who access or use the Service.</p>
+            
+            <h3><i class="fas fa-edit"></i> 2. Changes to Terms</h3>
+            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion.</p>
+            <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. It is your responsibility to check this page periodically for changes.</p>
+            
+            <h3><i class="fas fa-door-open"></i> 3. Access and Use of Service</h3>
+            <p><strong>3.1. Age Restriction</strong><br>By using this Site, you represent that you are at least 18 years of age, or if you are under 18, you are at least 13 years of age and are using the site with the permission and supervision of a parent or legal guardian.</p>
+            <p><strong>3.2. User Accounts</strong><br>If you create an account to use parts of our Service (such as commenting or newsletter subscription), you are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account or password. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
+            
+            <h3><i class="fas fa-copyright"></i> 4. Intellectual Property Rights</h3>
+            <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Hindus News and its licensors. The content published on this website (articles, photographs, graphics, logos) is protected by copyright, trademark, and other laws of both Bangladesh and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Hindus News.</p>
+            <p><strong>You may not:</strong></p>
+            <ul>
+                <li>Republish material from Hindus News without attribution and a link back to the original source.</li>
+                <li>Sell, rent, or sub-license material from the website.</li>
+                <li>Reproduce, duplicate, copy or otherwise exploit material on our website for a commercial purpose.</li>
+            </ul>
+            
+            <h3><i class="fas fa-users"></i> 5. User-Generated Content and Conduct</h3>
+            <p>If the Service allows users to post comments or submit content:</p>
+            <p><strong>5.1. Responsibility</strong><br>You are solely responsible for the content that you post on or through the Service, and any consequences of submitting and posting same.</p>
+            <p><strong>5.2. Prohibited Content</strong><br>You agree not to post content that:</p>
+            <ul>
+                <li>Is unlawful, harassing, defamatory, abusive, threatening, harmful, obscene, profane, sexually oriented, or racially offensive.</li>
+                <li>Encourages conduct that could constitute a criminal offense, give rise to civil liability, or otherwise violate any applicable law or regulation.</li>
+                <li>Infringes on any third party's copyright, trademark, patent, trade secret, or other proprietary rights.</li>
+                <li>Contains spam, advertising, commercial solicitations, or promotional materials.</li>
+            </ul>
+            <p>We reserve the right, but have no obligation, to monitor and remove any content that we determine, in our sole discretion, violates these Terms.</p>
+            
+            <h3><i class="fas fa-exclamation-triangle"></i> 6. Official Channels Warning</h3>
+            <p>As stated in our Privacy Policy, there are multiple fake websites, Facebook pages, and unauthorized groups posing as "Hindus News." Hindus News shall hold no responsibility for any content generated, published, or shared on these fake websites or unauthorized social media pages. We are only responsible for content published on our official domain: http://hindus-news.com.</p>
+            
+            <h3><i class="fas fa-external-link-alt"></i> 7. Third-Party Links</h3>
+            <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Hindus News (e.g., Google advertising links, external news sources).</p>
+            <p>Hindus News has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that Hindus News shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+            <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
+            
+            <h3><i class="fas fa-shield-alt"></i> 8. Disclaimer of Warranties</h3>
+            <p>YOUR USE OF THE SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. THE SERVICE IS PROVIDED WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COURSE OF PERFORMANCE.</p>
+            <p>Hindus News does not warrant that a) the Service will function uninterrupted, secure, or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements.</p>
+            
+            <h3><i class="fas fa-balance-scale"></i> 9. Limitation of Liability</h3>
+            <p>IN NO EVENT SHALL HINDUS NEWS, NOR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (I) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICE; (II) ANY CONDUCT OR CONTENT OF ANY THIRD PARTY ON THE SERVICE; (III) ANY CONTENT OBTAINED FROM THE SERVICE; AND (IV) UNAUTHORIZED ACCESS, USE OR ALTERATION OF YOUR TRANSMISSIONS OR CONTENT.</p>
+            
+            <h3><i class="fas fa-gavel"></i> 10. Governing Law</h3>
+            <p>The laws that govern "Terms of Use" of Hindus News and its relationship with the user is the laws of Bangladesh and any dispute regarding the use, retention, disclosure, leakage or dissemination of the information or date can only be raised in arbitration in accordance with the Arbitration Act, 2001. The place of arbitration shall be Dhaka, Bangladesh and the arbitral tribunal shall consist of three members. The courts of Bangladesh shall have exclusive jurisdiction on this matter.</p>
+            
+            <h3><i class="fas fa-envelope"></i> 11. Contact Us</h3>
+            <p>If you have any questions about these Terms, please contact us at: <a href="mailto:hindusnewsbd@gmail.com">hindusnewsbd@gmail.com</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Privacy Policy Popup Styles */
+.policy-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+}
+
+.policy-popup-overlay.active {
+    display: flex;
+}
+
+.policy-popup-container {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    animation: popupSlideIn 0.3s ease;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.policy-popup-header {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: #fff;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.policy-popup-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.policy-popup-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.policy-popup-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.policy-popup-content {
+    padding: 25px 30px;
+    overflow-y: auto;
+    max-height: calc(85vh - 80px);
+    line-height: 1.8;
+    color: #333;
+}
+
+.policy-popup-content .policy-website {
+    background: #f8f9fa;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border-left: 4px solid #ff0000;
+    margin-bottom: 20px;
+}
+
+.policy-popup-content .policy-website a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.policy-popup-content h3 {
+    color: #1a1a1a;
+    font-size: 18px;
+    margin: 25px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.policy-popup-content h3 i {
+    color: #ff0000;
+    font-size: 16px;
+}
+
+.policy-popup-content p {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.policy-popup-content ul {
+    margin: 10px 0 20px 20px;
+    padding-left: 20px;
+}
+
+.policy-popup-content ul li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.policy-popup-content a {
+    color: #ff0000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.policy-popup-content a:hover {
+    text-decoration: underline;
+}
+
+/* Comment Policy List Styles */
+.comment-rules, .disclaimer-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.comment-rules li, .disclaimer-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.comment-rules li i, .disclaimer-list li i {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.disclaimer-list li {
+    background: #fff5f5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .policy-popup-overlay {
+        padding: 10px;
+    }
+    
+    .policy-popup-container {
+        max-height: 90vh;
+        border-radius: 12px;
+    }
+    
+    .policy-popup-header {
+        padding: 15px 18px;
+    }
+    
+    .policy-popup-header h2 {
+        font-size: 16px;
+    }
+    
+    .policy-popup-close {
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+    
+    .policy-popup-content {
+        padding: 18px 20px;
+        max-height: calc(90vh - 70px);
+    }
+    
+    .policy-popup-content h3 {
+        font-size: 16px;
+    }
+    
+    .policy-popup-content p,
+    .policy-popup-content ul li {
+        font-size: 14px;
+    }
+}
+</style>
+
+<script>
+function openPrivacyPopup() {
+    document.getElementById('privacyPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePrivacyPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('privacyPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openTermsPopup() {
+    document.getElementById('termsPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeTermsPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('termsPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openCommentPolicyPopup() {
+    document.getElementById('commentPolicyPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCommentPolicyPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('commentPolicyPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openAdsPopup() {
+    document.getElementById('adsPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAdsPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('adsPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openAdsPolicyPopup() {
+    document.getElementById('adsPolicyPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAdsPolicyPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('adsPolicyPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openAboutPopup() {
+    document.getElementById('aboutPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAboutPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('aboutPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openScripturesPopup() {
+    document.getElementById('scripturesPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeScripturesPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('scripturesPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function openEkadashiPopup() {
+    document.getElementById('ekadashiPopup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeEkadashiPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    document.getElementById('ekadashiPopup').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePrivacyPopup();
+        closeTermsPopup();
+        closeCommentPolicyPopup();
+        closeAdsPopup();
+        closeAdsPolicyPopup();
+        closeAboutPopup();
+        closeScripturesPopup();
+        closeEkadashiPopup();
+    }
+});

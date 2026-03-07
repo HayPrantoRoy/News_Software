@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Portal Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        .primary-header-wrapper {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-top-section {
+            padding: 10px 80px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header-content-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo-container:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-image-element {
+            height: 80px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .header-action-group {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .search-wrapper-container {
+            position: relative;
+        }
+
+        .search-input-box {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input-box:focus-within {
+            border-color: #495057;
+            box-shadow: 0 0 0 3px rgba(73, 80, 87, 0.1);
+        }
+
+        .search-icon-svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            fill: #6c757d;
+        }
+
+        .search-field-input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 0;
+            font-size: 14px;
+            width: 200px;
+            color: #495057;
+        }
+
+        .search-field-input::placeholder {
+            color: #6c757d;
+        }
+
+        .date-info-display {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .date-icon-svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            fill: #6c757d;
+        }
+
+        .header-button-element {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-button-element svg {
+            width: 16px;
+            height: 16px;
+            fill: black;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-button svg {
+            width: 40px;
+            height: 40px;
+            fill: black;
+        }
+
+        .main-navigation-section {
+            background: white;
+            border-top: 1px solid #e9ecef;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .primary-nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .nav-menu-item {
+            margin-right: 35px;
+        }
+
+        .nav-link-element {
+            text-decoration: none;
+            color: #495057;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 18px 0;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link-element::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #495057;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link-element:hover {
+            color: #212529;
+        }
+
+        .nav-link-element:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-actions-group {
+            display: none;
+        }
+
+        /* Mobile Sidebar */
+        .mobile-sidebar-panel {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            z-index: 9999;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-sidebar-panel.sidebar-active {
+            right: 0;
+        }
+
+        .sidebar-header-container {
+            padding: 25px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title-text {
+            color: #495057;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .sidebar-close-btn {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: #495057;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-close-btn:hover {
+            background: #e9ecef;
+            transform: rotate(90deg);
+        }
+
+        .sidebar-close-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #495057;
+        }
+
+        .sidebar-menu-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-menu-container::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+
+        .sidebar-menu-container::-webkit-scrollbar-thumb {
+            background: #dee2e6;
+            border-radius: 3px;
+        }
+
+        .sidebar-menu-container::-webkit-scrollbar-thumb:hover {
+            background: #adb5bd;
+        }
+
+        .sidebar-menu-link {
+            display: block;
+            color: #495057;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu-link:hover {
+            background: #f8f9fa;
+            border-left-color: #495057;
+            color: #212529;
+        }
+
+        .sidebar-overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay-bg.overlay-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-top-section {
+                padding: 5px 20px;
+            }
+
+            .header-content-flex {
+                flex-wrap: wrap;
+            }
+
+            .logo-image-element {
+                height: 70px;
+                max-width: 150px;
+            }
+
+            .header-action-group {
+                gap: 15px;
+            }
+
+            .search-input-box {
+                display: none;
+            }
+
+            .date-info-display {
+                display: none;
+            }
+
+            .header-button-element {
+                display: none;
+            }
+
+            .mobile-actions-group {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .mobile-sidebar-panel {
+                width: 300px;
+                right: -300px;
+            }
+
+            .main-navigation-section {
+                padding: 0 20px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-content-container {
+                min-width: max-content;
+            }
+
+            .primary-nav-menu {
+                min-width: max-content;
+            }
+
+            .nav-menu-item {
+                margin-right: 25px;
+            }
+
+            .nav-link-element {
+                padding: 15px 0;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+
+            .nav-actions-container {
+                min-width: max-content;
+                padding-left: 20px;
+            }
+
+            .main-navigation-section::-webkit-scrollbar {
+                height: 3px;
+            }
+
+            .main-navigation-section::-webkit-scrollbar-track {
+                background: #f8f9fa;
+            }
+
+            .main-navigation-section::-webkit-scrollbar-thumb {
+                background: #dee2e6;
+                border-radius: 2px;
+            }
+
+            .main-navigation-section::-webkit-scrollbar-thumb:hover {
+                background: #adb5bd;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-image-element {
+                height: 70px;
+                max-width: 120px;
+            }
+
+            .mobile-sidebar-panel {
+                width: 280px;
+                right: -280px;
+            }
+
+            .nav-menu-item {
+                margin-right: 20px;
+            }
+
+            .nav-link-element {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="primary-header-wrapper">
+        <div class="header-top-section">
+            <div class="header-content-flex">
+                <a href="#" class="brand-logo-container">
+                    <img src="logo.jpg" alt="News Portal Logo" class="logo-image-element">
+                </a>
+                
+                <div class="header-action-group">
+                    <div class="search-wrapper-container">
+                        <div class="search-input-box">
+                            <svg class="search-icon-svg" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                            <input type="text" placeholder="Search news..." class="search-field-input">
+                        </div>
+                    </div>
+                    
+                    <div class="date-info-display">
+                        <svg class="date-icon-svg" viewBox="0 0 24 24">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                        <span id="currentDateElement">Today</span>
+                    </div>
+                    
+                    <button class="header-button-element language-btn">
+                        <img src="img/united-kingdom.png" width="20px">
+                        Eng
+                    </button>
+                    
+                    <button class="header-button-element login-btn">
+                        <img src="img/user.png" width="20px">
+                        Login
+                    </button>
+                    
+                    <div class="mobile-actions-group">
+                        <button class="header-button-element" onclick="toggleMobileSearch()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </button>
+                        <button class="header-button-element">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9C15 12.18 12.18 15 9 15S3 12.18 3 9V7L9 6.5V9C9 10.66 10.34 12 12 12S15 10.66 15 9Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <button class="mobile-menu-button" onclick="openSidebarPanel()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-navigation-section">
+            <div class="nav-content-container">
+                <ul class="primary-nav-menu">
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Home</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Politics</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Bangladesh</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">International</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Business</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Sports</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Entertainment</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Technology</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Opinion</a></li>
+                    <li class="nav-menu-item"><a href="#" class="nav-link-element">Lifestyle</a></li>
+                </ul>
+                <div class="nav-actions-container">
+                    <button class="header-button-element language-btn">
+                        <img src="img/united-kingdom.png" width="20px">
+                        Eng
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar-overlay-bg" id="sidebarOverlayBg" onclick="closeSidebarPanel()"></div>
+    <div class="mobile-sidebar-panel" id="mobileSidebarPanel">
+        <div class="sidebar-header-container">
+            <div class="sidebar-title-text">Menu</div>
+            <button class="sidebar-close-btn" onclick="closeSidebarPanel()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="sidebar-menu-container">
+            <a href="#" class="sidebar-menu-link">Home</a>
+            <a href="#" class="sidebar-menu-link">Politics</a>
+            <a href="#" class="sidebar-menu-link">Bangladesh</a>
+            <a href="#" class="sidebar-menu-link">International</a>
+            <a href="#" class="sidebar-menu-link">Business</a>
+            <a href="#" class="sidebar-menu-link">Sports</a>
+            <a href="#" class="sidebar-menu-link">Entertainment</a>
+            <a href="#" class="sidebar-menu-link">Technology</a>
+            <a href="#" class="sidebar-menu-link">Opinion</a>
+            <a href="#" class="sidebar-menu-link">Lifestyle</a>
+            <a href="#" class="sidebar-menu-link">Health</a>
+            <a href="#" class="sidebar-menu-link">Science</a>
+            <a href="#" class="sidebar-menu-link">Education</a>
+            <a href="#" class="sidebar-menu-link">Culture</a>
+            <a href="#" class="sidebar-menu-link">Travel</a>
+            <a href="#" class="sidebar-menu-link">Food</a>
+            <a href="#" class="sidebar-menu-link">Weather</a>
+            <a href="#" class="sidebar-menu-link">Economy</a>
+            <a href="#" class="sidebar-menu-link">Finance</a>
+            <a href="#" class="sidebar-menu-link">Markets</a>
+            <a href="#" class="sidebar-menu-link">World News</a>
+            <a href="#" class="sidebar-menu-link">Local News</a>
+            <a href="#" class="sidebar-menu-link">Breaking News</a>
+            <a href="#" class="sidebar-menu-link">Photo Gallery</a>
+            <a href="#" class="sidebar-menu-link">Videos</a>
+            <a href="#" class="sidebar-menu-link">Podcasts</a>
+            <a href="#" class="sidebar-menu-link">Newsletter</a>
+            <a href="#" class="sidebar-menu-link">Contact Us</a>
+            <a href="#" class="sidebar-menu-link">About</a>
+            <a href="#" class="sidebar-menu-link">Privacy Policy</a>
+        </div>
+    </div>
+
+    <script>
+        function openSidebarPanel() {
+            const sidebar = document.getElementById('mobileSidebarPanel');
+            const overlay = document.getElementById('sidebarOverlayBg');
+            
+            sidebar.classList.add('sidebar-active');
+            overlay.classList.add('overlay-active');
+            
+            // Prevent body scroll when sidebar is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebarPanel() {
+            const sidebar = document.getElementById('mobileSidebarPanel');
+            const overlay = document.getElementById('sidebarOverlayBg');
+            
+            sidebar.classList.remove('sidebar-active');
+            overlay.classList.remove('overlay-active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleMobileSearch() {
+            // Mobile search functionality
+            alert('Search functionality would be implemented here');
+        }
+
+        // Update date display
+        function updateDateDisplay() {
+            const dateElement = document.getElementById('currentDateElement');
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            dateElement.textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('mobileSidebarPanel');
+            const menuToggle = document.querySelector('.mobile-menu-button');
+            
+            if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeSidebarPanel();
+            }
+        });
+
+        // Initialize
+        updateDateDisplay();
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Filter Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .filter-inputs { margin: 10px 0; }
+        input { padding: 8px; margin: 5px; }
+        button { padding: 10px 20px; background: #308e87; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 10px; padding: 10px; background: #f0f0f0; }
+        .pass { color: green; font-weight: bold; }
+        .fail { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Date Filter Testing</h1>
+    
+    <div class="test-section">
+        <h2>Test Data (Sample MySQL Dates)</h2>
+        <pre id="test-data"></pre>
+    </div>
+    
+    <div class="test-section">
+        <h2>Filter Test</h2>
+        <div class="filter-inputs">
+            <label>From Date: <input type="date" id="from-date"></label>
+            <label>To Date: <input type="date" id="to-date"></label>
+            <button onclick="testFilter()">Apply Filter</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        // Sample test data mimicking MySQL datetime format
+        const testData = [
+            { id: 1, headline: "News 1", created_at: "2024-01-15 10:30:00", type: "news" },
+            { id: 2, headline: "News 2", created_at: "2024-01-18 14:20:00", type: "news" },
+            { id: 3, headline: "Video 1", created_at: "2024-01-20 09:15:00", type: "video" },
+            { id: 4, headline: "News 3", created_at: "2024-01-25 16:45:00", type: "news" },
+            { id: 5, headline: "Video 2", created_at: "2024-01-28 11:00:00", type: "video" }
+        ];
+        
+        document.getElementById('test-data').textContent = JSON.stringify(testData, null, 2);
+        
+        function testFilter() {
+            const fromDate = document.getElementById('from-date').value;
+            const toDate = document.getElementById('to-date').value;
+            
+            console.log('=== Filter Test ===');
+            console.log('From Date:', fromDate);
+            console.log('To Date:', toDate);
+            
+            const filtered = testData.filter(earning => {
+                let matches = true;
+                
+                if (fromDate || toDate) {
+                    let earningDate = '';
+                    if (earning.created_at) {
+                        const dateStr = String(earning.created_at);
+                        // Extract date part from datetime (YYYY-MM-DD HH:MM:SS -> YYYY-MM-DD)
+                        if (dateStr.includes(' ')) {
+                            earningDate = dateStr.split(' ')[0];
+                        } else if (dateStr.includes('T')) {
+                            earningDate = dateStr.split('T')[0];
+                        } else if (dateStr.length >= 10) {
+                            earningDate = dateStr.substring(0, 10);
+                        }
+                    }
+                    
+                    console.log('Checking:', earning.headline, '| Date:', earningDate);
+                    
+                    // Compare dates
+                    if (fromDate && earningDate < fromDate) {
+                        console.log('  -> Failed FROM filter:', earningDate, '<', fromDate);
+                        matches = false;
+                    }
+                    
+                    if (toDate && earningDate > toDate) {
+                        console.log('  -> Failed TO filter:', earningDate, '>', toDate);
+                        matches = false;
+                    }
+                    
+                    if (matches) {
+                        console.log('  -> PASSED');
+                    }
+                }
+                
+                return matches;
+            });
+            
+            console.log('Filtered:', filtered.length, 'out of', testData.length);
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Filter Results:</h3>
+                <p>Total Records: ${testData.length}</p>
+                <p>Filtered Records: ${filtered.length}</p>
+                <h4>Matching Records:</h4>
+                <ul>
+                    ${filtered.map(item => `<li>${item.headline} - ${item.created_at}</li>`).join('')}
+                </ul>
+                <p class="${filtered.length > 0 ? 'pass' : 'fail'}">
+                    ${filtered.length > 0 ? '✓ Filter Working!' : '✗ No matches found'}
+                </p>
+            `;
+        }
+    </script>
+</body>
+</html>

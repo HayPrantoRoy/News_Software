@@ -1,0 +1,17 @@
+// CDN for TinyMCE rich text editor
+// Add this to the <head> of your HTML file
+<script src="https://cdn.tiny.cloud/1/xik9chst9hfu1krjwmjep37qmvt8zvlco7x5sextpnr90jas/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    tinymce.init({
+        selector: '#news_1, #news_2, #news_3, #news_4',
+        plugins: 'link lists code',
+        toolbar: 'undo redo | bold italic underline | link | bullist numlist | code',
+        menubar: false,
+        branding: false,
+        height: 250,
+        language: 'bn_BD', // Bengali language if available
+        content_style: 'body { font-family: Kalpurush, Arial, sans-serif; font-size:14px }'
+    });
+});
+</script>
