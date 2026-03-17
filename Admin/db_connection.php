@@ -1,7 +1,7 @@
 <?php
 // Database configuration
 $host = 'localhost';
-$dbname = 'hindus_news';
+$dbname = '';
 $username = 'root';
 $password = '';
 
