@@ -1853,7 +1853,7 @@ article p,
         <!-- Logo Loading Animation Start -->
         <div id="spinner" class="logo-loader">
             <div class="logo-loader-content">
-                <img src="https://www.hindus.news/_ipx/_/graphics/logolightmode.png" alt="Hindus News" class="loader-logo">
+                <img src="" alt="" class="loader-logo">
             </div>
         </div>
         

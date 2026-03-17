@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Management - Hindus News</title>
+    <title>Payment Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="modern_admin_styles.css">
     <!-- EmailJS SDK -->
@@ -1068,7 +1068,7 @@ function generatePaymentReceiptHTML(paymentData) {
         <!-- Header -->
         <tr>
             <td style="background: #f9fafb; padding: 25px 0; text-align: center; border-bottom: 1px solid #e5e7eb;">
-                <img src="https://www.hindus.news/_ipx/_/graphics/logolightmode.png" alt="Hindus News" style="height: 40px; margin-bottom: 8px;">
+                <img src="" alt="" style="height: 40px; margin-bottom: 8px;">
                 <p style="margin: 0; color: #9ca3af; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Payment Receipt</p>
             </td>
         </tr>
@@ -1209,9 +1209,9 @@ function generatePaymentReceiptHTML(paymentData) {
         <!-- Footer -->
         <tr>
             <td style="background: #f9fafb; padding: 20px 15px; text-align: center; border-top: 1px solid #e5e7eb;">
-                <img src="https://www.hindus.news/_ipx/_/graphics/logolightmode.png" alt="Hindus News" style="height: 22px; margin-bottom: 10px; opacity: 0.6;">
+                <img src="" alt="" style="height: 22px; margin-bottom: 10px; opacity: 0.6;">
                 <p style="margin: 0 0 4px; color: #9ca3af; font-size: 10px;">This receipt was generated automatically</p>
-                <p style="margin: 0; color: #6b7280; font-size: 11px; font-weight: 500;">Hindus News Media &copy; ${new Date().getFullYear()}</p>
+                <p style="margin: 0; color: #6b7280; font-size: 11px; font-weight: 500;"> Media &copy; ${new Date().getFullYear()}</p>
                 <p style="margin: 6px 0 0;">
                     <a href="https://www.hindus.news" style="color: #6b7280; text-decoration: none; font-size: 10px;">www.hindus.news</a>
                 </p>

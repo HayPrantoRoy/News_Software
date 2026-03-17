@@ -1226,7 +1226,7 @@ function banglaDate($date) {
                     <?php if (!empty($basic_info['image'])): ?>
                     <img src="<?php echo htmlspecialchars($basic_info['image']); ?>" alt="<?php echo htmlspecialchars($basic_info['news_portal_name'] ?? 'News Portal'); ?>" class="logo-image">
                     <?php else: ?>
-                    <img src="https://www.hindus.news/_ipx/_/graphics/logolightmode.png" alt="Hindus News Logo" class="logo-image">
+                    <img src="" alt="Logo" class="logo-image">
                     <?php endif; ?>
                 </div>
                 <!-- Social Media Icons -->
