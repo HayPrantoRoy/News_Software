@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Grant permissions to techshilpo_user
             try {
-                $master_pdo->exec("GRANT ALL PRIVILEGES ON `$final_db_name`.* TO 'techshilpo_user'@'localhost'");
+                $master_pdo->exec("GRANT ALL PRIVILEGES ON `$final_db_name`.* TO 'techshilpo_user'@'%'");
                 $master_pdo->exec("FLUSH PRIVILEGES");
             } catch (PDOException $e) {
                 // User may not exist or already has permissions - continue

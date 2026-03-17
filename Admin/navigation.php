@@ -84,7 +84,7 @@ function getPagePermissions($page, $userMenus) {
         <?php endif; ?>
     </div>
     <div class="header-right">
-        <a href="../index.php?user_id=<?php echo $_SESSION['current_user_id'] ?? 0; ?>" target="_blank" class="website-btn" title="ওয়েবসাইটে যান">
+        <a href="../home.php?user_id=<?php echo $_SESSION['current_user_id'] ?? 0; ?>" target="_blank" class="website-btn" title="ওয়েবসাইটে যান">
             <i class="fas fa-globe"></i>
             <span>Website</span>
         </a>
