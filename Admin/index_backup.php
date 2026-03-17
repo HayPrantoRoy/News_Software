@@ -1,179 +1,46 @@
 <?php
 session_start();
+include_once __DIR__ . '/../connection.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: login.php');
-    exit;
-}
-
-// Get user role information
-$user_role = $_SESSION['role_slug'] ?? '';
-$user_name = $_SESSION['full_name'] ?? $_SESSION['username'] ?? 'User';
-$role_display = $_SESSION['role_name'] ?? 'User';
-?>
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>লগইন - প্রশাসন প্যানেল</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    // Check if login form is submitted
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+        $username = $_POST['username'] ?? '';
+        $password = $_POST['password'] ?? '';
         
-        body {
-            font-family: 'SolaimanLipi', 'Nikosh', 'Kalpurush', Arial, sans-serif;
-            background: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+        // Check database for role credentials
+        $stmt = $conn->prepare("SELECT id, role_name, username, password, is_super_admin FROM roles WHERE username = ? AND is_active = 1");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $role = $result->fetch_assoc();
+            // Verify plain text password
+            if ($password === $role['password']) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user_id'] = $role['id'];
+                $_SESSION['username'] = $role['username'];
+                $_SESSION['role_name'] = $role['role_name'];
+                $_SESSION['is_super_admin'] = (bool)$role['is_super_admin'];
+                header('Location: dashboard.php');
+                exit;
+            } else {
+                $error_message = 'ভুল পাসওয়ার্ড!';
+            }
+        } else {
+            $error_message = 'ভুল ইউজারনেম বা পাসওয়ার্ড!';
         }
-        
-        .login-container {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 60px rgba(0,0,0,0.08);
-            width: 100%;
-            max-width: 450px;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .logo-container {
-            text-align: center;
-         
-        }
-        
-        .logo-container img {
-            max-width: 200px;
-            height: auto;
-         
-        }
-        
-        .login-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-        
-        .login-header h1 {
-            color: #1a1a1a;
-            font-size: 26px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .login-header p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #333;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .input-wrapper {
-            position: relative;
-        }
-        
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e8e8e8;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: all 0.3s;
-            font-family: Arial, sans-serif;
-            background: #fafafa;
-        }
-        
-        .input-wrapper input[type="password"],
-        .input-wrapper input[type="text"] {
-            padding-right: 45px;
-        }
-        
-        input[type="text"]:focus, input[type="password"]:focus {
-            outline: none;
-            border-color: #4a90e2;
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
-        }
-        
-        .toggle-password {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            color: #666;
-            transition: color 0.3s;
-        }
-        
-        .toggle-password:hover {
-            color: #4a90e2;
-        }
-        
-        .toggle-password svg {
-            width: 20px;
-            height: 20px;
-            display: block;
-        }
-        
-        .btn-login {
-            width: 100%;
-            padding: 14px;
-            background: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-        
-        .btn-login:hover {
-            background: #357abd;
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
-        }
-        
-        .btn-login:active {
-            transform: translateY(0);
-        }
-        
-        .error-message {
-            background: #fff5f5;
-            color: #e53e3e;
-            padding: 14px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            text-align: center;
-            border: 1px solid #feb2b2;
-            font-size: 14px;
-        }
-        
-        .login-footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #999;
-            font-size: 12px;
-        }
-        
-        @media (max-width: 480px) {
+    }
+    
+    // Show login form
+    ?>
+    <!DOCTYPE html>
+    <html lang="bn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>লগইন - প্রশাসন প্যানেল</title>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -416,6 +283,9 @@ if (isset($_GET['logout'])) {
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
 }
+
+// Include auth_check for permission variables
+include 'auth_check.php';
 ?>
 <!DOCTYPE html>
 <html lang="bn">
@@ -662,7 +532,42 @@ body, button, input, textarea, select, a, p, h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-
+        .image-remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            line-height: 1;
+            box-shadow: 0 2px 8px rgba(238, 90, 90, 0.4);
+        }
+        
+        .image-remove-btn:hover {
+            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.5);
+        }
+        
+        .image-upload-box.has-image .image-remove-btn {
+            display: flex;
+        }
+        
+        .caption-icon {
+            color: #f0c040;
+            margin-right: 6px;
+        }
 
         /* Modern Filter Bar Styles */
         .modern-filters {
@@ -1093,32 +998,7 @@ background: #f8f9fa;
         </style>
 </head>
 <body>
-    <header class="admin-header">
-        <div class="header-container">
-            <div class="logo-section">
-                <img src="https://www.hindus.news/_ipx/_/graphics/logolightmode.png" alt="Hindus News" class="header-logo">
-            </div>
-            <nav class="nav-menu" id="navMenu">
-                <button class="close-menu" id="closeMenu" aria-label="Close Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <a href="../index.php" class="nav-link">Portal</a>
-                <a href="index.php" class="nav-link active">News</a>
-                <a href="category.php" class="nav-link">Category</a>
-                <a href="reporter.php" class="nav-link">Reporter</a>
-                <a href="news_links.php" class="nav-link">News Links</a>
-                <a href="reporter_earning.php" class="nav-link">Reporter Earning</a>
-            </nav>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-    </header>
+    <?php include 'navigation.php'; ?>
         <!-- News View Popup -->
         <div id="news-view-popup" class="news-view-popup hidden">
             <div class="news-view-content-full">
@@ -1800,7 +1680,8 @@ background: #f8f9fa;
                         <div class="form-group">
                             <label>ছবিসমূহ (স্বয়ংক্রিয়ভাবে ১০০KB এর নিচে আকার পরিবর্তন হবে)</label>
                             <div class="image-upload-container">
-                                <div class="image-upload-box">
+                                <div class="image-upload-box" id="box_image_url">
+                                    <button type="button" class="image-remove-btn" onclick="clearImage('image_url')" title="ছবি মুছুন">×</button>
                                     <input type="file" id="image_url" name="image_url" accept="image/*">
                                     <img src="../image-upload.png" width="50">
                                     <div class="upload-text">মূল ছবি</div>
@@ -1808,6 +1689,7 @@ background: #f8f9fa;
                                     <div class="image-size-info" id="size_image_url"></div>
                                 </div>
                             </div>
+                            <input type="text" id="image_url_title" name="image_url_title" placeholder="মূল ছবির ক্যাপশন/শিরোনাম" style="margin-top: 8px; width: 100%; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
                         </div>
 
                         <div class="form-group full-width">
@@ -1833,20 +1715,26 @@ background: #f8f9fa;
                         <div class="form-group">
                             <label>ছবিসমূহ (স্বয়ংক্রিয়ভাবে ১০০KB এর নিচে আকার পরিবর্তন হবে)</label>
                             <div class="image-upload-container">
-                                <div class="image-upload-box">
+                                <div class="image-upload-box" id="box_image_2">
+                                    <button type="button" class="image-remove-btn" onclick="clearImage('image_2')" title="ছবি মুছুন">×</button>
                                     <input type="file" id="image_2" name="image_2" accept="image/*">
                                     <img src="../image-upload.png" width="50">
                                     <div class="upload-text">ছবি ২</div>
                                     <img class="image-preview" id="preview_image_2">
                                     <div class="image-size-info" id="size_image_2"></div>
                                 </div>
-                                <div class="image-upload-box">
+                                <div class="image-upload-box" id="box_image_3">
+                                    <button type="button" class="image-remove-btn" onclick="clearImage('image_3')" title="ছবি মুছুন">×</button>
                                     <input type="file" id="image_3" name="image_3" accept="image/*">
                                     <img src="../image-upload.png" width="50">
                                     <div class="upload-text">ছবি ৩</div>
                                     <img class="image-preview" id="preview_image_3">
                                     <div class="image-size-info" id="size_image_3"></div>
                                 </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                <input type="text" id="image_2_title" name="image_2_title" placeholder="ছবি ২ এর ক্যাপশন" style="flex: 1; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
+                                <input type="text" id="image_3_title" name="image_3_title" placeholder="ছবি ৩ এর ক্যাপশন" style="flex: 1; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
                             </div>
                         </div>
 
@@ -1868,20 +1756,26 @@ background: #f8f9fa;
                         <div class="form-group">
                             <label>ছবিসমূহ (স্বয়ংক্রিয়ভাবে ১০০KB এর নিচে আকার পরিবর্তন হবে)</label>
                             <div class="image-upload-container">
-                                <div class="image-upload-box">
+                                <div class="image-upload-box" id="box_image_4">
+                                    <button type="button" class="image-remove-btn" onclick="clearImage('image_4')" title="ছবি মুছুন">×</button>
                                     <input type="file" id="image_4" name="image_4" accept="image/*">
                                     <img src="../image-upload.png" width="50">
                                     <div class="upload-text">ছবি ৪</div>
                                     <img class="image-preview" id="preview_image_4">
                                     <div class="image-size-info" id="size_image_4"></div>
                                 </div>
-                                <div class="image-upload-box">
+                                <div class="image-upload-box" id="box_image_5">
+                                    <button type="button" class="image-remove-btn" onclick="clearImage('image_5')" title="ছবি মুছুন">×</button>
                                     <input type="file" id="image_5" name="image_5" accept="image/*">
                                     <img src="../image-upload.png" width="50">
                                     <div class="upload-text">ছবি ৫</div>
                                     <img class="image-preview" id="preview_image_5">
                                     <div class="image-size-info" id="size_image_5"></div>
                                 </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                <input type="text" id="image_4_title" name="image_4_title" placeholder="ছবি ৪ এর ক্যাপশন" style="flex: 1; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
+                                <input type="text" id="image_5_title" name="image_5_title" placeholder="ছবি ৫ এর ক্যাপশন" style="flex: 1; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
                             </div>
                         </div>
 
@@ -1890,6 +1784,13 @@ background: #f8f9fa;
                             <textarea id="news_4" name="news_4"></textarea>
                         </div>
                     </div>
+
+                    <!-- Hidden fields to track image deletions -->
+                    <input type="hidden" id="delete_image_url" name="delete_image_url" value="0">
+                    <input type="hidden" id="delete_image_2" name="delete_image_2" value="0">
+                    <input type="hidden" id="delete_image_3" name="delete_image_3" value="0">
+                    <input type="hidden" id="delete_image_4" name="delete_image_4" value="0">
+                    <input type="hidden" id="delete_image_5" name="delete_image_5" value="0">
 
                     <div style="text-align: center; margin-top: 20px;">
                         <button type="submit" class="btn btn-success">সংবাদ প্রকাশ করুন</button>
@@ -1973,6 +1874,10 @@ background: #f8f9fa;
     </div>
 
     <script>
+        // Permission variables from PHP
+        const canEdit = <?php echo $can_edit ? 'true' : 'false'; ?>;
+        const canDelete = <?php echo $can_delete ? 'true' : 'false'; ?>;
+        
         let allNews = [];
         let filteredNews = [];
         let categories = [];
@@ -1980,6 +1885,33 @@ background: #f8f9fa;
         let currentPage = 1;
         let recordsPerPage = 10;
         let totalPages = 1;
+        
+        // Function to clear/remove uploaded image
+        function clearImage(fieldId) {
+            const input = document.getElementById(fieldId);
+            const preview = document.getElementById('preview_' + fieldId);
+            const sizeInfo = document.getElementById('size_' + fieldId);
+            const box = document.getElementById('box_' + fieldId);
+            const deleteField = document.getElementById('delete_' + fieldId);
+            
+            if (input) {
+                input.value = '';
+            }
+            if (preview) {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+            if (sizeInfo) {
+                sizeInfo.textContent = '';
+            }
+            if (box) {
+                box.classList.remove('has-image');
+            }
+            // Mark image for deletion from database (only in edit mode)
+            if (deleteField && isEditMode) {
+                deleteField.value = '1';
+            }
+        }
         
             // Custom Rich Text Editor Implementation
             class RichTextEditor {
@@ -2416,6 +2348,13 @@ background: #f8f9fa;
                 setInputValue('auture_1', news.auture_1);
                 setInputValue('auture_2', news.auture_2);
                 
+                // Load image titles
+                setInputValue('image_url_title', news.image_url_title);
+                setInputValue('image_2_title', news.image_2_title);
+                setInputValue('image_3_title', news.image_3_title);
+                setInputValue('image_4_title', news.image_4_title);
+                setInputValue('image_5_title', news.image_5_title);
+                
                 // Fixed image loading with multiple path attempts
                 const imageFields = ['image_url', 'image_2', 'image_3', 'image_4', 'image_5'];
                 imageFields.forEach(field => {
@@ -2456,6 +2395,9 @@ background: #f8f9fa;
                             preview.src = possiblePaths[pathIndex];
                             preview.style.display = 'block';
                             if (sizeInfo) sizeInfo.textContent = 'বর্তমান ছবি লোড হয়েছে';
+                            // Add has-image class to show remove button
+                            const box = document.getElementById('box_' + field);
+                            if (box) box.classList.add('has-image');
                         };
                         
                         testImg.onerror = function() {
@@ -2537,13 +2479,22 @@ background: #f8f9fa;
                 }
             });
             
-            // Clear image previews
+            // Clear image previews and remove has-image class
             document.querySelectorAll('.image-preview').forEach(img => {
                 img.style.display = 'none';
                 img.src = '';
             });
             document.querySelectorAll('.image-size-info').forEach(info => {
                 if (info) info.textContent = '';
+            });
+            document.querySelectorAll('.image-upload-box').forEach(box => {
+                box.classList.remove('has-image');
+            });
+            
+            // Reset image deletion flags
+            ['delete_image_url', 'delete_image_2', 'delete_image_3', 'delete_image_4', 'delete_image_5'].forEach(id => {
+                const field = document.getElementById(id);
+                if (field) field.value = '0';
             });
             
             // Restore original form title
@@ -2631,8 +2582,10 @@ background: #f8f9fa;
             if (file) {
                 const previewId = 'preview_' + this.id;
                 const sizeInfoId = 'size_' + this.id;
+                const boxId = 'box_' + this.id;
                 const preview = document.getElementById(previewId);
                 const sizeInfo = document.getElementById(sizeInfoId);
+                const box = document.getElementById(boxId);
                 
                 if (preview) {
                     const reader = new FileReader();
@@ -2641,6 +2594,11 @@ background: #f8f9fa;
                         preview.style.display = 'block';
                     };
                     reader.readAsDataURL(file);
+                    
+                    // Add has-image class to show remove button
+                    if (box) {
+                        box.classList.add('has-image');
+                    }
                     
                     // Show original file size
                     sizeInfo.textContent = `মূল আকার: ${formatFileSize(file.size)}`;
@@ -2729,8 +2687,35 @@ background: #f8f9fa;
 
         // Utility Functions
         function generateSlug(text) {
-            const words = text.trim().split(/\s+/).slice(0, 10);
-            return words.join('_');
+            if (!text) return '';
+            
+            // Remove all punctuation and special characters except spaces
+            // This handles: . , ! ? ; : ' " - — – ( ) [ ] { } / \ | @ # $ % ^ & * + = < > ` ~ etc.
+            let slug = text
+                .trim()
+                .toLowerCase()
+                // Remove common punctuation marks
+                .replace(/[।!@#$%^&*()_+=\[\]{};:'",.<>?\/\\|`~।॥]/g, ' ')
+                // Replace multiple spaces with single space
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            // Take first 10 words
+            const words = slug.split(/\s+/).slice(0, 10);
+            
+            // Join with underscore
+            slug = words.join('_');
+            
+            // Remove any remaining special characters that might have slipped through
+            slug = slug.replace(/[^\u0980-\u09FFa-z0-9_\-]/gi, '');
+            
+            // Remove multiple underscores/hyphens
+            slug = slug.replace(/[_\-]+/g, '_');
+            
+            // Remove leading/trailing underscores or hyphens
+            slug = slug.replace(/^[_\-]+|[_\-]+$/g, '');
+            
+            return slug || 'news_' + Date.now();
         }
 
         function formatFileSize(bytes) {
@@ -2840,12 +2825,8 @@ function displayNews() {
                     <button class="btn" onclick="viewNews(${article.id})">
                         <img src="icons/view.png" width="20">
                     </button>
-                    <button class="btn " onclick="editNews(${article.id})">
-                        <img src="icons/edit.png" width="20">
-                    </button>
-                    <button class="btn " onclick="deleteNews(${article.id})">
-                        <img src="icons/trash.png" width="20">
-                    </button>
+                    ${canEdit ? `<button class="btn" onclick="editNews(${article.id})"><img src="icons/edit.png" width="20"></button>` : ''}
+                    ${canDelete ? `<button class="btn" onclick="deleteNews(${article.id})"><img src="icons/trash.png" width="20"></button>` : ''}
                 </td>
             </tr>
         `;

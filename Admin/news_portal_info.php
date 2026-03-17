@@ -1,6 +1,6 @@
 <?php
 include 'auth_check.php';
-include '../connection.php';
+include 'connection.php';
 
 // Check if user has permission to view this page
 if (!$can_view) {
@@ -319,7 +319,6 @@ if ($result && $result->num_rows > 0) {
     <form method="POST" enctype="multipart/form-data">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="id" value="<?= $info['id'] ?? 1 ?>">
-        <input type="hidden" name="existing_image" value="<?= htmlspecialchars($info['image'] ?? '') ?>">
 
         <!-- Basic Information Section -->
         <div class="form-section">
@@ -339,11 +338,28 @@ if ($result && $result->num_rows > 0) {
                 </div>
                 <div class="form-group">
                     <label for="image">Logo Image</label>
-                    <?php if (!empty($info['image'])): ?>
-                        <div class="current-logo">
-                            <img src="<?= htmlspecialchars($info['image']) ?>" alt="Current Logo">
-                            <span>Current logo</span>
+                    <?php if (!empty($info['image'])): 
+                        $logoPath = $info['image'];
+                        $displayPath = $logoPath;
+                        // Try multiple possible locations
+                        if (file_exists($logoPath)) {
+                            $displayPath = $logoPath;
+                        } elseif (file_exists('../' . $logoPath)) {
+                            $displayPath = '../' . $logoPath;
+                        } elseif (file_exists('img/' . basename($logoPath))) {
+                            $displayPath = 'img/' . basename($logoPath);
+                        } elseif (file_exists('../img/' . basename($logoPath))) {
+                            $displayPath = '../img/' . basename($logoPath);
+                        }
+                    ?>
+                        <div class="current-logo" style="margin-bottom: 10px;">
+                            <img src="<?= htmlspecialchars($displayPath) ?>" alt="Current Logo" style="max-width: 200px; max-height: 80px; border: 1px solid #e2e8f0; border-radius: 8px; padding: 5px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display:none; color:#e53e3e; font-size:13px;">Logo not found (<?= htmlspecialchars($logoPath) ?>)</span>
+                            <p style="color: #718096; font-size: 13px; margin-top: 5px;">Current logo: <?= htmlspecialchars(basename($logoPath)) ?></p>
                         </div>
+                        <input type="hidden" name="existing_image" value="<?= htmlspecialchars($logoPath) ?>">
+                    <?php else: ?>
+                        <input type="hidden" name="existing_image" value="">
                     <?php endif; ?>
                     <input type="file" id="image" name="image" accept="image/*">
                 </div>

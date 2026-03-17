@@ -1,5 +1,15 @@
 <?php
-include_once __DIR__ . '/../connection.php';
+require_once __DIR__ . '/reporter_connection.php';
+
+// Redirect if no valid connection or reporter
+if (!$conn || $user_id <= 0) {
+    header('Location: index.php');
+    exit;
+}
+if ($reporter_id <= 0) {
+    header('Location: index.php?user_id=' . $user_id);
+    exit;
+}
 
 // Fetch basic_info for dynamic logo and portal name
 $basic_info = [];
@@ -1328,9 +1338,9 @@ body, button, input, textarea, select, a, p, h1, h2, h3, h4, h5, h6 {
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="home.php<?php echo isset($_GET['id']) ? '?id=' . htmlspecialchars($_GET['id']) : ''; ?>">Home</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="<?= reporter_url('home.php') ?>">Home</a></li>
+                <li><a href="<?= reporter_url('news.php') ?>">News</a></li>
+                <li><a href="logout.php?user_id=<?= $user_id ?>">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -1944,9 +1954,8 @@ body, button, input, textarea, select, a, p, h1, h2, h3, h4, h5, h6 {
                             select.appendChild(option);
                         });
 
-                        // Get reporter ID from URL if it exists
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const reporterId = urlParams.get('id');
+                        // Get reporter ID from PHP session
+                        const reporterId = <?= json_encode($reporter_id) ?>;
                         
                         if (reporterId) {
                             // Find the reporter in the list
@@ -1981,12 +1990,11 @@ body, button, input, textarea, select, a, p, h1, h2, h3, h4, h5, h6 {
     try {
         console.log('loadNews called'); // Debug log
         
-        // Get reporter ID from URL if it exists
-        const urlParams = new URLSearchParams(window.location.search);
-        currentReporterId = urlParams.get('id'); // Set the global currentReporterId
-        console.log('Current Reporter ID from URL:', currentReporterId); // Debug log
+        // Get reporter ID from PHP session
+        currentReporterId = <?= json_encode($reporter_id) ?>;
+        console.log('Current Reporter ID from session:', currentReporterId); // Debug log
         
-        // Construct the API URL with reporter_id if available
+        // Construct the API URL with reporter_id
         let apiUrl = '../Admin/api.php?action=get_news';
         if (currentReporterId) {
             apiUrl += `&reporter_id=${currentReporterId}`;
@@ -2309,10 +2317,9 @@ async function handleFormSubmit(e) {
 
             const formData = new FormData(this);
 
-            // Get reporter ID from URL if it exists and not in edit mode
+            // Set reporter ID from session if not in edit mode
             if (!isEditMode) {
-                const urlParams = new URLSearchParams(window.location.search);
-                const reporterId = urlParams.get('id');
+                const reporterId = <?= json_encode($reporter_id) ?>;
                 if (reporterId) {
                     formData.set('reporter_id', reporterId);
                 }

@@ -13,6 +13,16 @@ if (!isset($pdo) || $pdo === null) {
     exit;
 }
 
+// Ensure reporter table has all required columns
+try {
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `password` varchar(255) DEFAULT NULL");
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `id_card` varchar(100) DEFAULT NULL");
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `id_card_photo` varchar(255) DEFAULT NULL");
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `is_active` tinyint(1) DEFAULT 0");
+} catch (PDOException $e) {
+    // Columns may already exist
+}
+
 // Get the requested action
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 
@@ -46,28 +56,28 @@ function loginReporter($pdo) {
     header("Content-Type: application/json");
     
     // Check if phone number and password are provided
-    if (empty($_POST['phone_number']) || empty($_POST['password'])) {
+    if (empty($_POST['mobile']) || empty($_POST['password'])) {
         echo json_encode([
             "success" => false, 
-            "message" => "Phone number and password are required"
+            "message" => "Mobile number and password are required"
         ]);
         return;
     }
     
-    $phone_number = trim($_POST['phone_number']);
+    $mobile = trim($_POST['mobile']);
     $password = $_POST['password'];
     
     try {
-        // Get reporter by phone number including is_active status
-        $stmt = $pdo->prepare("SELECT id, name, email, phone_number, password, is_active FROM reporter WHERE phone_number = ?");
-        $stmt->execute([$phone_number]);
+        // Get reporter by mobile number including is_active status
+        $stmt = $pdo->prepare("SELECT id, name, email, mobile, password, is_active FROM reporter WHERE mobile = ?");
+        $stmt->execute([$mobile]);
         $reporter = $stmt->fetch(PDO::FETCH_ASSOC);
         
         // Check if reporter exists
         if (!$reporter) {
             echo json_encode([
                 "success" => false, 
-                "message" => "Phone number not found"
+                "message" => "Mobile number not found"
             ]);
             return;
         }
@@ -110,7 +120,7 @@ function loginReporter($pdo) {
 // ==================== GET ALL REPORTERS ====================
 function getReporters($pdo) {
     try {
-        $stmt = $pdo->query("SELECT id, name, email, phone_number, id_card, address, photo, id_card_photo, created_at FROM reporter ORDER BY id DESC");
+        $stmt = $pdo->query("SELECT id, name, email, mobile, id_card, address, image, id_card_photo, created_at FROM reporter ORDER BY id DESC");
         $reporters = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         echo json_encode([
@@ -133,7 +143,7 @@ function getReporter($pdo) {
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
     
     try {
-        $stmt = $pdo->prepare("SELECT id, name, email, phone_number, id_card, address, photo, id_card_photo, created_at FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT id, name, email, mobile, id_card, address, image, id_card_photo, created_at FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $reporter = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -154,7 +164,7 @@ function getReporter($pdo) {
 // ==================== CREATE REPORTER ====================
 function createReporter($pdo) {
     // Required fields
-    $required = ['name', 'email', 'phone_number', 'password', 'id_card', 'address'];
+    $required = ['name', 'email', 'mobile', 'password', 'id_card', 'address'];
     foreach ($required as $field) {
         if (empty($_POST[$field])) {
             echo json_encode([
@@ -188,14 +198,14 @@ function createReporter($pdo) {
     try {
         $stmt = $pdo->prepare("
             INSERT INTO reporter 
-            (name, email, phone_number, password, id_card, address, photo, id_card_photo) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            (name, email, mobile, password, id_card, address, image, id_card_photo, is_active) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)
         ");
 
         $stmt->execute([
             $_POST['name'],
             $_POST['email'],
-            $_POST['phone_number'],
+            $_POST['mobile'],
             $_POST['password'],
             $_POST['id_card'],
             $_POST['address'],
@@ -232,7 +242,7 @@ function updateReporter($pdo) {
     $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
     
     // Validate required fields
-    $required_fields = ['name', 'email', 'phone_number', 'id_card', 'address'];
+    $required_fields = ['name', 'email', 'mobile', 'id_card', 'address'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             echo json_encode(["success" => false, "message" => "Field $field is required"]);
@@ -242,7 +252,7 @@ function updateReporter($pdo) {
     
     try {
         // Get current reporter data
-        $stmt = $pdo->prepare("SELECT photo, id_card_photo FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT image, id_card_photo FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $current_data = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -251,7 +261,7 @@ function updateReporter($pdo) {
             return;
         }
         
-        $photo_path = $current_data['photo'];
+        $photo_path = $current_data['image'];
         $id_card_photo_path = $current_data['id_card_photo'];
         
         // Process file uploads if provided
@@ -285,11 +295,11 @@ function updateReporter($pdo) {
         
         // Check if password is being updated
         if (!empty($_POST['password'])) {
-            $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, phone_number = ?, password = ?, id_card = ?, address = ?, photo = ?, id_card_photo = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, mobile = ?, password = ?, id_card = ?, address = ?, image = ?, id_card_photo = ? WHERE id = ?");
             $stmt->execute([
                 trim($_POST['name']),
                 trim($_POST['email']),
-                trim($_POST['phone_number']),
+                trim($_POST['mobile']),
                 $_POST['password'],
                 trim($_POST['id_card']),
                 trim($_POST['address']),
@@ -299,11 +309,11 @@ function updateReporter($pdo) {
             ]);
         } else {
             // Update without changing password
-            $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, phone_number = ?, id_card = ?, address = ?, photo = ?, id_card_photo = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, mobile = ?, id_card = ?, address = ?, image = ?, id_card_photo = ? WHERE id = ?");
             $stmt->execute([
                 trim($_POST['name']),
                 trim($_POST['email']),
-                trim($_POST['phone_number']),
+                trim($_POST['mobile']),
                 trim($_POST['id_card']),
                 trim($_POST['address']),
                 $photo_path,
@@ -332,7 +342,7 @@ function deleteReporter($pdo) {
     
     try {
         // Get reporter data to delete associated files
-        $stmt = $pdo->prepare("SELECT photo, id_card_photo FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT image, id_card_photo FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $reporter = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -342,11 +352,11 @@ function deleteReporter($pdo) {
         }
         
         // Delete associated files
-        if (file_exists($reporter['photo'])) {
-            unlink($reporter['photo']);
+        if (!empty($reporter['image']) && file_exists($reporter['image'])) {
+            unlink($reporter['image']);
         }
         
-        if (file_exists($reporter['id_card_photo'])) {
+        if (!empty($reporter['id_card_photo']) && file_exists($reporter['id_card_photo'])) {
             unlink($reporter['id_card_photo']);
         }
         

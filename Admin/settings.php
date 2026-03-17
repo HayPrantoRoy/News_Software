@@ -1,7 +1,7 @@
 <?php
 ob_start();
 include 'auth_check.php';
-include '../connection.php';
+include 'connection.php';
 
 // Check if user has permission to view this page
 if (!$can_view) {

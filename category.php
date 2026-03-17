@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+// Get user_id from URL and store in session for multi-tenant support
+$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : (isset($_SESSION['current_user_id']) ? intval($_SESSION['current_user_id']) : 0);
+if ($user_id > 0) {
+    $_SESSION['current_user_id'] = $user_id;
+}
+
+// URL suffix for maintaining user_id across pages
+$user_id_param = $user_id > 0 ? "?user_id=$user_id" : "";
+$user_id_suffix = $user_id > 0 ? "&user_id=$user_id" : "";
+
 include 'connection.php';
 date_default_timezone_set('Asia/Dhaka');
 
@@ -7,14 +19,14 @@ $basic_info = [];
 $sql_basic_info = "SELECT id, news_portal_name, image, description, editor_in_chief, media_info, 
                    privacy_policy, about_us, comment_policy, advertisement_policy, terms, 
                    advertisement_list, facebook, youtube, whatsapp, twitter, tiktok, instagram, 
-                   mobile_number, email FROM basic_info LIMIT 1";
+                   mobile_number, email FROM $tbl_basic_info LIMIT 1";
 $result_basic_info = $conn->query($sql_basic_info);
 if ($result_basic_info && $result_basic_info->num_rows > 0) {
     $basic_info = $result_basic_info->fetch_assoc();
 }
 
 // Fetch news
-$sql = "SELECT * FROM news WHERE is_active = 1";
+$sql = "SELECT * FROM $tbl_news WHERE is_active = 1";
 $result = $conn->query($sql);
 
 $news = [];
@@ -846,8 +858,8 @@ function banglaDate($date) {
 	 <header class="primary-header-wrapper">
         <div class="header-top-section">
             <div class="header-content-flex">
-                <a href="#" class="brand-logo-container">
-                    <img src="https://alokpatrika.com/logo.jpg" alt="News Portal Logo" class="logo-image-element">
+                <a href="index.php<?= $user_id_param; ?>" class="brand-logo-container">
+                    <img src="<?= htmlspecialchars($basic_info['image'] ?? 'logo.jpg'); ?>" alt="<?= htmlspecialchars($basic_info['news_portal_name'] ?? 'News Portal'); ?>" class="logo-image-element">
                 </a>
                 
                 <div class="header-action-group">
@@ -896,14 +908,14 @@ function banglaDate($date) {
                 <ul class="primary-nav-menu">
     <!-- Home is static -->
     <li class="nav-menu-item">
-        <a href="index.php" class="nav-link-element">প্রথম পাতা</a>
+        <a href="index.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
     </li>
 
     <!-- Load categories dynamically -->
     <?php
     include 'connection.php';
 
-    $sql = "SELECT * FROM category ORDER BY id ASC";
+    $sql = "SELECT * FROM $tbl_category ORDER BY id ASC";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -912,7 +924,7 @@ function banglaDate($date) {
             $category_name = htmlspecialchars($row["name"]); // নিরাপদ করার জন্য
 
             echo "<li class='nav-menu-item'>
-                    <a href='category.php?id=$category_id' class='nav-link-element'>
+                    <a href='category.php?id=$category_id$user_id_suffix' class='nav-link-element'>
                         $category_name
                     </a>
                   </li>";
@@ -982,22 +994,21 @@ function banglaDate($date) {
             include 'connection.php';
             date_default_timezone_set('Asia/Dhaka');
 
-            $sql = "SELECT news.headline, news.slug AS news_slug, category.slug AS category_slug
-                    FROM news
-                    JOIN category ON news.category_id = category.id
+            $sql = "SELECT news.id, news.headline, news.slug AS news_slug, category.slug AS category_slug
+                    FROM $tbl_news news
+                    JOIN $tbl_category category ON news.category_id = category.id
                     WHERE news.is_active = 1
                     ORDER BY news.created_at DESC
-                    LIMIT 15";
+                    LIMIT 10";
             $result = $conn->query($sql);
 
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $url = "news.php?path=" . urlencode($row['category_slug'] . '/' . $row['news_slug']);
+                    $url = "news.php?id=" . $row['id'] . $user_id_suffix;
                     echo '<a href="' . htmlspecialchars($url) . '">' . htmlspecialchars($row['headline']) . '</a>';
                 }
             }
-
-            $conn->close();
+            // Don't close connection - needed for rest of page
             ?>
         </div>
     </div>
@@ -1015,7 +1026,7 @@ function banglaDate($date) {
     $category_name = "সর্বশেষ সংবাদ";
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $category_id = intval($_GET['id']);
-        $cat_sql = "SELECT name FROM category WHERE id = $category_id LIMIT 1";
+        $cat_sql = "SELECT name FROM $tbl_category WHERE id = $category_id LIMIT 1";
         $cat_result = $conn->query($cat_sql);
         if ($cat_result && $cat_result->num_rows > 0) {
             $cat_row = $cat_result->fetch_assoc();
@@ -1025,10 +1036,10 @@ function banglaDate($date) {
     
     // Fetch news for hero section (15 items)
     $category_condition = $category_id > 0 ? "WHERE n.category_id = $category_id AND n.is_active = 1" : "WHERE n.is_active = 1";
-    $sql = "SELECT n.headline, n.slug AS news_slug, n.image_url, n.created_at, n.news_1,
+    $sql = "SELECT n.id, n.headline, n.slug AS news_slug, n.image_url, n.created_at, n.news_1,
                    c.slug AS category_slug, c.name AS category_name
-            FROM news n
-            JOIN category c ON n.category_id = c.id
+            FROM $tbl_news n
+            JOIN $tbl_category c ON n.category_id = c.id
             $category_condition
             ORDER BY n.created_at DESC
             LIMIT 15";
@@ -1040,7 +1051,8 @@ function banglaDate($date) {
     }
     
     function getNewsLinkCat($news) {
-        return "news.php?path=" . urlencode($news['category_slug'] . '/' . $news['news_slug']);
+        global $user_id_suffix;
+        return "news.php?id=" . ($news['id'] ?? $news['news_id'] ?? 0) . $user_id_suffix;
     }
     
     function getExcerptCat($content, $length = 100) {
@@ -1109,9 +1121,9 @@ function banglaDate($date) {
 
     <!-- ===== HERO SECTION ===== -->
     <?php
-    $sql2 = "SELECT n.headline, n.slug AS news_slug, n.image_url, n.created_at, n.news_1,
+    $sql2 = "SELECT n.id, n.headline, n.slug AS news_slug, n.image_url, n.created_at, n.news_1,
                     c.slug AS category_slug, c.name AS category_name
-             FROM news n JOIN category c ON n.category_id = c.id
+             FROM $tbl_news n JOIN $tbl_category c ON n.category_id = c.id
              $category_condition ORDER BY n.created_at DESC LIMIT 15 OFFSET 15";
     $result2 = $conn->query($sql2);
     $entNews = [];

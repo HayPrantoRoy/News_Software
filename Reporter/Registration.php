@@ -1,11 +1,13 @@
 <?php
-include_once __DIR__ . '/../connection.php';
+require_once __DIR__ . '/reporter_connection.php';
 
 // Fetch basic_info for dynamic logo and portal name
 $basic_info = [];
-$basic_info_result = $conn->query("SELECT * FROM basic_info LIMIT 1");
-if ($basic_info_result && $basic_info_result->num_rows > 0) {
-    $basic_info = $basic_info_result->fetch_assoc();
+if ($conn) {
+    $basic_info_result = $conn->query("SELECT * FROM basic_info LIMIT 1");
+    if ($basic_info_result && $basic_info_result->num_rows > 0) {
+        $basic_info = $basic_info_result->fetch_assoc();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -154,9 +156,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
 
 <div class="auth-container">
   <div class="logo-section">
-    <?php if (!empty($basic_info['image'])): ?>
-    <img src="<?php echo htmlspecialchars($basic_info['image']); ?>" alt="<?php echo htmlspecialchars($basic_info['news_portal_name'] ?? 'Logo'); ?>" class="logo">
-    <?php endif; ?>
+    
     <h2>Reporter Registration</h2>
   </div>
 
@@ -177,7 +177,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
 
     <div class="mb-3">
       <label class="form-label">Phone Number</label>
-      <input type="text" class="form-control" name="phone_number" placeholder="Enter your phone number" required>
+      <input type="text" class="form-control" name="mobile" placeholder="Enter your phone number" required>
     </div>
 
     <div class="mb-3">
@@ -217,7 +217,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
   </form>
 
   <div style="text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem;">
-    Already have an account? <a href="index.php" style="color: #308e87; text-decoration: none; font-weight: 600;">Login here</a>
+    Already have an account? <a href="index.php?user_id=<?= $user_id ?>" style="color: #308e87; text-decoration: none; font-weight: 600;">Login here</a>
   </div>
 </div>
 
@@ -250,7 +250,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
     const formData = new FormData(this);
     
     try {
-      const response = await fetch('../Admin/reporter_registration.php?action=create_reporter', {
+      const response = await fetch('../Admin/reporter_registration.php?action=create_reporter&user_id=<?= $user_id ?>', {
         method: 'POST',
         body: formData
       });
@@ -267,7 +267,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
         
         // Redirect to login page
         setTimeout(() => {
-          window.location.href = 'index.php';
+          window.location.href = 'index.php?user_id=<?= $user_id ?>';
         }, 1500);
       } else {
         // Show error message

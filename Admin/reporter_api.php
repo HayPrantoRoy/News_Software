@@ -13,6 +13,15 @@ if (!isset($pdo) || $pdo === null) {
     exit;
 }
 
+// Ensure reporter table has all required columns
+try {
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `password` varchar(255) DEFAULT NULL");
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `id_card` varchar(100) DEFAULT NULL");
+    $pdo->exec("ALTER TABLE reporter ADD COLUMN IF NOT EXISTS `id_card_photo` varchar(255) DEFAULT NULL");
+} catch (PDOException $e) {
+    // Columns may already exist - silently continue
+}
+
 // Get the requested action
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 
@@ -43,13 +52,8 @@ switch ($action) {
 
 function getReporters($pdo) {
     try {
-        try {
-            $stmt = $pdo->query("SELECT id, name, email, phone_number, id_card, address, photo, id_card_photo, created_at, COALESCE(is_active, 1) as is_active FROM reporter ORDER BY id DESC");
-            $reporters = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            $stmt = $pdo->query("SELECT id, name, email, phone_number, id_card, address, photo, id_card_photo, created_at, 1 as is_active FROM reporter ORDER BY id DESC");
-            $reporters = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+        $stmt = $pdo->query("SELECT id, name, email, mobile, id_card, address, image, id_card_photo, created_at, COALESCE(is_active, 1) as is_active FROM reporter ORDER BY id DESC");
+        $reporters = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         echo json_encode([
             "success" => true, 
@@ -70,7 +74,7 @@ function getReporter($pdo) {
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
     
     try {
-        $stmt = $pdo->prepare("SELECT id, name, email, phone_number, id_card, address, photo, id_card_photo, created_at FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT id, name, email, mobile, id_card, address, image, id_card_photo, created_at FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $reporter = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -90,7 +94,7 @@ function getReporter($pdo) {
 
 function createReporter($pdo) {
     // Validate required fields
-    $required_fields = ['name', 'email', 'phone_number', 'id_card', 'address'];
+    $required_fields = ['name', 'email', 'mobile', 'id_card', 'address'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             echo json_encode(["success" => false, "message" => "Field $field is required"]);
@@ -136,11 +140,11 @@ function createReporter($pdo) {
     
     try {
         // Insert new reporter
-        $stmt = $pdo->prepare("INSERT INTO reporter (name, email, phone_number, id_card, address, photo, id_card_photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO reporter (name, email, mobile, id_card, address, image, id_card_photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             trim($_POST['name']),
             trim($_POST['email']),
-            trim($_POST['phone_number']),
+            trim($_POST['mobile']),
             trim($_POST['id_card']),
             trim($_POST['address']),
             $photo_path,
@@ -169,7 +173,7 @@ function updateReporter($pdo) {
     $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
     
     // Validate required fields
-    $required_fields = ['name', 'email', 'phone_number', 'id_card', 'address'];
+    $required_fields = ['name', 'email', 'mobile', 'id_card', 'address'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             echo json_encode(["success" => false, "message" => "Field $field is required"]);
@@ -179,7 +183,7 @@ function updateReporter($pdo) {
     
     try {
         // Get current reporter data
-        $stmt = $pdo->prepare("SELECT photo, id_card_photo FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT image, id_card_photo FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $current_data = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -188,7 +192,7 @@ function updateReporter($pdo) {
             return;
         }
         
-        $photo_path = $current_data['photo'];
+        $photo_path = $current_data['image'];
         $id_card_photo_path = $current_data['id_card_photo'];
         
         // Process file uploads if provided
@@ -199,7 +203,7 @@ function updateReporter($pdo) {
             
             if (move_uploaded_file($_FILES['photo']['tmp_name'], $new_photo_path)) {
                 // Delete old photo
-                if (file_exists($photo_path)) {
+                if (!empty($photo_path) && file_exists($photo_path)) {
                     unlink($photo_path);
                 }
                 $photo_path = $new_photo_path;
@@ -213,7 +217,7 @@ function updateReporter($pdo) {
             
             if (move_uploaded_file($_FILES['id_card_photo']['tmp_name'], $new_id_card_photo_path)) {
                 // Delete old ID card photo
-                if (file_exists($id_card_photo_path)) {
+                if (!empty($id_card_photo_path) && file_exists($id_card_photo_path)) {
                     unlink($id_card_photo_path);
                 }
                 $id_card_photo_path = $new_id_card_photo_path;
@@ -221,11 +225,11 @@ function updateReporter($pdo) {
         }
         
         // Update reporter
-        $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, phone_number = ?, id_card = ?, address = ?, photo = ?, id_card_photo = ? WHERE id = ?");
+        $stmt = $pdo->prepare("UPDATE reporter SET name = ?, email = ?, mobile = ?, id_card = ?, address = ?, image = ?, id_card_photo = ? WHERE id = ?");
         $stmt->execute([
             trim($_POST['name']),
             trim($_POST['email']),
-            trim($_POST['phone_number']),
+            trim($_POST['mobile']),
             trim($_POST['id_card']),
             trim($_POST['address']),
             $photo_path,
@@ -252,7 +256,7 @@ function deleteReporter($pdo) {
     
     try {
         // Get reporter data to delete associated files
-        $stmt = $pdo->prepare("SELECT photo, id_card_photo FROM reporter WHERE id = ?");
+        $stmt = $pdo->prepare("SELECT image, id_card_photo FROM reporter WHERE id = ?");
         $stmt->execute([$id]);
         $reporter = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -262,11 +266,11 @@ function deleteReporter($pdo) {
         }
         
         // Delete associated files
-        if (file_exists($reporter['photo'])) {
-            unlink($reporter['photo']);
+        if (!empty($reporter['image']) && file_exists($reporter['image'])) {
+            unlink($reporter['image']);
         }
         
-        if (file_exists($reporter['id_card_photo'])) {
+        if (!empty($reporter['id_card_photo']) && file_exists($reporter['id_card_photo'])) {
             unlink($reporter['id_card_photo']);
         }
         

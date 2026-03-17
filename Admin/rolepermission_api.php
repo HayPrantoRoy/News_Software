@@ -1,7 +1,6 @@
 <?php
-session_start();
 header('Content-Type: application/json');
-include '../connection.php';
+include 'connection.php';
 
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 

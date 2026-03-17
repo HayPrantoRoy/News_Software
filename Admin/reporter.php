@@ -496,7 +496,7 @@
 
                         <div class="form-group">
                             <label for="phone_number">ফোন নম্বর</label>
-                            <input type="text" id="phone_number" name="phone_number" required>
+                            <input type="text" id="phone_number" name="mobile" required>
                         </div>
 
                         <div class="form-group">
@@ -616,7 +616,7 @@
 
                         <div class="form-group">
                             <label for="edit-phone_number">ফোন নম্বর</label>
-                            <input type="text" id="edit-phone_number" name="phone_number" required>
+                            <input type="text" id="edit-phone_number" name="mobile" required>
                         </div>
 
                         <div class="form-group">
@@ -877,7 +877,7 @@ async function editReporter(id) {
             document.getElementById('edit-reporter-id').value = reporter.id;
             document.getElementById('edit-name').value = reporter.name;
             document.getElementById('edit-email').value = reporter.email;
-            document.getElementById('edit-phone_number').value = reporter.phone_number;
+            document.getElementById('edit-phone_number').value = reporter.mobile || '';
             document.getElementById('edit-id_card').value = reporter.id_card;
             document.getElementById('edit-address').value = reporter.address;
             
@@ -885,8 +885,8 @@ async function editReporter(id) {
             const photoPreview = document.getElementById('edit-photo-preview');
             const idCardPreview = document.getElementById('edit-id-card-photo-preview');
             
-            if (reporter.photo) {
-                photoPreview.innerHTML = `<img src="${reporter.photo}" alt="Current Photo">`;
+            if (reporter.image) {
+                photoPreview.innerHTML = `<img src="${reporter.image}" alt="Current Photo">`;
                 photoPreview.classList.remove('hidden');
             }
             
@@ -1004,10 +1004,10 @@ function displayReporters() {
                 <td><strong>#${reporter.id}</strong></td>
                 <td>${reporter.name}</td>
                 <td>${reporter.email}</td>
-                <td>${reporter.phone_number}</td>
+                <td>${reporter.mobile || ''}</td>
                 <td>${reporter.id_card}</td>
                 <td>${reporter.address.substring(0, 30)}${reporter.address.length > 30 ? '...' : ''}</td>
-                <td>${reporter.photo ? '<img src="' + reporter.photo + '" width="50" height="50" style="object-fit: cover; border-radius: 4px;">' : 'N/A'}</td>
+                <td>${reporter.image ? '<img src="' + reporter.image + '" width="50" height="50" style="object-fit: cover; border-radius: 4px;">' : 'N/A'}</td>
                 <td>${new Date(reporter.created_at).toLocaleDateString('bn-BD')}</td>
                 <td>
                     <label class="switch">

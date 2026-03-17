@@ -10,6 +10,15 @@ if ($jsonInput) {
     $action = $jsonInput['action'] ?? $action;
 }
 
+// Ensure required columns exist for payment tracking
+try {
+    $pdo->exec("ALTER TABLE news ADD COLUMN IF NOT EXISTS `web_earning` decimal(10,2) DEFAULT 0.00");
+    $pdo->exec("ALTER TABLE news ADD COLUMN IF NOT EXISTS `is_paid` tinyint(1) DEFAULT 0");
+    $pdo->exec("ALTER TABLE news ADD COLUMN IF NOT EXISTS `paid_at` datetime DEFAULT NULL");
+} catch (PDOException $e) {
+    // Columns may already exist
+}
+
 switch ($action) {
     case 'get_reporters':
         getReporters($pdo);

@@ -551,6 +551,7 @@
             
             .chart-filters {
                 gap: 6px;
+                width: 100%;
             }
             
             .filter-dropdown,
@@ -569,6 +570,38 @@
             
             h2 {
                 font-size: 18px;
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 10px;
+            }
+            
+            .table-section {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .table-section table {
+                min-width: 600px;
+            }
+            
+            .chart-card h2 {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .quick-action-btn {
+                flex-direction: row;
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .quick-action-btn i {
+                font-size: 24px;
             }
         }
         

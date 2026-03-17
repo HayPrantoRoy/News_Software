@@ -1,5 +1,15 @@
 <?php
-include_once __DIR__ . '/../connection.php';
+require_once __DIR__ . '/reporter_connection.php';
+
+// Redirect if no valid connection or reporter
+if (!$conn || $user_id <= 0) {
+    header('Location: index.php');
+    exit;
+}
+if ($reporter_id <= 0) {
+    header('Location: index.php?user_id=' . $user_id);
+    exit;
+}
 
 // Fetch basic_info for dynamic logo and portal name
 $basic_info = [];
@@ -1194,13 +1204,9 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
         </div>
     </div>
              <ul class="nav-menu" id="navMenu">
-               <li>
-  <a href="home.php<?php echo isset($_GET['id']) ? '?id=' . htmlspecialchars($_GET['id']) : ''; ?>">
-    Home
-  </a>
-</li>
-                <li><a href="news.php<?php echo isset($_GET['id']) ? '?id=' . htmlspecialchars($_GET['id']) : ''; ?>">News</a></li>
-                <li><a href="logout.php">Logout</a></li>
+               <li><a href="<?= reporter_url('home.php') ?>">Home</a></li>
+                <li><a href="<?= reporter_url('news.php') ?>">News</a></li>
+                <li><a href="logout.php?user_id=<?= $user_id ?>">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -1368,8 +1374,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
 
         // Load profile
         $(document).ready(function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const reporterId = urlParams.get('id');
+            const reporterId = <?= json_encode($reporter_id) ?>;
 
             if (!reporterId) {
                 showError('No reporter ID provided');
@@ -1404,7 +1409,7 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
 
                 $('#reporterName').text(data.name || 'N/A');
                 $('#reporterEmail').text(data.email || 'N/A');
-                $('#reporterPhone').text(data.phone_number || 'N/A');
+                $('#reporterPhone').text(data.mobile || 'N/A');
                 $('#reporterIdCard').text(data.id_card || 'N/A');
                 $('#reporterAddress').text(data.address || 'N/A');
                 
@@ -1419,8 +1424,8 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
                     $('#reporterJoined').text('N/A');
                 }
 
-                if (data.photo) {
-                    $('#profilePhoto').attr('src', '../Admin/' + data.photo).on('error', function() {
+                if (data.image) {
+                    $('#profilePhoto').attr('src', '../Admin/' + data.image).on('error', function() {
                         $(this).attr('src', 'https://via.placeholder.com/160x160/e74c3c/ffffff?text=No+Photo');
                     });
                 } else {
@@ -1673,8 +1678,7 @@ $('#modalClose, #modalOverlay').on('click', function(e){
 
 // Payment History Modal
 $('#paymentHistoryBtn').on('click', function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const reporterId = urlParams.get('id');
+  const reporterId = <?= json_encode($reporter_id) ?>;
   
   if (!reporterId) {
     alert('Reporter ID not found');

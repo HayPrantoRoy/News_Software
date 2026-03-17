@@ -140,7 +140,7 @@ function getCategories($pdo){
 // Fetch reporters
 function getReporters($pdo){
     try{
-        $stmt = $pdo->query("SELECT id,name,email,phone_number FROM reporter ORDER BY name");
+        $stmt = $pdo->query("SELECT id,name,email,mobile FROM reporter ORDER BY name");
         echo json_encode($stmt->fetchAll());
     }catch(PDOException $e){
         echo json_encode(['success'=>false,'message'=>$e->getMessage()]);

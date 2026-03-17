@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include_once __DIR__ . '/../connection.php';
+include_once __DIR__ . '/connection.php';
 
 // Fetch basic_info for dynamic logo and portal name
 $basic_info = [];
@@ -80,10 +80,14 @@ function getPagePermissions($page, $userMenus) {
             <i class="fas fa-bars"></i>
         </button>
         <?php if (!empty($basic_info['image'])): ?>
-        <img src="<?php echo htmlspecialchars($basic_info['image']); ?>" alt="<?php echo htmlspecialchars($basic_info['news_portal_name'] ?? 'News Portal'); ?>" class="header-logo">
+        <img src="../<?php echo htmlspecialchars($basic_info['image']); ?>" alt="<?php echo htmlspecialchars($basic_info['news_portal_name'] ?? 'News Portal'); ?>" class="header-logo">
         <?php endif; ?>
     </div>
     <div class="header-right">
+        <a href="../index.php?user_id=<?php echo $_SESSION['current_user_id'] ?? 0; ?>" target="_blank" class="website-btn" title="ওয়েবসাইটে যান">
+            <i class="fas fa-globe"></i>
+            <span>Website</span>
+        </a>
         <div class="user-info">
             <i class="fas fa-user-circle"></i>
             <span><?php echo htmlspecialchars($userName); ?><?php if ($isSuperAdmin): ?> <strong>(Super Admin)</strong><?php endif; ?></span>
@@ -231,6 +235,27 @@ body {
     background: #267872;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(48, 142, 135, 0.3);
+}
+
+.website-btn {
+    background: #4a90e2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+}
+
+.website-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
 }
 
 /* Sidebar */

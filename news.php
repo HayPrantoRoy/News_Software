@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+// Get user_id from URL and store in session for multi-tenant support
+$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : (isset($_SESSION['current_user_id']) ? intval($_SESSION['current_user_id']) : 0);
+if ($user_id > 0) {
+    $_SESSION['current_user_id'] = $user_id;
+}
+
+// URL suffix for maintaining user_id across pages
+$user_id_param = $user_id > 0 ? "?user_id=$user_id" : "";
+$user_id_suffix = $user_id > 0 ? "&user_id=$user_id" : "";
+
 // Set proper headers for Facebook crawler
 header('Content-Type: text/html; charset=UTF-8');
 header('HTTP/1.1 200 OK');
@@ -51,11 +63,12 @@ if (isset($conn)) {
 }
 
 // Fetch basic_info for footer
+$tbl_basic_info = 'basic_info';
 $basic_info = [];
 $sql_basic_info = "SELECT id, news_portal_name, image, description, editor_in_chief, media_info, 
                    privacy_policy, about_us, comment_policy, advertisement_policy, terms, 
                    advertisement_list, facebook, youtube, whatsapp, twitter, tiktok, instagram, 
-                   mobile_number, email FROM basic_info LIMIT 1";
+                   mobile_number, email FROM $tbl_basic_info LIMIT 1";
 $result_basic_info = $conn->query($sql_basic_info);
 if ($result_basic_info && $result_basic_info->num_rows > 0) {
     $basic_info = $result_basic_info->fetch_assoc();
@@ -88,16 +101,18 @@ $meta = [];
 $views_count = 0;
 
 if ($newsId > 0) {
-    $sql = "SELECT n.*, c.name AS category_name, c.slug AS category_slug
+    $sql = "SELECT n.*, c.name AS category_name, c.slug AS category_slug, r.name AS reporter_name, r.image AS reporter_photo
             FROM news n
             JOIN category c ON n.category_id = c.id
+            LEFT JOIN reporter r ON n.reporter_id = r.id
             WHERE n.id = ? AND n.is_active = 1
             LIMIT 1";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
-        $sql = "SELECT n.*, c.name AS category_name, c.slug AS category_slug
+        $sql = "SELECT n.*, c.name AS category_name, c.slug AS category_slug, r.name AS reporter_name, r.image AS reporter_photo
                 FROM news n
                 JOIN category c ON n.category_id = c.id
+                LEFT JOIN reporter r ON n.reporter_id = r.id
                 WHERE n.id = ?
                 LIMIT 1";
         $stmt = $conn->prepare($sql);
@@ -1899,8 +1914,8 @@ article p,
        <header class="primary-header-wrapper">
         <div class="header-top-section">
             <div class="header-content-flex">
-                <a href="#" class="brand-logo-container">
-                    <img src="https://alokpatrika.com/logo.jpg" alt="News Portal Logo" class="logo-image-element">
+                <a href="index.php<?= $user_id_param; ?>" class="brand-logo-container">
+                    <img src="<?= htmlspecialchars($basic_info['image'] ?? 'logo.jpg'); ?>" alt="<?= htmlspecialchars($basic_info['news_portal_name'] ?? 'News Portal'); ?>" class="logo-image-element">
                 </a>
                 
                 <div class="header-action-group">
@@ -1949,14 +1964,14 @@ article p,
                 <ul class="primary-nav-menu">
     <!-- Home is static -->
     <li class="nav-menu-item">
-        <a href="index.php" class="nav-link-element">প্রথম পাতা</a>
+        <a href="index.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
     </li>
 
     <!-- Load categories dynamically -->
     <?php
     include 'connection.php';
 
-    $sql = "SELECT * FROM category ORDER BY id ASC";
+    $sql = "SELECT * FROM $tbl_category ORDER BY id ASC";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -1965,7 +1980,7 @@ article p,
             $category_name = htmlspecialchars($row["name"]); // নিরাপদ করার জন্য
 
             echo "<li class='nav-menu-item'>
-                    <a href='category.php?id=$category_id' class='nav-link-element'>
+                    <a href='category.php?id=$category_id$user_id_suffix' class='nav-link-element'>
                         $category_name
                     </a>
                   </li>";
@@ -1996,14 +2011,14 @@ article p,
     <?php include "connection.php"; ?>
     <div class="sidebar-menu-container">
         <?php
-        $query = "SELECT id, name FROM category ORDER BY id ASC";
+        $query = "SELECT id, name FROM $tbl_category ORDER BY id ASC";
         $result = $conn->query($query);
 
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $category_id = $row['id'];
                 $categoryName = htmlspecialchars($row['name']); // sanitize output
-                echo '<a href="index.php?category_id=' . $category_id . '" class="sidebar-menu-link">' . $categoryName . '</a>';
+                echo '<a href="category.php?id=' . $category_id . $user_id_suffix . '" class="sidebar-menu-link">' . $categoryName . '</a>';
             }
         } else {
             echo '<p class="sidebar-menu-link">No categories found.</p>';
@@ -2043,87 +2058,46 @@ if ($error_occurred) {
     echo '<div class="alert alert-warning text-center p-5">';
     echo '<h2>' . htmlspecialchars($error_message) . '</h2>';
     echo '<p>The requested news article could not be found.</p>';
-    echo '<a href="index.php" class="btn btn-primary mt-3">Go to Homepage</a>';
+    echo '<a href="index.php' . $user_id_param . '" class="btn btn-primary mt-3">Go to Homepage</a>';
     echo '</div>';
     echo '</div></div>'; // Close containers
     echo '</body></html>';
     exit;
 }
 
-// Validate and extract category and slug
-if (count($parts) == 2) {
-    $category = $parts[0];
-    $slug = $parts[1];
-
-    // Query to fetch news by category slug and news slug, including category name
-    $stmt = $conn->prepare("SELECT news.*, category.slug AS category_slug, category.name AS category_name
-                            FROM news 
-                            JOIN category ON news.category_id = category.id 
-                            WHERE category.slug = ? AND news.slug = ? AND news.is_active = 1");
-    $stmt->bind_param("ss", $category, $slug);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        ?>
+// Use data already fetched at top of file (supports both ID and path URLs)
+if (!empty($meta)) {
+?>
         <ol class="breadcrumb justify-content-start mb-4">
-            <li class="breadcrumb-item"><a href="index.php">হোম</a></li>
-            <li class="breadcrumb-item"><a ><?php echo htmlspecialchars($row['category_name']) ; ?></a></li>
+            <li class="breadcrumb-item"><a href="index.php<?= $user_id_param; ?>">হোম</a></li>
+            <li class="breadcrumb-item"><a><?php echo htmlspecialchars($meta['category_name'] ?? ''); ?></a></li>
         </ol>
-
-        <?php
-    } else {
-        echo "<h2>News not found</h2>";
-    }
-
-    $stmt->close();
+<?php
 } else {
-    echo "<h2>Invalid URL format</h2>";
+    echo "<h2>News not found</h2>";
 }
 ?>
+
 
 
                 <div class="row g-4">
                     <div class="col-lg-8">
                         <?php
-include 'connection.php';
-
-// Get path like "International/Pashupatinath-Temple"
-$path = $_GET['path'] ?? '';
-$parts = explode('/', $path);
-
-// Validate and extract category and slug
-if (count($parts) == 2) {
-    $category = $parts[0];
-    $slug = $parts[1];
-
-    // Query to fetch news by category slug and news slug
-    $stmt = $conn->prepare("SELECT news.*, category.slug AS category_slug, reporter.name AS reporter_name, reporter.photo AS reporter_photo
-                            FROM news 
-                            JOIN category ON news.category_id = category.id 
-                            LEFT JOIN reporter ON news.reporter_id = reporter.id
-                            WHERE category.slug = ? AND news.slug = ? AND news.is_active = 1");
-    $stmt->bind_param("ss", $category, $slug);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    // If found, display headline and short description
-    if ($row = $result->fetch_assoc()) {
-        ?>
+// Use data already fetched at top of file (supports both ID and path URLs)
+$row = $meta; // Restore $row from saved meta data
+if (!empty($row)) {
+?>
         <div class="mb-4" style="margin-top: -15px;">
             <h2><?php echo htmlspecialchars($row['headline']); ?></h2>
-            <p><?php echo htmlspecialchars($row['short_description']); ?></p>
+            <p><?php echo htmlspecialchars($row['short_description'] ?? ''); ?></p>
         </div>
-        <?php
-    } else {
-        echo "<h2>News not found</h2>";
-    }
-
-    $stmt->close();
+<?php
 } else {
-    echo "<h2>Invalid URL format</h2>";
+    echo "<h2>News not found</h2>";
 }
 ?>
+
+
 
                         <!-- Heading and Read Time -->
 <div style="margin-bottom: 12px; font-family: 'SolaimanLipi', sans-serif !important;">
@@ -2529,12 +2503,12 @@ while ($pnews = mysqli_fetch_assoc($popular_news_result)):
 ?>
                                     <div class="popular-news-card">
                                         <div class="popular-news-thumb">
-                                            <a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?>">
+                                            <a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?><?= $user_id_suffix; ?>">
                                                 <img src="Admin/img/<?php echo $pnews['image_url']; ?>" loading="lazy" alt="<?php echo $pnews['headline']; ?>">
                                             </a>
                                         </div>
                                         <div class="popular-news-info">
-                                            <h6><a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?>"><?php echo $pnews['headline']; ?></a></h6>
+                                            <h6><a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?><?= $user_id_suffix; ?>"><?php echo $pnews['headline']; ?></a></h6>
                                             <div class="popular-news-meta">
                                                 <span><i class="fas fa-eye"></i> <?php echo en2bnNumberSidebar(number_format($view_count)); ?></span>
                                                 <span><i class="fas fa-calendar"></i> <?php echo $bangla_date; ?></span>
@@ -2644,7 +2618,7 @@ endwhile;
                             $banglaDate = $day . ' ' . $month . ' ' . $year;
                     ?>
                     <div class="latest-news-card">
-                        <a href="news.php?path=<?= $newsUrl; ?>" class="latest-news-link">
+                        <a href="news.php?path=<?= $newsUrl; ?><?= $user_id_suffix; ?>" class="latest-news-link">
                             <div class="latest-news-image">
                                 <img src="<?= $image; ?>" alt="<?= $headline; ?>">
                             </div>

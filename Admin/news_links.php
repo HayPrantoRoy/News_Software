@@ -2,6 +2,11 @@
 include 'auth_check.php';
 include 'connection.php'; // PDO connection
 
+// Get user_id for links
+$user_id = $_SESSION['current_user_id'] ?? 0;
+$user_id_param = $user_id > 0 ? "?user_id=$user_id" : "";
+$user_id_suffix = $user_id > 0 ? "&user_id=$user_id" : "";
+
 // Pagination setup
 $limit = 10; 
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
@@ -23,7 +28,10 @@ $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 $newsList = $stmt->fetchAll();
-$domain = "http://alokpatrika.com/";
+
+// Dynamic domain based on current server
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+$domain = $protocol . $_SERVER['HTTP_HOST'] . dirname(dirname($_SERVER['PHP_SELF'])) . '/';
 ?>
 
 <!DOCTYPE html>
@@ -323,7 +331,7 @@ body {
         <div class="news-list">
             <?php if(!empty($newsList)): ?>
                 <?php foreach($newsList as $news): 
-                    $link = $domain . "news.php?path={$news['category_slug']}/{$news['news_slug']}";
+                    $link = $domain . "news.php?id={$news['id']}" . $user_id_suffix;
                 ?>
                     <div class="news-item">
                         <div class="news-info">

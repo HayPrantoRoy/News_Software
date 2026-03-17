@@ -1,11 +1,74 @@
 <?php
-include_once __DIR__ . '/../connection.php';
+require_once __DIR__ . '/reporter_connection.php';
 
-// Fetch basic_info for dynamic logo and portal name
 $basic_info = [];
-$basic_info_result = $conn->query("SELECT * FROM basic_info LIMIT 1");
-if ($basic_info_result && $basic_info_result->num_rows > 0) {
-    $basic_info = $basic_info_result->fetch_assoc();
+$error_message = '';
+
+// Fetch basic_info for portal name/logo
+if ($conn) {
+    $bi_result = $conn->query("SELECT * FROM basic_info LIMIT 1");
+    if ($bi_result && $bi_result->num_rows > 0) {
+        $basic_info = $bi_result->fetch_assoc();
+    }
+}
+
+// Handle AJAX login request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax_login'])) {
+    header('Content-Type: application/json');
+    
+    $phone_number = trim($_POST['phone_number'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $login_user_id = intval($_POST['user_id'] ?? $user_id);
+    
+    if (empty($phone_number) || empty($password)) {
+        echo json_encode(['success' => false, 'message' => 'মোবাইল নম্বর ও পাসওয়ার্ড প্রদান করুন!']);
+        exit;
+    }
+    
+    if ($login_user_id <= 0 || !$conn) {
+        echo json_encode(['success' => false, 'message' => 'পোর্টাল সনাক্ত করা যায়নি! URL এ user_id প্রয়োজন।']);
+        exit;
+    }
+    
+    // Search in this specific tenant database
+    $stmt = $conn->prepare("SELECT id, name, mobile, password, is_active FROM reporter WHERE mobile = ?");
+    if (!$stmt) {
+        echo json_encode(['success' => false, 'message' => 'ডাটাবেস ত্রুটি!']);
+        exit;
+    }
+    $stmt->bind_param("s", $phone_number);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        $reporter = $result->fetch_assoc();
+        
+        if ($password === $reporter['password']) {
+            if (isset($reporter['is_active']) && $reporter['is_active'] == 0) {
+                echo json_encode(['success' => false, 'message' => 'আপনার অ্যাকাউন্ট এখনও অনুমোদন পেন্ডিংয়ে আছে। অনুগ্রহ করে অপেক্ষা করুন।']);
+                exit;
+            }
+            
+            $_SESSION['reporter_logged_in'] = true;
+            $_SESSION['reporter_id'] = $reporter['id'];
+            $_SESSION['reporter_name'] = $reporter['name'];
+            $_SESSION['reporter_database'] = $tenant_database;
+            $_SESSION['reporter_user_id'] = $login_user_id;
+            
+            echo json_encode([
+                'success' => true, 
+                'message' => 'লগইন সফল!',
+                'reporter_id' => $reporter['id'],
+                'user_id' => $login_user_id
+            ]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'ভুল পাসওয়ার্ড!']);
+        }
+    } else {
+        echo json_encode(['success' => false, 'message' => 'এই মোবাইল নম্বরে কোন রিপোর্টার নেই!']);
+    }
+    
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -208,14 +271,12 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
 <body>
     <div class="login-container">
         <div class="logo-container">
-            <?php if (!empty($basic_info['image'])): ?>
-            <img src="<?php echo htmlspecialchars($basic_info['image']); ?>" alt="<?php echo htmlspecialchars($basic_info['news_portal_name'] ?? 'Logo'); ?>">
-            <?php endif; ?>
+            <img src="../assets/images/logo.png" alt="Logo" onerror="this.style.display='none'">
         </div>
         
         <div class="login-header">
-            <h1>Reporter Login</h1>
-            <p>Please login to continue</p>
+            <h1>রিপোর্টার প্যানেল</h1>
+            <p>লগইন করতে তথ্য প্রদান করুন</p>
         </div>
         
         <div class="error-message" id="errorMessage"></div>
@@ -223,14 +284,14 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
         
         <form id="loginForm">
             <div class="form-group">
-                <label for="phone_number">Phone Number</label>
-                <input type="tel" id="phone_number" name="phone_number" required autofocus placeholder="Enter your phone number">
+                <label for="phone_number">মোবাইল নম্বর</label>
+                <input type="tel" id="phone_number" name="phone_number" required autofocus placeholder="আপনার মোবাইল নম্বর">
             </div>
             
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">পাসওয়ার্ড</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    <input type="password" id="password" name="password" required placeholder="আপনার পাসওয়ার্ড">
                     <button type="button" class="toggle-password" onclick="togglePassword()">
                         <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -244,15 +305,15 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
                 </div>
             </div>
             
-            <button type="submit" class="btn-login">Login</button>
+            <button type="submit" class="btn-login">লগইন করুন</button>
         </form>
         
         <div style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
-            Don't have an account? <a href="Registration.php" style="color: #4a90e2; text-decoration: none; font-weight: 600;">Register here</a>
+            অ্যাকাউন্ট নেই? <a href="Registration.php?user_id=<?= $user_id ?>" style="color: #4a90e2; text-decoration: none; font-weight: 600;">রেজিস্ট্রেশন করুন</a>
         </div>
-        
+
         <div class="login-footer">
-            News Management System &copy; <span id="year"></span>
+            সংবাদ প্রশাসন সিস্টেম &copy; <span id="year"></span>
         </div>
     </div>
     
@@ -288,12 +349,14 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
             
             // Disable submit button
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Logging in...';
+            submitBtn.textContent = 'লগইন হচ্ছে...';
             
             const formData = new FormData(this);
+            formData.append('ajax_login', '1');
+            formData.append('user_id', '<?= $user_id ?>');
             
             try {
-                const response = await fetch('../Admin/reporter_registration.php?action=login_reporter', {
+                const response = await fetch('index.php?user_id=<?= $user_id ?>', {
                     method: 'POST',
                     body: formData
                 });
@@ -301,28 +364,28 @@ if ($basic_info_result && $basic_info_result->num_rows > 0) {
                 const data = await response.json();
                 
                 if (data.success) {
-                    successMsg.textContent = data.message || 'Login successful! Redirecting...';
+                    successMsg.textContent = data.message || 'লগইন সফল!';
                     successMsg.classList.add('show');
                     
-                    // Redirect to home page with reporter ID
+                    // Redirect to home page with user_id and reporter_id
                     setTimeout(() => {
-                        window.location.href = '../Reporter/home.php?id=' + data.reporter_id;
+                        window.location.href = 'home.php?user_id=' + data.user_id + '&reporter_id=' + data.reporter_id;
                     }, 1000);
                 } else {
-                    errorMsg.textContent = data.message || 'Login failed. Please try again.';
+                    errorMsg.textContent = data.message || 'লগইন ব্যর্থ!';
                     errorMsg.classList.add('show');
                     
                     // Re-enable submit button
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Login';
+                    submitBtn.textContent = 'লগইন করুন';
                 }
             } catch (error) {
-                errorMsg.textContent = 'An error occurred. Please try again.';
+                errorMsg.textContent = 'একটি ত্রুটি ঘটেছে। আবার চেষ্টা করুন।';
                 errorMsg.classList.add('show');
                 
                 // Re-enable submit button
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Login';
+                submitBtn.textContent = 'লগইন করুন';
             }
         });
     </script>
