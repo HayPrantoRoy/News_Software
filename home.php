@@ -155,501 +155,388 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <!--===============================================================================================-->
     <style>
-        /* ===== NEW HERO SECTION STYLES ===== */
+        /* ===== NEW HERO SECTION STYLES - Prothom Alo Style ===== */
         .hero-section {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 15px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            background: #fff;
         }
         
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 25px;
+            grid-template-columns: 240px 1fr 280px;
+            gap: 20px;
         }
         
-        /* Hero Main Container */
-        .hero-main {
+        /* ===== LEFT COLUMN - Breaking News ===== */
+        .hero-left {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-left: 30px;
         }
         
-        /* Top Row - Featured Left + Side News Right */
-        .hero-top-row {
-            display: grid;
-            grid-template-columns: 450px 350px;
-            gap: 0;
-            border: 1px solid #ddd;
-            width: fit-content;
+        .breaking-news-box {
+            margin-bottom: 15px;
         }
         
-        .hero-top-row .featured-large {
-            border-right: 1px solid #ddd;
+        .breaking-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e53935;
+            color: white;
+            padding: 4px 10px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border-radius: 2px;
         }
         
-        /* Large Featured News - Left Side */
-        .featured-large {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background: #fff;
+        .breaking-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
         }
         
-        .featured-large-image {
-            width: 450px;
-            height: 250px;
-            overflow: hidden;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
         
-        .featured-large-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .featured-large:hover .featured-large-image img {
-            transform: scale(1.03);
-        }
-        
-        .featured-large-content {
-            padding: 15px;
-        }
-        
-        .featured-large-headline {
-            font-size: 28px;
+        .breaking-headline {
+            font-size: 18px;
             font-weight: 700;
-            color: #333;
+            color: #1a1a1a;
             line-height: 1.4;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
-        .featured-large-headline a {
-            color: #333;
+        .breaking-headline a {
+            color: #1a1a1a;
             text-decoration: none;
         }
         
-        .featured-large-headline a:hover {
-            color: #dc2626;
+        .breaking-headline a:hover {
+            color: #e53935;
         }
         
-        .featured-large-meta {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #333;
+        .breaking-desc {
             font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
         }
         
-        .featured-large-meta i {
-            font-size: 13px;
-            color: #9ca3af;
-        }
-        
-        /* Side News List - Right Side */
-        .side-news-list {
+        /* Left Column News Items */
+        .left-news-list {
             display: flex;
             flex-direction: column;
             gap: 0;
-            background: #fff;
-            padding: 15px;
         }
         
-        .side-news-item {
+        .left-news-item {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             padding: 12px 0;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #eee;
         }
         
-        .side-news-item:first-child {
-            padding-top: 0;
-        }
-        
-        .side-news-item:last-child {
+        .left-news-item:last-child {
             border-bottom: none;
-            padding-bottom: 0;
         }
         
-        .side-news-thumb {
-            width: 130px;
-            height: 75px;
+        .left-news-thumb {
+            width: 80px;
+            height: 55px;
             flex-shrink: 0;
             overflow: hidden;
         }
         
-        .side-news-thumb img {
+        .left-news-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
         
-        .side-news-item:hover .side-news-thumb img {
-            transform: scale(1.05);
-        }
-        
-        .side-news-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .side-news-title {
-            font-size: 15px;
+        .left-news-content h4 {
+            font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: #1a1a1a;
             line-height: 1.4;
-            margin-bottom: 6px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            margin-bottom: 5px;
         }
         
-        .side-news-title a {
-            color: #333;
+        .left-news-content h4 a {
+            color: #1a1a1a;
             text-decoration: none;
         }
         
-        .side-news-title a:hover {
-            color: #dc2626;
+        .left-news-content h4 a:hover {
+            color: #e53935;
         }
         
-        .side-news-meta {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #333;
+        .left-news-meta {
             font-size: 12px;
+            color: #888;
         }
         
-        .side-news-meta i {
-            font-size: 11px;
-            color: #9ca3af;
-        }
-        
-        /* Bottom News Row - 6 Cards (3x2) */
-        .hero-bottom-news {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding-top: 20px;
-            width: 800px;
-        }
-        
-        .bottom-news-card {
-            background: #fff;
-        }
-        
-        .bottom-news-card .card-image {
-            width: 100%;
-            height: 140px;
-            overflow: hidden;
-        }
-        
-        .bottom-news-card .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .bottom-news-card:hover .card-image img {
-            transform: scale(1.05);
-        }
-        
-        .bottom-news-headline {
-            font-size: 15px;
-            font-weight: 700;
-            color: #333;
-            line-height: 1.4;
-            margin-top: 10px;
-            margin-bottom: 6px;
-        }
-        
-        .bottom-news-headline a {
-            color: #333;
-            text-decoration: none;
-        }
-        
-        .bottom-news-headline a:hover {
-            color: #dc2626;
-        }
-        
-        .bottom-news-excerpt {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .bottom-news-meta {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #9ca3af;
-            font-size: 12px;
-        }
-        
-        .bottom-news-meta i {
-            font-size: 11px;
-        }
-        
-        /* Center Column - Tabs and News List */
+        /* ===== CENTER COLUMN - Main Featured ===== */
         .hero-center {
             display: flex;
             flex-direction: column;
-            gap: 0;
-            border-left: 1px solid #e5e7eb;
-            padding-left: 10px;
-            padding-right: 15px;
-            margin-left: 0;
         }
         
+        .main-featured {
+            position: relative;
+            margin-bottom: 15px;
+        }
         
-        .hero-center-banner {
+        .main-featured-image {
             width: 100%;
-            margin-bottom: 0;
+            height: 280px;
+            overflow: hidden;
         }
         
-        .hero-center-banner img {
+        .main-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-featured-content {
+            padding: 15px 0;
+        }
+        
+        .main-featured-headline {
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        
+        .main-featured-headline a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        .main-featured-headline a:hover {
+            color: #e53935;
+        }
+        
+        .main-featured-headline .highlight {
+            background: linear-gradient(to bottom, transparent 50%, #fff59d 50%);
+            padding: 0 2px;
+        }
+        
+        .main-featured-desc {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .main-featured-meta {
+            font-size: 13px;
+            color: #888;
+        }
+        
+        /* Center News Grid - 2x2 */
+        .center-news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .center-news-card {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .center-news-card .card-image {
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .center-news-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .center-news-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        
+        .center-news-card h4 a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        
+        .center-news-card h4 a:hover {
+            color: #e53935;
+        }
+        
+        .center-news-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .center-news-card .card-meta {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* ===== RIGHT COLUMN - Ads + News List ===== */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ad-box {
+            background: #f8f8f8;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .ad-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #666;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+        }
+        
+        .ad-box img {
             width: 100%;
             height: auto;
             display: block;
         }
         
-        .hero-center-tabs {
+        .ad-placeholder {
+            height: 200px;
             display: flex;
-            border: 1px solid #ddd;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Right Column News List */
+        .right-news-list {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .right-section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e53935;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e53935;
+            margin-bottom: 10px;
+        }
+        
+        .right-news-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .right-news-item:last-child {
             border-bottom: none;
         }
         
-        .hero-center-tab {
-            flex: 1;
-            padding: 10px 15px;
-            text-align: center;
+        .right-news-item h4 {
             font-size: 14px;
             font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            background: #fff;
-            border: none;
-            border-right: 1px solid #ddd;
-            transition: all 0.3s ease;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin-bottom: 5px;
         }
         
-        .hero-center-tab:last-child {
-            border-right: none;
+        .right-news-item h4 a {
+            color: #1a1a1a;
+            text-decoration: none;
         }
         
-        .hero-center-tab.active {
-            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
-            color: white;
+        .right-news-item h4 a:hover {
+            color: #e53935;
         }
         
-        .hero-center-tab:hover:not(.active) {
-            background: #f5f5f5;
+        .right-news-item .item-meta {
+            font-size: 12px;
+            color: #888;
         }
         
-        .hero-center-list {
-            padding: 0;
-            max-height: 320px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-top: none;
-        }
-        
-        .hero-center-item {
+        .right-news-with-thumb {
             display: flex;
-            align-items: flex-start;
             gap: 10px;
-            padding: 5px 10px;
+            padding: 10px 0;
             border-bottom: 1px solid #eee;
-            background: #fff;
         }
         
-        .hero-center-item:last-child {
-            border-bottom: none;
-        }
-        
-        .hero-center-number {
-            font-size: 26px;
-            font-weight: 300;
-            color: #c62828;
-            min-width: 30px;
-            line-height: 1.2;
-        }
-        
-        .hero-center-text {
-            font-size: 15px;
-            color: #333;
-            line-height: 1.5;
-            font-weight: 500;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+        .right-news-with-thumb .thumb {
+            width: 70px;
+            height: 50px;
+            flex-shrink: 0;
             overflow: hidden;
         }
         
-        .hero-center-text a {
-            color: #333;
-            text-decoration: none;
+        .right-news-with-thumb .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
-        .hero-center-text a:hover {
-            color: #c62828;
-        }
-        
-        .hero-center-btn {
-            display: block;
-            background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-        }
-        
-        .hero-center-btn:hover {
-            background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
-            color: white;
-        }
-        
-        .hero-center-tags {
-            padding: 15px 10px;
-            border-top: 1px solid #e5e7eb;
-        }
-        
-        .hero-center-tags-title {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 12px;
-        }
-        
-        .hero-center-tags-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .hero-center-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 12px;
-            border: 1px solid #e53935;
-            border-radius: 20px;
-            color: #e53935;
+        .right-news-with-thumb .content h4 {
             font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+        
+        .right-news-with-thumb .content h4 a {
+            color: #1a1a1a;
             text-decoration: none;
         }
         
-        .hero-center-tag:hover {
-            background: #e53935;
-            color: white;
+        .right-news-with-thumb .content h4 a:hover {
+            color: #e53935;
         }
         
-        .headline-meta {
-            font-size: 12px;
-            color: #6b7280;
-            margin-top: 4px;
+        .right-news-with-thumb .content .meta {
+            font-size: 11px;
+            color: #888;
         }
         
-        /* Responsive Styles */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1100px) {
             .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr 250px;
             }
-            .hero-main {
-                margin-left: 0;
-            }
-            .hero-center {
-                border-left: none;
-                padding-left: 0;
-                padding-right: 0;
-                max-width: 100%;
-            }
-            .hero-top-row {
-                grid-template-columns: 1fr 300px;
-                width: 100%;
-            }
-            .hero-bottom-news {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .hero-top-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-                border: none;
-                width: 100%;
-            }
-            .hero-top-row .featured-large {
-                border-right: none;
-            }
-            .featured-large {
-                background: #fff;
-            }
-            .featured-large-image {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 16/9;
-            }
-            .featured-large-headline {
-                font-size: 20px;
-            }
-            .featured-large-content {
-                background: #f9f9f9;
-                padding: 15px;
-            }
-            .featured-large-headline,
-            .featured-large-headline a {
-                color: #333 !important;
-            }
-            .featured-large-meta {
-                color: #666 !important;
-            }
-            .featured-large-meta i {
-                color: #666 !important;
-            }
-            .side-news-list {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                background: #fff;
-                padding: 0;
-                margin-top: 15px;
-                border-top: 1px solid #e5e7eb;
-                padding-top: 10px;
-            }
-            .side-news-item {
-                display: flex;
-                gap: 12px;
-                padding: 12px 0;
-                border-bottom: 1px solid #e5e7eb;
-            }
-            .side-news-item:last-child {
-                border-bottom: none;
-            }
-            .side-news-thumb {
-                width: 120px;
-                height: 75px;
-            }
-            .hero-bottom-news {
+            .hero-left {
                 display: none;
             }
         }
@@ -657,67 +544,29 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
         @media (max-width: 768px) {
             .hero-section {
                 padding: 10px;
-                border: none;
-                border-radius: 0;
             }
-            .hero-main {
-                gap: 0;
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
-            .featured-large-image {
-                height: auto;
-                aspect-ratio: 16/9;
+            .hero-left {
+                display: none;
             }
-            .featured-large-headline {
-                font-size: 18px;
+            .hero-right {
+                display: none;
             }
-            .side-news-thumb {
-                width: 100px;
-                height: 65px;
+            .main-featured-image {
+                height: 200px;
             }
-            .side-news-title {
-                font-size: 14px;
-            }
-            .side-news-meta {
-                font-size: 11px;
-            }
-            .hero-center {
-                margin-top: 15px;
-            }
-            .hero-center-banner img {
-                width: 100%;
-                height: auto;
-            }
-            .hero-center-tabs {
-                border: none;
-            }
-            .hero-center-tab {
-                padding: 10px;
-                font-size: 13px;
-            }
-            .hero-center-list {
-                max-height: 280px;
-                border: 1px solid #eee;
-            }
-            .hero-center-item {
-                padding: 10px 8px;
-            }
-            .hero-center-number {
+            .main-featured-headline {
                 font-size: 20px;
-                min-width: 25px;
             }
-            .hero-center-text {
-                font-size: 14px;
+            .center-news-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
-            .hero-center-btn {
-                padding: 10px;
-                font-size: 13px;
-            }
-            .hero-center-tags {
-                padding: 12px 8px;
-            }
-            .hero-center-tag {
-                font-size: 12px;
-                padding: 5px 10px;
+            .center-news-card .card-image {
+                height: 180px;
             }
         }
         
@@ -725,33 +574,20 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
             .hero-section {
                 padding: 5px;
             }
-            .featured-large-content {
-                padding: 12px;
+            .main-featured-image {
+                height: 160px;
             }
-            .featured-large-headline {
-                font-size: 16px;
-                margin-bottom: 8px;
-            }
-            .featured-large-meta {
-                font-size: 11px;
-            }
-            .side-news-thumb {
-                width: 90px;
-                height: 60px;
-            }
-            .side-news-title {
-                font-size: 13px;
-            }
-            .hero-center-number {
+            .main-featured-headline {
                 font-size: 18px;
-                min-width: 22px;
             }
-            .hero-center-text {
-                font-size: 13px;
+            .main-featured-desc {
+                font-size: 14px;
             }
-            .hero-center-tag {
-                font-size: 11px;
-                padding: 4px 8px;
+            .center-news-card .card-image {
+                height: 150px;
+            }
+            .center-news-card h4 {
+                font-size: 14px;
             }
         }
         /* ===== END HERO SECTION STYLES ===== */
@@ -2440,7 +2276,300 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
                 grid-template-columns: 1fr 1fr;
             }
         }
-        /* ========== HERO-STYLE CATEGORY LAYOUT ========== */
+        /* ========== NEW CATEGORY LAYOUTS - 6 Different Designs ========== */
+        .cat-section {
+            max-width: 1300px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
+        }
+        .cat-section .cat-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #dc2626;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #dc2626;
+            display: inline-block;
+        }
+        
+        /* === LAYOUT 1: Large Left + News List Right === */
+        .cat-layout-1 {
+            display: grid;
+            grid-template-columns: 55% 1fr;
+            gap: 25px;
+        }
+        .cat-layout-1 .main-news {
+            position: relative;
+        }
+        .cat-layout-1 .main-news img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+        .cat-layout-1 .main-news .content {
+            padding: 15px 0;
+        }
+        .cat-layout-1 .main-news h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .cat-layout-1 .main-news h3 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-1 .main-news h3 a:hover { color: #dc2626; }
+        .cat-layout-1 .main-news p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .cat-layout-1 .news-list .news-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cat-layout-1 .news-list .news-item:last-child { border-bottom: none; }
+        .cat-layout-1 .news-list .news-item img {
+            width: 130px;
+            height: 90px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .cat-layout-1 .news-list .news-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .cat-layout-1 .news-list .news-item h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-1 .news-list .news-item h4 a:hover { color: #dc2626; }
+        .cat-layout-1 .news-list .news-item .meta { font-size: 13px; color: #888; }
+        
+        /* === LAYOUT 2: Text Left + Featured Center + Small Right === */
+        .cat-layout-2 {
+            display: grid;
+            grid-template-columns: 240px 1fr 220px;
+            gap: 25px;
+        }
+        .cat-layout-2 .text-list .text-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cat-layout-2 .text-list .text-item:last-child { border-bottom: none; }
+        .cat-layout-2 .text-list .text-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+        .cat-layout-2 .text-list .text-item h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-2 .text-list .text-item h4 a:hover { color: #dc2626; }
+        .cat-layout-2 .text-list .text-item .meta { font-size: 12px; color: #888; }
+        .cat-layout-2 .center-featured img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .cat-layout-2 .center-featured h3 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 15px 0 10px;
+        }
+        .cat-layout-2 .center-featured h3 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-2 .center-featured h3 a:hover { color: #dc2626; }
+        .cat-layout-2 .center-featured p { font-size: 14px; color: #555; line-height: 1.7; }
+        .cat-layout-2 .small-list .small-item {
+            display: flex;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cat-layout-2 .small-list .small-item:last-child { border-bottom: none; }
+        .cat-layout-2 .small-list .small-item img {
+            width: 70px;
+            height: 50px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .cat-layout-2 .small-list .small-item h4 {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .cat-layout-2 .small-list .small-item h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-2 .small-list .small-item h4 a:hover { color: #dc2626; }
+        
+        /* === LAYOUT 3: Center Featured + Side Lists === */
+        .cat-layout-3 {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            gap: 20px;
+        }
+        .cat-layout-3 .side-list .side-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cat-layout-3 .side-list .side-item:last-child { border-bottom: none; }
+        .cat-layout-3 .side-list .side-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+        .cat-layout-3 .side-list .side-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .cat-layout-3 .side-list .side-item h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-3 .side-list .side-item h4 a:hover { color: #dc2626; }
+        .cat-layout-3 .center-main img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        .cat-layout-3 .center-main h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 15px 0 10px;
+        }
+        .cat-layout-3 .center-main h3 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-3 .center-main h3 a:hover { color: #dc2626; }
+        .cat-layout-3 .center-main p { font-size: 15px; color: #555; line-height: 1.7; }
+        
+        /* === LAYOUT 4: 4 Equal Columns === */
+        .cat-layout-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .cat-layout-4 .card-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .cat-layout-4 .card-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 12px 0 8px;
+        }
+        .cat-layout-4 .card-item h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-4 .card-item h4 a:hover { color: #dc2626; }
+        .cat-layout-4 .card-item p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .cat-layout-4 .card-item .meta { font-size: 12px; color: #888; margin-top: 8px; }
+        
+        /* === LAYOUT 5: 2 Large + 4 Small Grid === */
+        .cat-layout-5 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .cat-layout-5 .large-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .cat-layout-5 .large-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 12px 0 8px;
+        }
+        .cat-layout-5 .large-card h3 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-5 .large-card h3 a:hover { color: #dc2626; }
+        .cat-layout-5 .large-card p { font-size: 14px; color: #555; line-height: 1.6; }
+        .cat-layout-5 .small-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .cat-layout-5 .small-grid .grid-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        .cat-layout-5 .small-grid .grid-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-top: 8px;
+        }
+        .cat-layout-5 .small-grid .grid-card h4 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-5 .small-grid .grid-card h4 a:hover { color: #dc2626; }
+        
+        /* === LAYOUT 6: Horizontal List === */
+        .cat-layout-6 {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .cat-layout-6 .h-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cat-layout-6 .h-item:last-child { border-bottom: none; }
+        .cat-layout-6 .h-item img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+        .cat-layout-6 .h-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .cat-layout-6 .h-item h3 a { color: #1a1a1a; text-decoration: none; }
+        .cat-layout-6 .h-item h3 a:hover { color: #dc2626; }
+        .cat-layout-6 .h-item p { font-size: 14px; color: #555; line-height: 1.6; }
+        .cat-layout-6 .h-item .meta { font-size: 12px; color: #888; margin-top: 8px; }
+        
+        /* === Category Layouts Responsive === */
+        @media (max-width: 1024px) {
+            .cat-layout-1 { grid-template-columns: 1fr; }
+            .cat-layout-2 { grid-template-columns: 1fr 1fr; }
+            .cat-layout-2 .text-list { display: none; }
+            .cat-layout-3 { grid-template-columns: 1fr; }
+            .cat-layout-3 .side-list { display: flex; gap: 15px; overflow-x: auto; }
+            .cat-layout-3 .side-list .side-item { min-width: 150px; }
+            .cat-layout-4 { grid-template-columns: repeat(2, 1fr); }
+            .cat-layout-5 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .cat-layout-1 .main-news img { height: 250px; }
+            .cat-layout-1 .main-news h3 { font-size: 20px; }
+            .cat-layout-2 { grid-template-columns: 1fr; }
+            .cat-layout-2 .small-list { display: none; }
+            .cat-layout-3 .center-main img { height: 250px; }
+            .cat-layout-4 { grid-template-columns: 1fr 1fr; }
+            .cat-layout-5 .small-grid { grid-template-columns: 1fr; }
+            .cat-layout-6 .h-item { grid-template-columns: 120px 1fr; gap: 15px; }
+            .cat-layout-6 .h-item img { height: 90px; }
+        }
+        @media (max-width: 480px) {
+            .cat-section .cat-title { font-size: 18px; }
+            .cat-layout-1 .news-list .news-item img { width: 100px; height: 70px; }
+            .cat-layout-4 { grid-template-columns: 1fr; }
+            .cat-layout-4 .card-item img { height: 200px; }
+            .cat-layout-6 .h-item { grid-template-columns: 1fr; }
+            .cat-layout-6 .h-item img { height: 180px; }
+        }
+        
+        /* ========== HERO-STYLE CATEGORY LAYOUT (Legacy) ========== */
         .hero-style-section {
             max-width: 1300px;
             margin: 0 auto 50px;
@@ -3988,7 +4117,7 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
                 <ul class="primary-nav-menu">
     <!-- Home is static -->
     <li class="nav-menu-item">
-        <a href="index.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
+        <a href="home.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
     </li>
 
     <!-- Load categories dynamically -->
@@ -4132,170 +4261,161 @@ if ($result_basic_info && $result_basic_info->num_rows > 0) {
     
     <section class="hero-section">
         <div class="hero-grid">
-            <!-- Left Column - Main Featured + Bottom News -->
-            <div class="hero-main">
-                <!-- Top Row: Large Featured Left + Side News Right -->
-                <div class="hero-top-row">
-                    <!-- Large Featured News -->
-                    <?php if (!empty($heroNews[0])): ?>
-                    <div class="featured-large">
-                        <div class="featured-large-image">
-                            <a href="news.php?id=<?= $heroNews[0]['id']; ?><?= $user_id_suffix; ?>">
-                                <img src="<?= $uploadPath . htmlspecialchars($heroNews[0]['image_url']); ?>" alt="<?= htmlspecialchars($heroNews[0]['headline']); ?>">
-                            </a>
-                        </div>
-                        <div class="featured-large-content">
-                            <h2 class="featured-large-headline">
-                                <a href="news.php?id=<?= $heroNews[0]['id']; ?><?= $user_id_suffix; ?>">
-                                    <?= htmlspecialchars($heroNews[0]['headline']); ?>
-                                </a>
-                            </h2>
-                            <div class="featured-large-meta">
-                                <i class="far fa-clock"></i> আপডেট <?= banglaDate($heroNews[0]['created_at']); ?>
-                            </div>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-                    
-                    <!-- Side News List - 4 Items -->
-                    <div class="side-news-list">
-                        <?php for ($i = 1; $i <= 4 && isset($heroNews[$i]); $i++): ?>
-                        <div class="side-news-item">
-                            <div class="side-news-thumb">
-                                <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
-                                    <img src="<?= $uploadPath . htmlspecialchars($heroNews[$i]['image_url']); ?>" alt="<?= htmlspecialchars($heroNews[$i]['headline']); ?>">
-                                </a>
-                            </div>
-                            <div class="side-news-content">
-                                <h4 class="side-news-title">
-                                    <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
-                                        <?= htmlspecialchars($heroNews[$i]['headline']); ?>
-                                    </a>
-                                </h4>
-                                <div class="side-news-meta">
-                                    <i class="far fa-clock"></i> আপডেট <?= banglaDate($heroNews[$i]['created_at']); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endfor; ?>
-                    </div>
+            <!-- ===== LEFT COLUMN - Breaking News ===== -->
+            <div class="hero-left">
+                <?php if (!empty($heroNews[0])): ?>
+                <div class="breaking-news-box">
+                    <span class="breaking-badge">সর্বশেষ</span>
+                    <h3 class="breaking-headline">
+                        <a href="news.php?id=<?= $heroNews[0]['id']; ?><?= $user_id_suffix; ?>">
+                            <?= htmlspecialchars($heroNews[0]['headline']); ?>
+                        </a>
+                    </h3>
+                    <p class="breaking-desc">
+                        <?php 
+                        $desc = $heroNews[0]['news_content'] ?? '';
+                        $desc = strip_tags($desc);
+                        $desc = html_entity_decode($desc, ENT_QUOTES, 'UTF-8');
+                        $desc = preg_replace('/\s+/', ' ', $desc);
+                        echo htmlspecialchars(mb_substr(trim($desc), 0, 380));
+                        ?>...
+                    </p>
                 </div>
+                <?php endif; ?>
                 
-                <!-- Bottom News Row - 6 Cards with Image, Headline, Excerpt -->
-                <div class="hero-bottom-news">
-                    <?php for ($i = 5; $i <= 10 && isset($heroNews[$i]); $i++): ?>
-                    <div class="bottom-news-card">
-                        <div class="card-image">
+                <!-- Left News Items with Thumbnails -->
+                <div class="left-news-list">
+                    <?php for ($i = 1; $i <= 6 && isset($heroNews[$i]); $i++): ?>
+                    <div class="left-news-item">
+                        <div class="left-news-thumb">
                             <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
-                                <img src="<?= $uploadPath . htmlspecialchars($heroNews[$i]['image_url']); ?>" alt="<?= htmlspecialchars($heroNews[$i]['headline']); ?>">
+                                <img src="<?= $uploadPath . htmlspecialchars($heroNews[$i]['image_url']); ?>" alt="">
                             </a>
                         </div>
-                        <h4 class="bottom-news-headline">
-                            <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
-                                <?= htmlspecialchars($heroNews[$i]['headline']); ?>
-                            </a>
-                        </h4>
-                        <p class="bottom-news-excerpt">
-                            <?php 
-                            $excerpt = $heroNews[$i]['news_content'] ?? '';
-                            $excerpt = strip_tags($excerpt);
-                            $excerpt = html_entity_decode($excerpt, ENT_QUOTES, 'UTF-8');
-                            $excerpt = preg_replace('/\s+/', ' ', $excerpt);
-                            $excerpt = trim($excerpt);
-                            echo htmlspecialchars(mb_substr($excerpt, 0, 120));
-                            ?>...
-                        </p>
-                        <div class="bottom-news-meta">
-                            <i class="far fa-clock"></i> <?= banglaDate($heroNews[$i]['created_at']); ?>
+                        <div class="left-news-content">
+                            <h4>
+                                <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
+                                    <?= htmlspecialchars($heroNews[$i]['headline']); ?>
+                                </a>
+                            </h4>
+                            <span class="left-news-meta"><?= banglaDate($heroNews[$i]['created_at']); ?></span>
                         </div>
                     </div>
                     <?php endfor; ?>
                 </div>
             </div>
             
-            <!-- Center Column - Banner + Tabs + News List -->
+            <!-- ===== CENTER COLUMN - Main Featured ===== -->
             <div class="hero-center">
-                <!-- Banner Image -->
-                <div class="hero-center-banner">
-                    <a href="#">
-                        <img src="img/template.jpeg" alt="ত্রয়োদশ জাতীয় সংসদ নির্বাচন, ২০২৬">
-                    </a>
+                <!-- Main Featured News -->
+                <?php if (!empty($heroNews[0])): ?>
+                <div class="main-featured">
+                    <div class="main-featured-image">
+                        <a href="news.php?id=<?= $heroNews[0]['id']; ?><?= $user_id_suffix; ?>">
+                            <img src="<?= $uploadPath . htmlspecialchars($heroNews[0]['image_url']); ?>" alt="">
+                        </a>
+                    </div>
+                    <div class="main-featured-content">
+                        <h2 class="main-featured-headline">
+                            <a href="news.php?id=<?= $heroNews[0]['id']; ?><?= $user_id_suffix; ?>">
+                                <span class="highlight"><?= htmlspecialchars($heroNews[0]['headline']); ?></span>
+                            </a>
+                        </h2>
+                        <p class="main-featured-desc">
+                            <?php 
+                            $mainDesc = $heroNews[0]['news_content'] ?? '';
+                            $mainDesc = strip_tags($mainDesc);
+                            $mainDesc = html_entity_decode($mainDesc, ENT_QUOTES, 'UTF-8');
+                            $mainDesc = preg_replace('/\s+/', ' ', $mainDesc);
+                            echo htmlspecialchars(mb_substr(trim($mainDesc), 0, 200));
+                            ?>...
+                        </p>
+                        <span class="main-featured-meta"><?= banglaDate($heroNews[0]['created_at']); ?></span>
+                    </div>
                 </div>
-                <br>
-                <!-- Tabs -->
-                <div class="hero-center-tabs">
-                    <button class="hero-center-tab active" data-tab="latest">সর্বশেষ</button>
-                    <button class="hero-center-tab" data-tab="popular">সর্বাধিক পঠিত</button>
-                </div>
+                <?php endif; ?>
                 
-                <!-- Latest News List -->
-                <div class="hero-center-list" id="latest-news">
-                    <?php 
-                    $numBn = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '১০'];
-                    for ($i = 0; $i < 10 && isset($heroNews[$i]); $i++): 
-                    ?>
-                    <div class="hero-center-item">
-                        <span class="hero-center-number"><?= $numBn[$i] ?></span>
-                        <div class="hero-center-text">
+                <!-- 2x2 News Grid -->
+                <div class="center-news-grid">
+                    <?php for ($i = 6; $i <= 9 && isset($heroNews[$i]); $i++): ?>
+                    <div class="center-news-card">
+                        <div class="card-image">
+                            <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
+                                <img src="<?= $uploadPath . htmlspecialchars($heroNews[$i]['image_url']); ?>" alt="">
+                            </a>
+                        </div>
+                        <h4>
                             <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
                                 <?= htmlspecialchars($heroNews[$i]['headline']); ?>
                             </a>
-                        </div>
+                        </h4>
+                        <p>
+                            <?php 
+                            $cardDesc = $heroNews[$i]['news_content'] ?? '';
+                            $cardDesc = strip_tags($cardDesc);
+                            $cardDesc = html_entity_decode($cardDesc, ENT_QUOTES, 'UTF-8');
+                            $cardDesc = preg_replace('/\s+/', ' ', $cardDesc);
+                            echo htmlspecialchars(mb_substr(trim($cardDesc), 0, 80));
+                            ?>...
+                        </p>
+                        <span class="card-meta"><?= banglaDate($heroNews[$i]['created_at']); ?></span>
+                    </div>
+                    <?php endfor; ?>
+                </div>
+            </div>
+            
+            <!-- ===== RIGHT COLUMN - Ads + News List ===== -->
+            <div class="hero-right">
+                <!-- Ad Box -->
+                <div class="ad-box">
+                    <span class="ad-label">বিজ্ঞাপন</span>
+                    <div class="ad-placeholder">
+                        <span>বিজ্ঞাপনের স্থান</span>
+                    </div>
+                </div>
+                
+                <!-- Right News List -->
+                <div class="right-news-list">
+                    <h3 class="right-section-title">সংবাদ শিরোনাম</h3>
+                    
+                    <?php for ($i = 10; $i <= 14 && isset($heroNews[$i]); $i++): ?>
+                    <div class="right-news-item">
+                        <h4>
+                            <a href="news.php?id=<?= $heroNews[$i]['id']; ?><?= $user_id_suffix; ?>">
+                                <?= htmlspecialchars($heroNews[$i]['headline']); ?>
+                            </a>
+                        </h4>
+                        <span class="item-meta"><?= banglaDate($heroNews[$i]['created_at']); ?></span>
                     </div>
                     <?php endfor; ?>
                 </div>
                 
-                <!-- Popular News List (Most Viewed) -->
-                <div class="hero-center-list" id="popular-news" style="display: none;">
-                    <?php 
-                    $sql_popular = "SELECT n.headline, n.slug, n.views, c.slug AS category_slug 
-                                    FROM $tbl_news n 
-                                    JOIN $tbl_category c ON n.category_id = c.id 
-                                    WHERE n.is_active = 1 
-                                    ORDER BY n.views DESC 
-                                    LIMIT 10";
-                    $result_popular = $conn->query($sql_popular);
-                    $popIndex = 0;
-                    if ($result_popular && $result_popular->num_rows > 0):
-                        while ($popNews = $result_popular->fetch_assoc()):
-                    ?>
-                    <div class="hero-center-item">
-                        <span class="hero-center-number"><?= $numBn[$popIndex] ?></span>
-                        <div class="hero-center-text">
-                            <a href="news.php?id=<?= $popNews['id']; ?><?= $user_id_suffix; ?>">
-                                <?= htmlspecialchars($popNews['headline']); ?>
+                <!-- More News with Thumbnails -->
+                <?php 
+                $sql_more = "SELECT id, headline, image_url, created_at FROM $tbl_news WHERE is_active = 1 ORDER BY created_at DESC LIMIT 15, 4";
+                $result_more = $conn->query($sql_more);
+                if ($result_more && $result_more->num_rows > 0):
+                ?>
+                <div class="right-news-list" style="margin-top: 15px;">
+                    <?php while ($moreNews = $result_more->fetch_assoc()): ?>
+                    <div class="right-news-with-thumb">
+                        <div class="thumb">
+                            <a href="news.php?id=<?= $moreNews['id']; ?><?= $user_id_suffix; ?>">
+                                <img src="<?= $uploadPath . htmlspecialchars($moreNews['image_url']); ?>" alt="">
                             </a>
                         </div>
+                        <div class="content">
+                            <h4>
+                                <a href="news.php?id=<?= $moreNews['id']; ?><?= $user_id_suffix; ?>">
+                                    <?= htmlspecialchars($moreNews['headline']); ?>
+                                </a>
+                            </h4>
+                            <span class="meta"><?= banglaDate($moreNews['created_at']); ?></span>
+                        </div>
                     </div>
-                    <?php 
-                        $popIndex++;
-                        endwhile;
-                    endif;
-                    ?>
+                    <?php endwhile; ?>
                 </div>
-                
-                <!-- All News Button -->
-                <a href="all-news.php<?= $user_id_param; ?>" class="hero-center-btn">সব খবর »</a>
-                
-                <!-- Category Tags -->
-                <div class="hero-center-tags">
-                    <div class="hero-center-tags-title">আরও দেখুন</div>
-                    <div class="hero-center-tags-list">
-                        <?php
-                        $sql_cat = "SELECT name, slug FROM $tbl_category WHERE is_active = 1 ORDER BY id ASC LIMIT 10";
-                        $result_cat = $conn->query($sql_cat);
-                        if ($result_cat && $result_cat->num_rows > 0):
-                            while ($cat = $result_cat->fetch_assoc()):
-                        ?>
-                        <a href="category.php?slug=<?= urlencode($cat['slug']); ?><?= $user_id_suffix; ?>" class="hero-center-tag">
-                            <i class="far fa-play-circle"></i> <?= htmlspecialchars($cat['name']); ?>
-                        </a>
-                        <?php 
-                            endwhile;
-                        endif;
-                        ?>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -4632,471 +4752,192 @@ $category_name = htmlspecialchars($news[0]['category_name']);
     }
     
     $layoutCounter = 0;
-    $i = 2; // Skip first 2 categories (shown before opinion section)
+    $totalCategories = count($allCategoryNews);
     ?>
     
-    <div class="categories-wrapper">
+    <!-- ===== ALL CATEGORIES WITH 6 ROTATING LAYOUTS ===== -->
     <?php 
-    $totalCategories = count($allCategoryNews);
-    while ($i < $totalCategories): 
-        // Check if this is the last category - use lifestyle layout
-        $isLastCategory = ($i == $totalCategories - 1);
+    for ($i = 0; $i < $totalCategories; $i++): 
+        $cat = $allCategoryNews[$i];
+        $news = $cat['news'];
+        $newsCount = count($news);
+        if ($newsCount < 4) continue;
         
-        // Layout pattern: 2 = Entertainment, 3 = Hero-style, 4+ = Dual
-        // First category in this loop (index 2) uses Entertainment style
-        $useEntertainment = ($i == 2 || $i == 3);
-        $useHeroStyle = ($i == 4);
-        
-        if ($isLastCategory && count($allCategoryNews[$i]['news']) >= 5):
-            // Lifestyle Layout - Last Category
-            $cat = $allCategoryNews[$i];
-            $news = $cat['news'];
+        $layout = ($layoutCounter % 6) + 1;
+        $layoutCounter++;
     ?>
-        <section class="lifestyle-section">
-            <h2 class="section-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
-            <div class="lifestyle-layout">
-                <div class="featured-image">
-                    <a href="<?= getNewsLink($news[0]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="">
-                    </a>
-                </div>
-                <div class="content-side">
-                    <div class="main-headline">
-                        <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[0]['news_1'], 250); ?></p>
-                    </div>
-                    <div class="news-grid">
-                        <?php for ($j = 1; $j < min(5, count($news)); $j++): ?>
-                        <div class="grid-item">
-                            <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
-                            <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
-                        </div>
-                        <?php endfor; ?>
-                    </div>
+    
+    <?php if ($layout == 1 && $newsCount >= 5): ?>
+    <!-- Layout 1: Large Left + News List Right -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-1">
+            <div class="main-news">
+                <a href="<?= getNewsLink($news[0]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="">
+                </a>
+                <div class="content">
+                    <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
+                    <p><?= getExcerptText($news[0]['news_1'], 180); ?></p>
                 </div>
             </div>
-        </section>
-    <?php 
-            $i++;
-        elseif ($useEntertainment && count($allCategoryNews[$i]['news']) >= 8):
-            // Entertainment Style - Full Width 3-Column Layout
-            $cat = $allCategoryNews[$i];
-            $news = $cat['news'];
-    ?>
-    </div><!-- Close categories-wrapper temporarily -->
-        <section class="hero-style-section">
-            <h2 class="section-title">
-                <div class="left-part">
-                    
-                    <?= htmlspecialchars($cat['category']['name']); ?>
-                </div>
-            </h2>
-            <div class="hero-style-layout grid-layout">
-                <!-- Left Column - First Featured Article -->
-                <div class="hero-style-main-article">
-                    <a href="<?= getNewsLink($news[0]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="<?= htmlspecialchars($news[0]['headline']); ?>">
-                    </a>
-                    <div class="content">
-                        <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[0]['news_1'], 200); ?></p>
-                    </div>
-                </div>
-                
-                <!-- Middle Column - Second Featured Article -->
-                <?php if (count($news) > 1): ?>
-                <div class="hero-style-main-article">
-                    <a href="<?= getNewsLink($news[1]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[1]['image_url']); ?>" alt="<?= htmlspecialchars($news[1]['headline']); ?>">
-                    </a>
-                    <div class="content">
-                        <h3><a href="<?= getNewsLink($news[1]); ?>"><?= htmlspecialchars($news[1]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[1]['news_1'], 200); ?></p>
-                    </div>
-                </div>
-                <?php endif; ?>
-                
-                <!-- Right Sidebar - Horizontal List Items -->
-                <div class="hero-style-sidebar">
-                    <?php for ($j = 2; $j < min(6, count($news)); $j++): ?>
-                    <div class="hero-style-sidebar-item">
-                        <a href="<?= getNewsLink($news[$j]); ?>">
-                            <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="<?= htmlspecialchars($news[$j]['headline']); ?>">
-                        </a>
-                        <div class="content">
-                            <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
-                        </div>
-                    </div>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        </section>
-    <div class="categories-wrapper"><!-- Reopen categories-wrapper -->
-    <?php 
-            $i++;
-        elseif ($allCategoryNews[$i]['category']['id'] == 13):
-            // Category ID 13 with Quiz Section
-            $cat = $allCategoryNews[$i];
-            $news = $cat['news'];
-    ?>
-    </div><!-- Close categories-wrapper for quiz layout -->
-    <section class="quiz-category-section">
-        <h2 class="section-title">
-           
-            <?= htmlspecialchars($cat['category']['name']); ?>
-        </h2>
-        <div class="quiz-layout-grid">
-            <!-- News on Left - 2 Cards -->
-            <div class="quiz-news-left">
-                <?php for ($j = 0; $j < min(2, count($news)); $j++): ?>
-                <div class="quiz-news-card">
+            <div class="news-list">
+                <?php for ($j = 1; $j < min(5, $newsCount); $j++): ?>
+                <div class="news-item">
                     <a href="<?= getNewsLink($news[$j]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="<?= htmlspecialchars($news[$j]['headline']); ?>">
+                        <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
                     </a>
-                    <div class="quiz-news-card-content">
-                        <h3><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[$j]['news_1'], 500); ?> <a href="<?= getNewsLink($news[$j]); ?>" style="color: #dc2626; font-weight: 600; text-decoration: none;">বিস্তারিত পড়ুন</a></p>
+                    <div>
+                        <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
+                        <span class="meta"><?= banglaDate($news[$j]['created_at']); ?></span>
                     </div>
                 </div>
                 <?php endfor; ?>
             </div>
-            
-            <!-- Quiz Box on Right -->
-            <div class="quiz-box" id="quizBox">
-                <div class="quiz-header">
-                    <div class="quiz-title">
-                        <span class="quiz-icon"><i class="fas fa-lightbulb"></i></span>
-                        কুইজ
-                    </div>
-                    <div class="quiz-nav">
-                        <button onclick="changeQuiz(-1)" id="quizPrevBtn" title="আগের কুইজ"><i class="fas fa-chevron-left"></i></button>
-                        <button onclick="changeQuiz(1)" id="quizNextBtn" title="পরের কুইজ"><i class="fas fa-chevron-right"></i></button>
-                    </div>
+        </div>
+    </section>
+    
+    <?php elseif ($layout == 2 && $newsCount >= 6): ?>
+    <!-- Layout 2: Text Left + Featured Center + Small Right -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-2">
+            <div class="text-list">
+                <?php for ($j = 1; $j < min(4, $newsCount); $j++): ?>
+                <div class="text-item">
+                    <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
+                    <span class="meta"><?= banglaDate($news[$j]['created_at']); ?></span>
                 </div>
-                <div class="quiz-counter" id="quizCounter">কুইজ ১/১</div>
-                <div id="quizContent">
-                    <div class="quiz-loading">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        লোড হচ্ছে...
-                    </div>
+                <?php endfor; ?>
+            </div>
+            <div class="center-featured">
+                <a href="<?= getNewsLink($news[0]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="">
+                </a>
+                <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
+                <p><?= getExcerptText($news[0]['news_1'], 150); ?></p>
+            </div>
+            <div class="small-list">
+                <?php for ($j = 4; $j < min(7, $newsCount); $j++): ?>
+                <div class="small-item">
+                    <a href="<?= getNewsLink($news[$j]); ?>">
+                        <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
+                    </a>
+                    <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
                 </div>
-                <div class="quiz-footer">
-                    <div class="quiz-participants" id="quizParticipants">
-                        <i class="fas fa-users"></i> <span>০</span> জন অংশগ্রহণ করেছেন
-                    </div>
-                </div>
+                <?php endfor; ?>
             </div>
         </div>
     </section>
-    <div class="categories-wrapper"><!-- Reopen categories-wrapper -->
-    <?php
-            $i++;
-        else:
-            // Single Category Style - Full Width
-            $cat = $allCategoryNews[$i];
-            $news = $cat['news'];
-    ?>
-        <section class="hero-style-section">
-            <h2 class="section-title">
-                <div class="left-part">
-                   
-                    <?= htmlspecialchars($cat['category']['name']); ?>
-                </div>
-            </h2>
-            <div class="hero-style-layout grid-layout">
-                <!-- Left Column - First Featured Article -->
-                <div class="hero-style-main-article">
-                    <a href="<?= getNewsLink($news[0]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="<?= htmlspecialchars($news[0]['headline']); ?>">
+    
+    <?php elseif ($layout == 3 && $newsCount >= 5): ?>
+    <!-- Layout 3: Center Featured + Side Lists -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-3">
+            <div class="side-list">
+                <?php for ($j = 1; $j < min(3, $newsCount); $j++): ?>
+                <div class="side-item">
+                    <a href="<?= getNewsLink($news[$j]); ?>">
+                        <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
                     </a>
-                    <div class="content">
-                        <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[0]['news_1'], 200); ?></p>
-                    </div>
+                    <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
                 </div>
-                
-                <!-- Middle Column - Second Featured Article -->
-                <?php if (count($news) > 1): ?>
-                <div class="hero-style-main-article">
+                <?php endfor; ?>
+            </div>
+            <div class="center-main">
+                <a href="<?= getNewsLink($news[0]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="">
+                </a>
+                <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
+                <p><?= getExcerptText($news[0]['news_1'], 200); ?></p>
+            </div>
+            <div class="side-list">
+                <?php for ($j = 3; $j < min(5, $newsCount); $j++): ?>
+                <div class="side-item">
+                    <a href="<?= getNewsLink($news[$j]); ?>">
+                        <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
+                    </a>
+                    <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
+                </div>
+                <?php endfor; ?>
+            </div>
+        </div>
+    </section>
+    
+    <?php elseif ($layout == 4 && $newsCount >= 4): ?>
+    <!-- Layout 4: 4 Equal Columns -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-4">
+            <?php for ($j = 0; $j < min(4, $newsCount); $j++): ?>
+            <div class="card-item">
+                <a href="<?= getNewsLink($news[$j]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
+                </a>
+                <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
+                <p><?= getExcerptText($news[$j]['news_1'], 100); ?></p>
+                <span class="meta"><?= banglaDate($news[$j]['created_at']); ?></span>
+            </div>
+            <?php endfor; ?>
+        </div>
+    </section>
+    
+    <?php elseif ($layout == 5 && $newsCount >= 6): ?>
+    <!-- Layout 5: 2 Large + 4 Small Grid -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-5">
+            <div class="large-card">
+                <a href="<?= getNewsLink($news[0]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[0]['image_url']); ?>" alt="">
+                </a>
+                <h3><a href="<?= getNewsLink($news[0]); ?>"><?= htmlspecialchars($news[0]['headline']); ?></a></h3>
+                <p><?= getExcerptText($news[0]['news_1'], 150); ?></p>
+            </div>
+            <div>
+                <div class="large-card" style="margin-bottom: 15px;">
                     <a href="<?= getNewsLink($news[1]); ?>">
-                        <img src="Admin/img/<?= htmlspecialchars($news[1]['image_url']); ?>" alt="<?= htmlspecialchars($news[1]['headline']); ?>">
+                        <img src="Admin/img/<?= htmlspecialchars($news[1]['image_url']); ?>" alt="" style="height: 160px;">
                     </a>
-                    <div class="content">
-                        <h3><a href="<?= getNewsLink($news[1]); ?>"><?= htmlspecialchars($news[1]['headline']); ?></a></h3>
-                        <p><?= getExcerptText($news[1]['news_1'], 200); ?></p>
-                    </div>
+                    <h3 style="font-size: 18px;"><a href="<?= getNewsLink($news[1]); ?>"><?= htmlspecialchars($news[1]['headline']); ?></a></h3>
                 </div>
-                <?php endif; ?>
-                
-                <!-- Right Sidebar - Horizontal List Items -->
-                <div class="hero-style-sidebar">
-                    <?php for ($j = 2; $j < min(6, count($news)); $j++): ?>
-                    <div class="hero-style-sidebar-item">
+                <div class="small-grid">
+                    <?php for ($j = 2; $j < min(6, $newsCount); $j++): ?>
+                    <div class="grid-card">
                         <a href="<?= getNewsLink($news[$j]); ?>">
-                            <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="<?= htmlspecialchars($news[$j]['headline']); ?>">
+                            <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
                         </a>
-                        <div class="content">
-                            <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
-                        </div>
+                        <h4><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h4>
                     </div>
                     <?php endfor; ?>
                 </div>
             </div>
-        </section>
-    <?php 
-            $i++;
-        endif;
-        $layoutCounter++;
-        
-        // Show podcast section after 7 categories (index 6 = 7th category, counting first 2 before opinion)
-        if ($i == 7):
-    ?>
-    </div><!-- Close categories-wrapper for podcast -->
-    <!-- Podcast Section -->
-    <section class="podcast-section">
-        <div class="podcast-section-inner">
-            <div class="podcast-section-header">
-                <div class="podcast-title">
-                    <span class="podcast-title-icon"><i class="fas fa-podcast"></i></span>
-                    <h2>পডকাস্ট</h2>
-                </div>
-                <div class="podcast-date-picker">
-                    <div class="podcast-date-nav">
-                        <button onclick="changePodcastDate(-1)" title="আগের দিন"><i class="fas fa-chevron-left"></i></button>
-                        <button onclick="changePodcastDate(1)" title="পরের দিন"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                    <input type="date" id="podcastDatePicker" onchange="filterPodcastsByDate(this.value)">
-                    <button class="podcast-reset-btn" onclick="resetPodcastFilter()"><i class="fas fa-sync-alt"></i> সব দেখুন</button>
-                </div>
-            </div>
-            
-            <div class="podcast-grid" id="podcastGrid">
-                <?php
-                // Fetch latest 8 podcasts
-                $sql_podcast = "SELECT id, title, subtitle, thumbnail, youtube_link, created_at
-                              FROM $tbl_podcasts
-                              WHERE is_active = 1
-                              ORDER BY created_at DESC
-                              LIMIT 8";
-                $result_podcast = $conn->query($sql_podcast);
-                
-                if ($result_podcast && $result_podcast->num_rows > 0):
-                    while ($podcast = $result_podcast->fetch_assoc()):
-                        // Extract YouTube video ID from link
-                        $ytLink = $podcast['youtube_link'];
-                        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/', $ytLink, $matches);
-                        $ytId = $matches[1] ?? '';
-                        
-                        $thumbnail = !empty($podcast['thumbnail']) ? $podcast['thumbnail'] : 'default.jpg';
-                        $title = htmlspecialchars($podcast['title']);
-                        $subtitle = htmlspecialchars($podcast['subtitle'] ?? '');
-                ?>
-                <div class="podcast-item" onclick="playVideo('<?= $ytId; ?>')">
-                    <div class="podcast-thumbnail">
-                        <img src="Admin/img/<?= $thumbnail; ?>" alt="<?= $title; ?>">
-                        <div class="podcast-play-btn"><i class="fas fa-play"></i></div>
-                    </div>
-                    <div class="podcast-info">
-                        <h4 class="podcast-headline"><?= mb_substr($title, 0, 50); ?><?= mb_strlen($title) > 50 ? '...' : ''; ?></h4>
-                        <?php if (!empty($subtitle)): ?>
-                        <p class="podcast-excerpt"><?= mb_substr($subtitle, 0, 70); ?><?= mb_strlen($subtitle) > 70 ? '...' : ''; ?></p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <?php 
-                    endwhile;
-                else:
-                ?>
-                <p style="text-align: center; width: 100%; padding: 40px 0; color: #999;">কোন পডকাস্ট পাওয়া যায়নি</p>
-                <?php
-                endif;
-                ?>
-            </div>
-            <!-- Podcast Slider Dots (Mobile Only) -->
-            <div class="podcast-slider-dots" id="podcastSliderDots"></div>
         </div>
     </section>
     
-    <script>
-    // Podcast Slider - Desktop & Mobile
-    let podcastSlideIndex = 0;
-    let podcastSliderInterval = null;
+    <?php else: ?>
+    <!-- Layout 6: Horizontal List -->
+    <section class="cat-section">
+        <h2 class="cat-title"><?= htmlspecialchars($cat['category']['name']); ?></h2>
+        <div class="cat-layout-6">
+            <?php for ($j = 0; $j < min(5, $newsCount); $j++): ?>
+            <div class="h-item">
+                <a href="<?= getNewsLink($news[$j]); ?>">
+                    <img src="Admin/img/<?= htmlspecialchars($news[$j]['image_url']); ?>" alt="">
+                </a>
+                <div>
+                    <h3><a href="<?= getNewsLink($news[$j]); ?>"><?= htmlspecialchars($news[$j]['headline']); ?></a></h3>
+                    <p><?= getExcerptText($news[$j]['news_1'], 150); ?></p>
+                    <span class="meta"><?= banglaDate($news[$j]['created_at']); ?></span>
+                </div>
+            </div>
+            <?php endfor; ?>
+        </div>
+    </section>
+    <?php endif; ?>
     
-    function getVisibleItems() {
-        const width = window.innerWidth;
-        if (width <= 480) return 1;
-        if (width <= 768) return 2;
-        if (width <= 1024) return 3;
-        return 4;
-    }
-    
-    function getSlideInterval() {
-        return window.innerWidth <= 480 ? 2000 : 1500;
-    }
-    
-    function getMaxSlideIndex() {
-        const grid = document.getElementById('podcastGrid');
-        if (!grid) return 0;
-        const items = grid.querySelectorAll('.podcast-item');
-        const visible = getVisibleItems();
-        return Math.max(0, items.length - visible);
-    }
-    
-    function initPodcastSlider() {
-        const grid = document.getElementById('podcastGrid');
-        const dotsContainer = document.getElementById('podcastSliderDots');
-        if (!grid || !dotsContainer) return;
-        
-        const items = grid.querySelectorAll('.podcast-item');
-        if (items.length === 0) return;
-        
-        podcastSlideIndex = 0;
-        updatePodcastDots();
-        startPodcastAutoSlide();
-    }
-    
-    function updatePodcastDots() {
-        const dotsContainer = document.getElementById('podcastSliderDots');
-        const maxIndex = getMaxSlideIndex();
-        
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i <= maxIndex; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'podcast-slider-dot' + (i === podcastSlideIndex ? ' active' : '');
-            dot.onclick = () => goToPodcastSlide(i);
-            dotsContainer.appendChild(dot);
-        }
-    }
-    
-    function goToPodcastSlide(index) {
-        const grid = document.getElementById('podcastGrid');
-        const items = grid.querySelectorAll('.podcast-item');
-        const dots = document.querySelectorAll('.podcast-slider-dot');
-        const maxIndex = getMaxSlideIndex();
-        
-        if (items.length === 0) return;
-        
-        podcastSlideIndex = index;
-        if (podcastSlideIndex > maxIndex) podcastSlideIndex = 0;
-        if (podcastSlideIndex < 0) podcastSlideIndex = maxIndex;
-        
-        // Calculate translation based on item width
-        const itemWidth = items[0].offsetWidth;
-        const gap = 20;
-        const translateX = podcastSlideIndex * (itemWidth + gap);
-        
-        items.forEach(item => {
-            item.style.transform = `translateX(-${translateX}px)`;
-        });
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === podcastSlideIndex);
-        });
-    }
-    
-    function nextPodcastSlide() {
-        const maxIndex = getMaxSlideIndex();
-        goToPodcastSlide((podcastSlideIndex + 1) > maxIndex ? 0 : podcastSlideIndex + 1);
-    }
-    
-    function startPodcastAutoSlide() {
-        if (podcastSliderInterval) clearInterval(podcastSliderInterval);
-        podcastSliderInterval = setInterval(nextPodcastSlide, getSlideInterval());
-    }
-    
-    function stopPodcastAutoSlide() {
-        if (podcastSliderInterval) {
-            clearInterval(podcastSliderInterval);
-            podcastSliderInterval = null;
-        }
-    }
-    
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', initPodcastSlider);
-    
-    // Reinitialize on resize
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            podcastSlideIndex = 0;
-            updatePodcastDots();
-            goToPodcastSlide(0);
-            startPodcastAutoSlide();
-        }, 200);
-    });
-    
-    // Pause on hover/touch
-    document.addEventListener('DOMContentLoaded', function() {
-        const podcastGrid = document.getElementById('podcastGrid');
-        if (podcastGrid) {
-            podcastGrid.addEventListener('mouseenter', stopPodcastAutoSlide);
-            podcastGrid.addEventListener('mouseleave', startPodcastAutoSlide);
-            podcastGrid.addEventListener('touchstart', stopPodcastAutoSlide);
-            podcastGrid.addEventListener('touchend', function() {
-                setTimeout(startPodcastAutoSlide, 1000);
-            });
-        }
-    });
-    
-    // Podcast date filter functions
-    let currentPodcastDate = null;
-    
-    function changePodcastDate(days) {
-        const datePicker = document.getElementById('podcastDatePicker');
-        let date = currentPodcastDate ? new Date(currentPodcastDate) : new Date();
-        date.setDate(date.getDate() + days);
-        
-        const formattedDate = date.toISOString().split('T')[0];
-        datePicker.value = formattedDate;
-        filterPodcastsByDate(formattedDate);
-    }
-    
-    function filterPodcastsByDate(dateValue) {
-        currentPodcastDate = dateValue;
-        const grid = document.getElementById('podcastGrid');
-        grid.innerHTML = '<p style="text-align: center; width: 100%; padding: 40px 0; color: #999;"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</p>';
-        
-        fetch('index.php?ajax_podcasts=1&date=' + encodeURIComponent(dateValue))
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.podcasts.length > 0) {
-                    let html = '';
-                    data.podcasts.forEach(podcast => {
-                        html += `
-                        <div class="podcast-item" onclick="playVideo('${podcast.youtube_id}')">
-                            <div class="podcast-thumbnail">
-                                <img src="Admin/img/${podcast.thumbnail}" alt="${podcast.title}">
-                                <div class="podcast-play-btn"><i class="fas fa-play"></i></div>
-                            </div>
-                            <div class="podcast-info">
-                                <h4 class="podcast-headline">${podcast.title.substring(0, 50)}${podcast.title.length > 50 ? '...' : ''}</h4>
-                                ${podcast.subtitle ? `<p class="podcast-excerpt">${podcast.subtitle.substring(0, 70)}${podcast.subtitle.length > 70 ? '...' : ''}</p>` : ''}
-                            </div>
-                        </div>`;
-                    });
-                    grid.innerHTML = html;
-                } else {
-                    grid.innerHTML = '<p style="text-align: center; width: 100%; padding: 40px 0; color: #999;">এই তারিখে কোন পডকাস্ট পাওয়া যায়নি</p>';
-                }
-            })
-            .catch(error => {
-                grid.innerHTML = '<p style="text-align: center; width: 100%; padding: 40px 0; color: #f00;">লোড করতে সমস্যা হয়েছে</p>';
-            });
-    }
-    
-    function resetPodcastFilter() {
-        currentPodcastDate = null;
-        document.getElementById('podcastDatePicker').value = '';
-        location.reload();
-    }
-    </script>
-    <div class="categories-wrapper"><!-- Reopen categories-wrapper after podcast -->
-    <?php
-        endif;
-    endwhile; ?>
-    </div>
+    <?php endfor; ?>
    
     <footer class="footer-wrapper">
         <!-- Main Footer Content -->

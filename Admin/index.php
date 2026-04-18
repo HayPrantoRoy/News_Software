@@ -700,6 +700,112 @@ body, button, input, textarea, select, a, p, h1, h2, h3, h4, h5, h6 {
             display: flex;
         }
         
+        /* Gallery Button - Simple Design */
+        .gallery-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: #f8f9fa;
+            color: #555;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        .gallery-btn:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #333;
+        }
+        .gallery-btn:active {
+            background: #dee2e6;
+        }
+        
+        /* Gallery Modal */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .gallery-modal.active { display: flex; }
+        .gallery-modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-modal-header {
+            padding: 16px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .gallery-modal-header h3 { margin: 0; font-size: 18px; color: #2d3748; }
+        .gallery-modal-close {
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .gallery-item:hover { border-color: #4299e1; transform: scale(1.02); }
+        .gallery-item.selected { border-color: #48bb78; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-modal-footer {
+            padding: 16px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .gallery-select-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .gallery-select-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
         .caption-icon {
             color: #f0c040;
             margin-right: 6px;
@@ -1778,9 +1884,9 @@ background: #f8f9fa;
         </div>
     </div>
 </div>
-        <!-- Add/Edit News Form Section -->
+
+        <!-- News Form Section -->
         <div class="section" id="form-section">
-            
             <div class="form-container">
                 <form id="newsForm" enctype="multipart/form-data">
                     <div class="form-grid">
@@ -1823,6 +1929,7 @@ background: #f8f9fa;
                                     <div class="upload-text">মূল ছবি</div>
                                     <img class="image-preview" id="preview_image_url">
                                     <div class="image-size-info" id="size_image_url"></div>
+                                    <button type="button" class="gallery-btn" onclick="openGallery('image_url')">📁 গ্যালারি</button>
                                 </div>
                             </div>
                             <input type="text" id="image_url_title" name="image_url_title" placeholder="মূল ছবির ক্যাপশন/শিরোনাম" style="margin-top: 8px; width: 100%; padding: 10px 14px; background: rgba(0,0,0,0.03); border: none; border-left: 3px solid #f0c040; border-radius: 0 8px 8px 0; font-size: 13px; color: #444; backdrop-filter: blur(4px); transition: all 0.3s ease;" onfocus="this.style.background='rgba(240,192,64,0.08)'; this.style.borderLeftColor='#e6a800';" onblur="this.style.background='rgba(0,0,0,0.03)'; this.style.borderLeftColor='#f0c040';">
@@ -1858,6 +1965,7 @@ background: #f8f9fa;
                                     <div class="upload-text">ছবি ২</div>
                                     <img class="image-preview" id="preview_image_2">
                                     <div class="image-size-info" id="size_image_2"></div>
+                                    <button type="button" class="gallery-btn" onclick="openGallery('image_2')">📁 গ্যালারি</button>
                                 </div>
                                 <div class="image-upload-box" id="box_image_3">
                                     <button type="button" class="image-remove-btn" onclick="clearImage('image_3')" title="ছবি মুছুন">×</button>
@@ -1866,6 +1974,7 @@ background: #f8f9fa;
                                     <div class="upload-text">ছবি ৩</div>
                                     <img class="image-preview" id="preview_image_3">
                                     <div class="image-size-info" id="size_image_3"></div>
+                                    <button type="button" class="gallery-btn" onclick="openGallery('image_3')">📁 গ্যালারি</button>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 10px; margin-top: 8px;">
@@ -1899,6 +2008,7 @@ background: #f8f9fa;
                                     <div class="upload-text">ছবি ৪</div>
                                     <img class="image-preview" id="preview_image_4">
                                     <div class="image-size-info" id="size_image_4"></div>
+                                    <button type="button" class="gallery-btn" onclick="openGallery('image_4')">📁 গ্যালারি</button>
                                 </div>
                                 <div class="image-upload-box" id="box_image_5">
                                     <button type="button" class="image-remove-btn" onclick="clearImage('image_5')" title="ছবি মুছুন">×</button>
@@ -1907,6 +2017,7 @@ background: #f8f9fa;
                                     <div class="upload-text">ছবি ৫</div>
                                     <img class="image-preview" id="preview_image_5">
                                     <div class="image-size-info" id="size_image_5"></div>
+                                    <button type="button" class="gallery-btn" onclick="openGallery('image_5')">📁 গ্যালারি</button>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 10px; margin-top: 8px;">
@@ -1980,13 +2091,12 @@ background: #f8f9fa;
                             <th>বিভাগ</th>
                             <th>সাংবাদিক</th>
                             <th>তারিখ</th>
-                            <th>অবস্থা</th>
                             <th>কার্যক্রম</th>
                         </tr>
                     </thead>
                     <tbody id="news-table-body">
                         <tr>
-                            <td colspan="7" style="text-align: center; padding: 40px; color: #666;">
+                            <td colspan="6" style="text-align: center; padding: 40px; color: #666;">
                                 সংবাদ নিবন্ধ লোড হচ্ছে...
                             </td>
                         </tr>
@@ -2021,6 +2131,7 @@ background: #f8f9fa;
         let currentPage = 1;
         let recordsPerPage = 10;
         let totalPages = 1;
+        let totalRecords = 0;
         
         // Function to clear/remove uploaded image
         function clearImage(fieldId) {
@@ -2374,13 +2485,39 @@ background: #f8f9fa;
             }
         }
 
-        async function loadNews() {
+        async function loadNews(page = 1) {
             try {
-                const response = await fetch('api.php?action=get_news');
-                allNews = await response.json();
-                filteredNews = [...allNews];
-                updatePagination();
-                displayNews();
+                // Build query parameters for server-side pagination
+                const params = new URLSearchParams({
+                    action: 'get_news',
+                    page: page,
+                    limit: recordsPerPage
+                });
+                
+                // Add filter parameters if set
+                const search = document.getElementById('search-filter')?.value;
+                const categoryId = document.getElementById('category-filter')?.value;
+                const dateFrom = document.getElementById('date-from-filter')?.value;
+                const dateTo = document.getElementById('date-to-filter')?.value;
+                
+                if (search) params.append('search', search);
+                if (categoryId) params.append('category_id', categoryId);
+                if (dateFrom) params.append('date_from', dateFrom);
+                if (dateTo) params.append('date_to', dateTo);
+                
+                const response = await fetch(`api.php?${params.toString()}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    filteredNews = result.data;
+                    currentPage = result.pagination.page;
+                    totalPages = result.pagination.totalPages;
+                    totalRecords = result.pagination.totalRecords;
+                    updatePagination();
+                    displayNews();
+                } else {
+                    showMessage('error', 'সংবাদ নিবন্ধ লোড করতে ব্যর্থ');
+                }
             } catch (error) {
                 showMessage('error', 'সংবাদ নিবন্ধ লোড করতে ব্যর্থ');
                 console.error('Error:', error);
@@ -2896,13 +3033,14 @@ function dateWithAgo(dateString) {
 
     return `${date} · ${ago}`;
 }
+
 function displayNews() {
     const tbody = document.getElementById('news-table-body');
 
     if (!filteredNews || filteredNews.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="7" style="text-align:center; padding:40px; color:#666;">
+                <td colspan="6" style="text-align:center; padding:40px; color:#666;">
                     কোনো নিবন্ধ পাওয়া যায়নি
                 </td>
             </tr>
@@ -2910,11 +3048,8 @@ function displayNews() {
         return;
     }
 
-    const startIndex = (currentPage - 1) * recordsPerPage;
-    const endIndex = startIndex + recordsPerPage;
-    const currentRecords = filteredNews.slice(startIndex, endIndex);
-
-    tbody.innerHTML = currentRecords.map(article => {
+    // Server-side pagination - data is already paginated
+    tbody.innerHTML = filteredNews.map(article => {
         const category = categories.find(c => c.id == article.category_id);
         const reporter = reporters.find(r => r.id == article.reporter_id);
         const dateAgo = dateWithAgo(article.created_at);
@@ -2948,16 +3083,13 @@ function displayNews() {
                     </div>
                 </td>
 
-                <td>
-                    <label class="switch">
+                <td class="actions">
+                    <label class="switch" style="margin-right:8px;">
                         <input type="checkbox"
                             onchange="toggleStatus(${article.id}, this)"
                             ${article.is_active == 1 ? 'checked' : ''}>
                         <span class="slider round"></span>
                     </label>
-                </td>
-
-                <td class="actions">
                     <button class="btn" onclick="viewNews(${article.id})">
                         <img src="icons/view.png" width="20">
                     </button>
@@ -2968,12 +3100,6 @@ function displayNews() {
         `;
     }).join('');
 }
-
-// ✅ displayNews() function ENDS HERE
-
-// ============================================
-// ADD THESE FUNCTIONS RIGHT AFTER displayNews()
-// ============================================
 
 // News View Popup Functions - GLOBAL SCOPE (CORRECTED IMAGE PATHS)
 async function viewNews(id) {
@@ -3134,27 +3260,8 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-function closeNewsView() {
-    const popup = document.getElementById('news-view-popup');
-    popup.classList.add('hidden');
-    document.body.style.overflow = '';
-}
-
-// Close popup when clicking outside the container
-document.addEventListener('click', function(e) {
-    const popup = document.getElementById('news-view-popup');
-    if (e.target === popup) {
-        closeNewsView();
-    }
-});
-
-
-        
-
         function updatePagination() {
-            const totalRecords = filteredNews.length;
-            totalPages = Math.ceil(totalRecords / recordsPerPage);
-            
+            // Server-side pagination - use values from API response
             document.getElementById('total-records').textContent = totalRecords;
             document.getElementById('current-page').textContent = currentPage;
             document.getElementById('total-pages').textContent = totalPages;
@@ -3162,8 +3269,8 @@ document.addEventListener('click', function(e) {
             // Update pagination buttons
             document.getElementById('first-btn').disabled = currentPage === 1;
             document.getElementById('prev-btn').disabled = currentPage === 1;
-            document.getElementById('next-btn').disabled = currentPage === totalPages;
-            document.getElementById('last-btn').disabled = currentPage === totalPages;
+            document.getElementById('next-btn').disabled = currentPage >= totalPages;
+            document.getElementById('last-btn').disabled = currentPage >= totalPages;
             
             // Generate page numbers
             const pageNumbers = document.getElementById('page-numbers');
@@ -3185,31 +3292,13 @@ document.addEventListener('click', function(e) {
 
         function changePage(page) {
             if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            displayNews();
-            updatePagination();
+            // Server-side pagination - fetch new page from API
+            loadNews(page);
         }
 
         function applyFilters() {
-            const searchTerm = document.getElementById('search-filter').value.toLowerCase();
-            const dateFrom = document.getElementById('date-from-filter').value;
-            const dateTo = document.getElementById('date-to-filter').value;
-            const categoryFilter = document.getElementById('category-filter').value;
-            
-            filteredNews = allNews.filter(article => {
-                const matchesSearch = !searchTerm || article.headline.toLowerCase().includes(searchTerm);
-                const matchesCategory = !categoryFilter || article.category_id == categoryFilter;
-                
-                const articleDate = new Date(article.created_at).toISOString().split('T')[0];
-                const matchesDateFrom = !dateFrom || articleDate >= dateFrom;
-                const matchesDateTo = !dateTo || articleDate <= dateTo;
-                
-                return matchesSearch && matchesCategory && matchesDateFrom && matchesDateTo;
-            });
-            
-            currentPage = 1;
-            updatePagination();
-            displayNews();
+            // Server-side filtering - reload from page 1 with filters
+            loadNews(1);
         }
 
         function clearFilters() {
@@ -3217,10 +3306,8 @@ document.addEventListener('click', function(e) {
             document.getElementById('date-from-filter').value = '';
             document.getElementById('date-to-filter').value = '';
             document.getElementById('category-filter').value = '';
-            filteredNews = [...allNews];
-            currentPage = 1;
-            updatePagination();
-            displayNews();
+            // Server-side - reload from page 1
+            loadNews(1);
         }
 
         // Modern Popup Message
@@ -3252,31 +3339,132 @@ document.addEventListener('click', function(e) {
                     cancelEdit();
                 }
             }
-        });
-            // Toggle status AJAX
-            async function toggleStatus(id, checkbox) {
-                const is_active = checkbox.checked ? 1 : 0;
-                checkbox.disabled = true;
-                try {
-                    const response = await fetch('api.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `action=toggle_status&id=${id}&is_active=${is_active}`
-                    });
-                    const result = await response.json();
-                    if (!result.success) {
-                        showMessage('error', 'স্ট্যাটাস পরিবর্তন ব্যর্থ: ' + (result.message || '')); 
-                        checkbox.checked = !checkbox.checked; // revert
-                    } else {
-                        showMessage('success', is_active ? 'নিউজ প্রকাশিত হয়েছে' : 'নিউজ অপ্রকাশিত হয়েছে');
-                    }
-                } catch (error) {
-                    showMessage('error', 'স্ট্যাটাস পরিবর্তন ব্যর্থ');
-                    checkbox.checked = !checkbox.checked; // revert
-                } finally {
-                    checkbox.disabled = false;
-                }
+            // Close gallery on ESC
+            if (e.key === 'Escape') {
+                closeGallery();
             }
+        });
+        
+        // Toggle status AJAX
+        async function toggleStatus(id, checkbox) {
+            const is_active = checkbox.checked ? 1 : 0;
+            checkbox.disabled = true;
+            try {
+                const response = await fetch('api.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `action=toggle_status&id=${id}&is_active=${is_active}`
+                });
+                const result = await response.json();
+                if (!result.success) {
+                    showMessage('error', 'স্ট্যাটাস পরিবর্তন ব্যর্থ: ' + (result.message || '')); 
+                    checkbox.checked = !checkbox.checked;
+                } else {
+                    showMessage('success', is_active ? 'নিউজ প্রকাশিত হয়েছে' : 'নিউজ অপ্রকাশিত হয়েছে');
+                }
+            } catch (error) {
+                showMessage('error', 'স্ট্যাটাস পরিবর্তন ব্যর্থ');
+                checkbox.checked = !checkbox.checked;
+            } finally {
+                checkbox.disabled = false;
+            }
+        }
+        
+        // ============ IMAGE GALLERY FUNCTIONS ============
+        let galleryTargetField = null;
+        let selectedGalleryImage = null;
+        
+        async function openGallery(fieldId) {
+            galleryTargetField = fieldId;
+            selectedGalleryImage = null;
+            
+            // Create modal if not exists
+            let modal = document.getElementById('galleryModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'galleryModal';
+                modal.className = 'gallery-modal';
+                modal.innerHTML = `
+                    <div class="gallery-modal-content">
+                        <div class="gallery-modal-header">
+                            <h3>📁 ছবি গ্যালারি</h3>
+                            <button class="gallery-modal-close" onclick="closeGallery()">✕</button>
+                        </div>
+                        <div class="gallery-grid" id="galleryGrid"></div>
+                        <div class="gallery-modal-footer">
+                            <button class="gallery-select-btn" id="gallerySelectBtn" onclick="selectGalleryImage()" disabled>✓ নির্বাচিত ছবি ব্যবহার করুন</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            
+            document.getElementById('gallerySelectBtn').disabled = true;
+            modal.classList.add('active');
+            document.getElementById('galleryGrid').innerHTML = '<p style="text-align:center; color:#666; padding:40px; grid-column:1/-1;">ছবি লোড হচ্ছে...</p>';
+            
+            try {
+                const response = await fetch('api.php?action=get_gallery_images');
+                const data = await response.json();
+                
+                if (data.success && data.images && data.images.length > 0) {
+                    document.getElementById('galleryGrid').innerHTML = data.images.map(img => `
+                        <div class="gallery-item" onclick="selectImageFromGallery(this, '${img}')" data-image="${img}">
+                            <img src="img/${img}" alt="${img}" loading="lazy">
+                        </div>
+                    `).join('');
+                } else {
+                    document.getElementById('galleryGrid').innerHTML = '<p style="text-align:center; color:#999; padding:40px; grid-column:1/-1;">কোন ছবি পাওয়া যায়নি</p>';
+                }
+            } catch (error) {
+                document.getElementById('galleryGrid').innerHTML = '<p style="text-align:center; color:#f00; padding:40px; grid-column:1/-1;">লোড করতে সমস্যা</p>';
+            }
+        }
+        
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            if (modal) modal.classList.remove('active');
+            galleryTargetField = null;
+            selectedGalleryImage = null;
+        }
+        
+        function selectImageFromGallery(el, imagePath) {
+            document.querySelectorAll('.gallery-item').forEach(item => item.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedGalleryImage = imagePath;
+            document.getElementById('gallerySelectBtn').disabled = false;
+        }
+        
+        function selectGalleryImage() {
+            if (!selectedGalleryImage || !galleryTargetField) return;
+            
+            const preview = document.getElementById('preview_' + galleryTargetField);
+            const box = document.getElementById('box_' + galleryTargetField);
+            const sizeInfo = document.getElementById('size_' + galleryTargetField);
+            
+            if (preview) {
+                preview.src = 'img/' + selectedGalleryImage;
+                preview.style.display = 'block';
+            }
+            if (box) box.classList.add('has-image');
+            if (sizeInfo) {
+                sizeInfo.textContent = 'গ্যালারি থেকে';
+                sizeInfo.style.color = '#48bb78';
+            }
+            
+            let hiddenField = document.getElementById('gallery_' + galleryTargetField);
+            if (!hiddenField) {
+                hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.id = 'gallery_' + galleryTargetField;
+                hiddenField.name = 'gallery_' + galleryTargetField;
+                document.getElementById('newsForm').appendChild(hiddenField);
+            }
+            hiddenField.value = selectedGalleryImage;
+            
+            closeGallery();
+            showMessage('success', 'ছবি নির্বাচিত হয়েছে');
+        }
     </script>
 </body>
 </html>

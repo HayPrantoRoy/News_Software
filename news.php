@@ -674,33 +674,34 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
 
     /* Latest News Section Styles */
     .latest-news-section {
-        padding: 40px 0;
-        margin: 0px 0;
+        padding: 50px 0;
+        margin: 0;
+        background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
     }
     
     .latest-news-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 15px;
+        padding: 0 20px;
     }
     
     .latest-news-header {
         text-align: center;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
     }
     
     .latest-news-header h2 {
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 700;
         color: #1a1a1a;
-        margin-bottom: 10px;
-        font-family: 'SolaimanLipi', sans-serif;
+        margin-bottom: 12px;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
     }
     
     .header-line {
-        width: 80px;
+        width: 60px;
         height: 4px;
-        background: linear-gradient(to right, #dc2626, #b91c1c);
+        background: #c0392b;
         margin: 0 auto;
         border-radius: 2px;
     }
@@ -708,16 +709,20 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
     .latest-news-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 20px;
+        gap: 24px;
     }
     
     .latest-news-card {
         overflow: hidden;
         transition: all 0.3s ease;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
     
     .latest-news-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
     
     .latest-news-link {
@@ -728,7 +733,7 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
     
     .latest-news-image {
         width: 100%;
-        height: 180px;
+        height: 160px;
         overflow: hidden;
         position: relative;
     }
@@ -737,86 +742,62 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s ease;
     }
     
     .latest-news-card:hover .latest-news-image img {
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
     
     .latest-news-content {
-        padding: 10px 0;
+        padding: 14px 12px;
     }
     
     .latest-news-headline {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         color: #1a1a1a;
-        line-height: 1.5;
-        margin-bottom: 8px;
+        line-height: 1.6;
+        margin-bottom: 10px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        font-family: 'SolaimanLipi', sans-serif;
-        min-height: 63px;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
+        min-height: 72px;
+    }
+    
+    .latest-news-card:hover .latest-news-headline {
+        color: #c0392b;
     }
     
     .latest-news-date {
-        font-size: 11px;
-        color: #666;
+        font-size: 12px;
+        color: #888;
         font-family: 'SolaimanLipi', sans-serif;
     }
 
     /* Responsive Styles */
     @media (max-width: 1200px) {
-        .video-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-        
-        .latest-news-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
+        .video-grid { grid-template-columns: repeat(3, 1fr); }
+        .latest-news-grid { grid-template-columns: repeat(4, 1fr); }
     }
     
     @media (max-width: 992px) {
-        .video-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .latest-news-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        .video-grid { grid-template-columns: repeat(2, 1fr); }
+        .latest-news-grid { grid-template-columns: repeat(3, 1fr); }
     }
     
     @media (max-width: 768px) {
-        .video-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .latest-news-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .video-section {
-           padding: 20px 0;
-            margin: 0px 0;
-            margin-top: -100px;
-        }
-        .latest-news-section {
-            padding: 20px 0;
-            margin: 0px 0;
-        }
-        
-        .latest-news-header h2 {
-            font-size: 22px;
-        }
+        .video-grid { grid-template-columns: repeat(2, 1fr); }
+        .latest-news-grid { grid-template-columns: repeat(2, 1fr); }
+        .video-section { padding: 20px 0; margin: 0; margin-top: -100px; }
+        .latest-news-section { padding: 20px 0; margin: 0; }
+        .latest-news-header h2 { font-size: 22px; }
     }
     
     @media (max-width: 576px) {
-        .latest-news-grid {
-            grid-template-columns: 1fr;
-        }
+        .latest-news-grid { grid-template-columns: 1fr; }
     }
 
     /* Video Modal */
@@ -915,51 +896,52 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
         }
     }
     
-    /* Popular News Section */
+    /* Popular News Section - Modern Design */
     .popular-section {
-        background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-        border-radius: 16px;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        border: 1px solid #e5e7eb;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        border: 1px solid #eaeaea;
     }
     
     .popular-header {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         margin-bottom: 20px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid #dc2626;
+        padding-bottom: 12px;
+        border-bottom: 3px solid #c0392b;
     }
     
     .popular-header-icon {
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-        border-radius: 10px;
+        width: 36px;
+        height: 36px;
+        background: #c0392b;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .popular-header h4 {
         margin: 0;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: 700;
         color: #1a1a1a;
-        font-family: 'SolaimanLipi', sans-serif;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
     }
     
     .popular-news-card {
         display: flex;
-        gap: 12px;
-        padding: 15px 0;
-        border-bottom: 1px solid #e5e7eb;
-        transition: all 0.3s ease;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.25s ease;
         cursor: pointer;
+        align-items: flex-start;
     }
     
     .popular-news-card:last-child {
@@ -968,19 +950,20 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
     }
     
     .popular-news-card:hover {
-        background: #f8f9fa;
-        margin: 0 -10px;
-        padding-left: 10px;
-        padding-right: 10px;
+        background: linear-gradient(90deg, #fafafa 0%, #fff 100%);
+        margin: 0 -12px;
+        padding-left: 12px;
+        padding-right: 12px;
         border-radius: 8px;
     }
     
     .popular-news-thumb {
-        width: 80px;
-        height: 60px;
-        border-radius: 8px;
+        width: 90px;
+        height: 70px;
+        border-radius: 6px;
         overflow: hidden;
         flex-shrink: 0;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     
     .popular-news-thumb img {
@@ -991,7 +974,7 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
     }
     
     .popular-news-card:hover .popular-news-thumb img {
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
     
     .popular-news-info {
@@ -1000,6 +983,170 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
     }
     
     .popular-news-info h6 {
+        margin: 0 0 8px 0;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #1a1a1a;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
+    }
+    
+    .popular-news-info h6 a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .popular-news-info h6 a:hover {
+        color: #c0392b;
+    }
+    
+    .popular-news-meta {
+        font-size: 12px;
+        color: #888;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'SolaimanLipi', sans-serif;
+    }
+    
+    .popular-news-meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .popular-news-meta i {
+        color: #c0392b;
+        font-size: 11px;
+    }
+
+    /* Popular News Section V2 - New Modern Design */
+    .popular-section-v2 {
+        background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .popular-header-v2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .popular-header-v2 h4 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a1a1a;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
+    }
+    
+    .popular-badge {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .popular-badge i {
+        font-size: 10px;
+    }
+    
+    .popular-item-v2 {
+        display: flex;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .popular-item-v2:last-child {
+        border-bottom: none;
+    }
+    
+    .popular-item-v2:hover {
+        background: #fff;
+        margin: 0 -10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .popular-rank {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+    }
+    
+    .popular-item-v2:nth-child(1) .popular-rank { background: linear-gradient(135deg, #f39c12 0%, #f1c40f 100%); }
+    .popular-item-v2:nth-child(2) .popular-rank { background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%); }
+    .popular-item-v2:nth-child(3) .popular-rank { background: linear-gradient(135deg, #cd6133 0%, #e67e22 100%); }
+    
+    .popular-item-img {
+        width: 85px;
+        height: 65px;
+        border-radius: 8px;
+        overflow: hidden;
+        flex-shrink: 0;
+        margin-left: 28px;
+    }
+    
+    .popular-item-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .popular-item-v2:hover .popular-item-img img {
+        transform: scale(1.1);
+    }
+    
+    .popular-item-content {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .popular-category {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        color: #c0392b;
+        background: rgba(192, 57, 43, 0.1);
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+    
+    .popular-item-content h5 {
         margin: 0 0 6px 0;
         font-size: 14px;
         font-weight: 600;
@@ -1009,29 +1156,36 @@ $meta_keywords = $meta_category . ', ' . $site_name . ', Latest News, Breaking N
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
     }
     
-    .popular-news-info h6 a {
+    .popular-item-content h5 a {
         color: inherit;
         text-decoration: none;
+        transition: color 0.2s;
     }
     
-    .popular-news-info h6 a:hover {
-        color: #dc2626;
+    .popular-item-content h5 a:hover {
+        color: #c0392b;
     }
     
-    .popular-news-meta {
+    .popular-item-stats {
+        display: flex;
+        gap: 12px;
         font-size: 11px;
-        color: #6b7280;
+        color: #888;
+    }
+    
+    .popular-item-stats span {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
     }
     
-    .popular-news-meta i {
-        color: #dc2626;
+    .popular-item-stats i {
+        font-size: 10px;
+        color: #aaa;
     }
-    
     
     /* Responsive */
     @media (max-width: 991px) {
@@ -1187,26 +1341,41 @@ article p,
     color: #000 !important;
 }
 
-/* Override any Bootstrap or other styles */
-.container p,
-.col-lg-8 p {
-    color: #000 !important;
+/* News Content - Larger Font & Justified Text (news_1 to news_4 only) */
+.news-content-body p,
+.my-4 {
+    font-size: 20px !important;
+    line-height: 2 !important;
+    text-align: justify !important;
+    font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+    margin-bottom: 20px !important;
 }
 
-.breadcrumb {
-        background-color: white !important;
+/* Print Styles */
+@media print {
+    .primary-header-wrapper,
+    .main-navigation-section,
+    .col-lg-4,
+    .video-section,
+    .latest-news-section,
+    .footer-wrapper,
+    .back-to-top,
+    #screenshotWarning {
+        display: none !important;
+    }
+    body { background: white !important; }
+    .col-lg-8 { width: 100% !important; max-width: 100% !important; }
+    .col-lg-8 p { font-size: 12pt !important; line-height: 1.6 !important; }
 }
 
 .breadcrumb-item+.breadcrumb-item {
     padding-left: 0rem !important;
 }
+
 .breadcrumb-item+.breadcrumb-item::before {
     padding-right: .3rem !important;
     padding-left: .3rem !important;
-}
-
-.breadcrumb-item+.breadcrumb-item::before {
-  font-size: 18px !important;
+    font-size: 18px !important;
 }
   .primary-header-wrapper {
             background: white;
@@ -1964,7 +2133,7 @@ article p,
                 <ul class="primary-nav-menu">
     <!-- Home is static -->
     <li class="nav-menu-item">
-        <a href="index.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
+        <a href="home.php<?= $user_id_param; ?>" class="nav-link-element">প্রথম পাতা</a>
     </li>
 
     <!-- Load categories dynamically -->
@@ -2066,117 +2235,118 @@ if ($error_occurred) {
 }
 
 // Use data already fetched at top of file (supports both ID and path URLs)
-if (!empty($meta)) {
+$row = $meta;
+if (!empty($row)) {
 ?>
-        <ol class="breadcrumb justify-content-start mb-4">
-            <li class="breadcrumb-item"><a href="index.php<?= $user_id_param; ?>">হোম</a></li>
-            <li class="breadcrumb-item"><a><?php echo htmlspecialchars($meta['category_name'] ?? ''); ?></a></li>
-        </ol>
-<?php
-} else {
-    echo "<h2>News not found</h2>";
-}
-?>
-
-
-
                 <div class="row g-4">
                     <div class="col-lg-8">
                         <?php
-// Use data already fetched at top of file (supports both ID and path URLs)
-$row = $meta; // Restore $row from saved meta data
-if (!empty($row)) {
+$fullName = $row['reporter_name'] ?? '';
+$displayName = $fullName ?: 'নিজস্ব প্রতিবেদক';
+$location = '';
+    
+if (preg_match('/^(.+?)\s*\((.+?)\)\s*$/', $fullName, $matches)) {
+    $displayName = trim($matches[1]);
+    $location = trim($matches[2]);
+}
+    
+$months = [
+        'January' => 'জানুয়ারি', 'February' => 'ফেব্রুয়ারি', 'March' => 'মার্চ',
+        'April' => 'এপ্রিল', 'May' => 'মে', 'June' => 'জুন',
+        'July' => 'জুলাই', 'August' => 'আগস্ট', 'September' => 'সেপ্টেম্বর',
+        'October' => 'অক্টোবর', 'November' => 'নভেম্বর', 'December' => 'ডিসেম্বর'
+    ];
+$numbers = ['0'=>'০','1'=>'১','2'=>'২','3'=>'৩','4'=>'৪','5'=>'৫','6'=>'৬','7'=>'৭','8'=>'৮','9'=>'৯'];
+$englishDate = date("d F Y, H:i", strtotime($row['created_at']));
+$banglaDate = strtr(strtr($englishDate, $months), $numbers);
 ?>
-        <div class="mb-4" style="margin-top: -15px;">
-            <h2><?php echo htmlspecialchars($row['headline']); ?></h2>
-            <p><?php echo htmlspecialchars($row['short_description'] ?? ''); ?></p>
+
+                <div class="news-header-section" style="margin-bottom: 20px;">
+    <!-- Category with underline -->
+    <div style="margin-bottom: 12px;">
+        <a href="category.php?slug=<?= htmlspecialchars($row['category_slug'] ?? ''); ?><?= $user_id_suffix; ?>" 
+           style="color: #c0392b; font-size: 16px; font-weight: 600; text-decoration: none; border-bottom: 2px solid #c0392b; padding-bottom: 4px;">
+            <?= htmlspecialchars($row['category_name'] ?? ''); ?>
+        </a>
+    </div>
+    
+    <!-- Short Description (subtitle) -->
+    <?php if (!empty($row['short_description'])): ?>
+    <p style="color: #666; font-size: 15px; margin-bottom: 8px; font-weight: 500;">
+        <?= htmlspecialchars($row['short_description']); ?>
+    </p>
+    <?php endif; ?>
+    
+    <!-- Main Headline -->
+    <h1 style="font-size: 32px; font-weight: 700; color: #1a1a1a; line-height: 1.4; margin-bottom: 18px; font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;">
+        <?= htmlspecialchars($row['headline']); ?>
+    </h1>
+    
+    <!-- Reporter Name -->
+    <div style="margin-bottom: 12px;">
+        <span style="font-size: 15px; font-weight: 700; color: #1a1a1a;">
+            <?= htmlspecialchars($displayName); ?>
+        </span>
+        <?php if (!empty($location)): ?>
+        <span style="font-size: 14px; color: #888; margin-left: 6px;">
+            <?= htmlspecialchars($location); ?>
+        </span>
+        <?php endif; ?>
+    </div>
+    
+    <!-- Date + Social Icons Row -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 8px 0; border-top: 1px solid #eee;">
+        <!-- Published Date -->
+        <div style="font-size: 14px; color: #666;">
+            <span style="font-weight: 500;">প্রকাশ:</span> <?= $banglaDate; ?>
         </div>
+        
+        <!-- Social Icons -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= rawurlencode($meta_url); ?>" target="_blank" 
+               style="width: 36px; height: 36px; background: #1877f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-facebook-f" style="color: #fff; font-size: 16px;"></i>
+            </a>
+            <!-- Twitter/X -->
+            <a href="https://twitter.com/intent/tweet?url=<?= rawurlencode($meta_url); ?>&text=<?= rawurlencode($row['headline']); ?>" target="_blank"
+               style="width: 36px; height: 36px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-x-twitter" style="color: #fff; font-size: 16px;"></i>
+            </a>
+            <!-- Share -->
+            <a href="javascript:void(0);" onclick="copyPageURL()" title="লিংক কপি করুন"
+               style="width: 36px; height: 36px; background: #e74c3c; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fas fa-share-alt" style="color: #fff; font-size: 14px;"></i>
+            </a>
+            <!-- Font Increase -->
+            <button onclick="changeFontSize(1)" title="ফন্ট বড় করুন"
+               style="width: 36px; height: 36px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; cursor: pointer;">
+                <span style="font-size: 14px; font-weight: 700; color: #333;">অ+</span>
+            </button>
+            <!-- Font Decrease -->
+            <button onclick="changeFontSize(-1)" title="ফন্ট ছোট করুন"
+               style="width: 36px; height: 36px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; cursor: pointer;">
+                <span style="font-size: 12px; font-weight: 700; color: #333;">অ-</span>
+            </button>
+            <!-- Print -->
+            <a href="javascript:window.print()" title="প্রিন্ট করুন"
+               style="width: 36px; height: 36px; background: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fas fa-print" style="color: #fff; font-size: 14px;"></i>
+            </a>
+            <!-- Bookmark -->
+            <button onclick="bookmarkPage()" title="বুকমার্ক করুন"
+               style="width: 36px; height: 36px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; cursor: pointer;">
+                <i class="far fa-bookmark" style="font-size: 14px; color: #333;"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
 <?php
 } else {
     echo "<h2>News not found</h2>";
 }
 ?>
-
-
-
-                        <!-- Heading and Read Time -->
-<div style="margin-bottom: 12px; font-family: 'SolaimanLipi', sans-serif !important;">
-
-
-<!-- Reporter Card Section -->
-<?php if (!empty($row['reporter_name'])): 
-    $fullName = $row['reporter_name'];
-    $displayName = $fullName;
-    $subtitle = '';
-    
-    if (preg_match('/^(.+?)\s*\((.+?)\)\s*$/', $fullName, $matches)) {
-        $displayName = trim($matches[1]);
-        $subtitle = trim($matches[2]);
-    }
-?>
-<div style="background: #f5f5f5; border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin: 10px 0;">
-    <img src="Admin/<?php echo htmlspecialchars(!empty($row['reporter_photo']) ? $row['reporter_photo'] : 'commentator.png'); ?>" 
-         alt="<?php echo htmlspecialchars($displayName); ?>"
-         loading="lazy"
-         style="width: 45px; height: 45px; border-radius: 10px; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <div style="display: flex; flex-direction: column; gap: 1px;">
-        <span style="font-size: 15px; font-weight: 700; color: #222;">
-            <?php echo htmlspecialchars($displayName); ?>
-        </span>
-        <?php if (!empty($subtitle)): ?>
-        <span style="font-size: 12px; color: #666; font-weight: 500;">
-            <?php echo htmlspecialchars($subtitle); ?>
-        </span>
-        <?php endif; ?>
-    </div>
-</div>
-<?php else: ?>
-<div style="background: #f5f5f5; border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin: 10px 0;">
-    <i class="fas fa-user-edit" style="font-size: 32px; color: #666; width: 45px; text-align: center;"></i>
-    <div style="display: flex; flex-direction: column; gap: 1px;">
-        <span style="font-size: 15px; font-weight: 700; color: #222;">
-            নিজস্ব প্রতিবেদক
-        </span>
-        <span style="font-size: 12px; color: #666; font-weight: 500;">
-            <?php echo htmlspecialchars($basic_info['news_portal_name'] ?? ''); ?>
-        </span>
-    </div>
-</div>
-<?php endif; ?>
-
-<!-- Published Date -->
-<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #555; margin-bottom: 15px;">
-    <span style="font-weight: 600;">প্রকাশিত:</span>
-    <span>
-        <?php
-        $months = [
-            'January' => 'জানুয়ারি',
-            'February' => 'ফেব্রুয়ারি',
-            'March' => 'মার্চ',
-            'April' => 'এপ্রিল',
-            'May' => 'মে',
-            'June' => 'জুন',
-            'July' => 'জুলাই',
-            'August' => 'আগস্ট',
-            'September' => 'সেপ্টেম্বর',
-            'October' => 'অক্টোবর',
-            'November' => 'নভেম্বর',
-            'December' => 'ডিসেম্বর'
-        ];
-
-        $numbers = ['0'=>'০','1'=>'১','2'=>'২','3'=>'৩','4'=>'৪','5'=>'৫','6'=>'৬','7'=>'৭','8'=>'৮','9'=>'৯'];
-
-        $englishDate = date("d F Y, H:i", strtotime($row['created_at']));
-        $banglaDate = strtr($englishDate, $months);
-        $banglaDate = strtr($banglaDate, $numbers);
-
-        echo $banglaDate;
-        ?>
-    </span>
-    
-</div>
-
-</div>
 
 
 
@@ -2219,38 +2389,6 @@ if (!empty($row)) {
     <span style="font-size: 12px; font-weight: 500; color: #6c757d;">
         <strong><?php echo number_format($views_count); ?></strong>  জন পড়েছেন 
     </span>
-</div>
-
-<!-- Share Features -->
-<div style="display: flex; align-items: center; gap: 0px; flex-wrap: wrap;">
-    <!-- "Share on" text -->
-    <span style="font-size: 16px; margin-right: 8px;">Share on:</span>
-
-    <!-- Facebook Share -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo rawurlencode($meta_url); ?>" target="_blank"
-       style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-        <img src="img/facebook.png" alt="Facebook" style="width: 24px; height: 24px;">
-    </a>
-
-    <!-- PDF Download (triggers JS function) -->
-    <a href="javascript:void(0);" onclick="downloadAsPDF()" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-        <img src="img/pdf.png" alt="PDF" style="width: 24px; height: 24px;">
-    </a>
-
-    <!-- Copy Link -->
-    <a href="javascript:void(0);" onclick="copyPageURL()" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-        <img src="img/copy.png" alt="Copy" style="width: 24px; height: 24px;">
-    </a>
-
-    <!-- Print -->
-    <a href="javascript:window.print()" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-        <img src="img/printer.png" alt="Print" style="width: 24px; height: 24px;">
-    </a>
-
-    <!-- More (placeholder link) -->
-    <a href="#" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
-        <img src="img/next.png" alt="More" style="width: 24px; height: 24px;">
-    </a>
 </div>
 
 
@@ -2446,16 +2584,13 @@ if ($news !== '') {
                     <div class="col-lg-4">
                         <div class="news-sidebar">
                             <div class="sticky-sidebar">
-                                <div class="popular-section">
-                                    <div class="popular-header">
-                                        <div class="popular-header-icon">
-                                            <i class="fas fa-fire"></i>
-                                        </div>
+                                <div class="popular-section-v2">
+                                    <div class="popular-header-v2">
+                                        <span class="popular-badge"><i class="fas fa-fire-alt"></i> ট্রেন্ডিং</span>
                                         <h4>জনপ্রিয় সংবাদ</h4>
                                     </div>
                                     
 <?php
-// Don't re-include connection - already included at top
 // Bangla conversion helpers for sidebar
 if (!function_exists('en2bnNumberSidebar')) {
     function en2bnNumberSidebar($number) {
@@ -2473,7 +2608,6 @@ if (!function_exists('en2bnMonthSidebar')) {
     }
 }
 
-// Fetch top 10 most viewed news from entire database (highest views first)
 $popular_news_query = "SELECT n.id, n.headline, n.slug, n.image_url, n.created_at, 
                        IFNULL(n.views, 0) as views,
                        c.name as category_name, c.slug AS category_slug 
@@ -2481,37 +2615,31 @@ $popular_news_query = "SELECT n.id, n.headline, n.slug, n.image_url, n.created_a
                        INNER JOIN category c ON n.category_id = c.id 
                        WHERE n.is_active = 1 
                        ORDER BY IFNULL(n.views, 0) DESC, n.created_at DESC 
-                       LIMIT 10";
+                       LIMIT 6";
 
 $popular_news_result = mysqli_query($conn, $popular_news_query);
-
-if (!$popular_news_result) {
-    echo "<!-- Error: " . mysqli_error($conn) . " -->";
-} else {
-    echo "<!-- Popular News Query Executed Successfully. Total rows: " . mysqli_num_rows($popular_news_result) . " -->";
-}
-
+$pop_index = 0;
 while ($pnews = mysqli_fetch_assoc($popular_news_result)):
+    $pop_index++;
     $view_count = isset($pnews['views']) && $pnews['views'] !== null ? intval($pnews['views']) : 0;
-    echo "<!-- News ID: {$pnews['id']} | Headline: {$pnews['headline']} | Views: {$view_count} -->";
-    
     $dateObj = new DateTime($pnews['created_at']);
     $day = en2bnNumberSidebar($dateObj->format('d'));
     $month = en2bnMonthSidebar($dateObj->format('F'));
-    $year = en2bnNumberSidebar($dateObj->format('Y'));
-    $bangla_date = $day . ' ' . $month . ' ' . $year;
+    $bangla_date = $day . ' ' . $month;
 ?>
-                                    <div class="popular-news-card">
-                                        <div class="popular-news-thumb">
+                                    <div class="popular-item-v2">
+                                        <span class="popular-rank"><?php echo en2bnNumberSidebar($pop_index); ?></span>
+                                        <div class="popular-item-img">
                                             <a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?><?= $user_id_suffix; ?>">
                                                 <img src="Admin/img/<?php echo $pnews['image_url']; ?>" loading="lazy" alt="<?php echo $pnews['headline']; ?>">
                                             </a>
                                         </div>
-                                        <div class="popular-news-info">
-                                            <h6><a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?><?= $user_id_suffix; ?>"><?php echo $pnews['headline']; ?></a></h6>
-                                            <div class="popular-news-meta">
-                                                <span><i class="fas fa-eye"></i> <?php echo en2bnNumberSidebar(number_format($view_count)); ?></span>
-                                                <span><i class="fas fa-calendar"></i> <?php echo $bangla_date; ?></span>
+                                        <div class="popular-item-content">
+                                            <span class="popular-category"><?php echo $pnews['category_name']; ?></span>
+                                            <h5><a href="news.php?path=<?= rawurlencode($pnews['category_slug']) . '/' . rawurlencode($pnews['slug']); ?><?= $user_id_suffix; ?>"><?php echo $pnews['headline']; ?></a></h5>
+                                            <div class="popular-item-stats">
+                                                <span><i class="far fa-clock"></i> <?php echo $bangla_date; ?></span>
+                                                <span><i class="far fa-eye"></i> <?php echo en2bnNumberSidebar(number_format($view_count)); ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -2588,7 +2716,7 @@ endwhile;
         <section class="latest-news-section">
             <div class="latest-news-container">
                 <div class="latest-news-header">
-                    <h2>সর্বশেষ সংবাদ</h2>
+                    <h2>সংবাদ শিরোনাম</h2>
                     <div class="header-line"></div>
                 </div>
                 
@@ -2780,6 +2908,26 @@ function downloadAsPDF() {
     printWindow.focus();
     printWindow.print();
     printWindow.close();
+}
+
+// Font size change for accessibility
+let currentFontSize = 16;
+function changeFontSize(delta) {
+    currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+    document.querySelector('.col-lg-8').style.fontSize = currentFontSize + 'px';
+}
+
+// Bookmark page function
+function bookmarkPage() {
+    const title = document.title;
+    const url = window.location.href;
+    if (window.sidebar && window.sidebar.addPanel) {
+        window.sidebar.addPanel(title, url, '');
+    } else if (window.external && ('AddFavorite' in window.external)) {
+        window.external.AddFavorite(url, title);
+    } else {
+        alert('এই পৃষ্ঠাটি বুকমার্ক করতে Ctrl+D (Windows) বা Cmd+D (Mac) চাপুন');
+    }
 }
 </script>
 <script>

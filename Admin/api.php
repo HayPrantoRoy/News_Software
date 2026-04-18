@@ -18,6 +18,9 @@ switch($action) {
     case 'get_news':
         getNews($pdo);
         break;
+    case 'get_gallery_images':
+        getGalleryImages($pdo);
+        break;
     case 'get_reporter_earnings':
         getReporterEarnings($pdo);
         break;
@@ -147,7 +150,7 @@ function getReporters($pdo){
     }
 }
 
-// Fetch news
+// Fetch news with server-side pagination
 function getNews($pdo){
     try{
         if(isset($_GET['id'])){
@@ -155,29 +158,105 @@ function getNews($pdo){
             $stmt->execute([$_GET['id']]);
             echo json_encode($stmt->fetch());
         }else{
+            $params = [];
+            $countParams = [];
+            
+            $whereClause = " WHERE 1=1";
+            
+            // Add reporter filter
+            if (isset($_GET['reporter_id']) && is_numeric($_GET['reporter_id'])) {
+                $whereClause .= " AND n.reporter_id = ?";
+                $params[] = $_GET['reporter_id'];
+                $countParams[] = $_GET['reporter_id'];
+            }
+            
+            // Add search filter
+            if (!empty($_GET['search'])) {
+                $whereClause .= " AND n.headline LIKE ?";
+                $searchTerm = '%' . $_GET['search'] . '%';
+                $params[] = $searchTerm;
+                $countParams[] = $searchTerm;
+            }
+            
+            // Add category filter
+            if (!empty($_GET['category_id']) && is_numeric($_GET['category_id'])) {
+                $whereClause .= " AND n.category_id = ?";
+                $params[] = $_GET['category_id'];
+                $countParams[] = $_GET['category_id'];
+            }
+            
+            // Add date filters
+            if (!empty($_GET['date_from'])) {
+                $whereClause .= " AND DATE(n.created_at) >= ?";
+                $params[] = $_GET['date_from'];
+                $countParams[] = $_GET['date_from'];
+            }
+            if (!empty($_GET['date_to'])) {
+                $whereClause .= " AND DATE(n.created_at) <= ?";
+                $params[] = $_GET['date_to'];
+                $countParams[] = $_GET['date_to'];
+            }
+            
+            // Get total count for pagination
+            $countSql = "SELECT COUNT(*) as total FROM news n" . $whereClause;
+            $countStmt = $pdo->prepare($countSql);
+            $countStmt->execute($countParams);
+            $totalRecords = $countStmt->fetch()['total'];
+            
+            // Pagination parameters
+            $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+            $limit = isset($_GET['limit']) ? max(1, min(100, (int)$_GET['limit'])) : 10;
+            $offset = ($page - 1) * $limit;
+            $totalPages = ceil($totalRecords / $limit);
+            
             $sql = "SELECT n.*, c.name as category_name, c.slug as category_slug, 
                            r.name as reporter_name, r.email as reporter_email
                     FROM news n
                     LEFT JOIN category c ON n.category_id=c.id
-                    LEFT JOIN reporter r ON n.reporter_id=r.id
-                    WHERE 1=1";
+                    LEFT JOIN reporter r ON n.reporter_id=r.id"
+                    . $whereClause . " ORDER BY n.created_at DESC LIMIT ? OFFSET ?";
             
-            $params = [];
-            
-            // Add reporter filter if reporter_id is provided
-            if (isset($_GET['reporter_id']) && is_numeric($_GET['reporter_id'])) {
-                $sql .= " AND n.reporter_id = ?";
-                $params[] = $_GET['reporter_id'];
-            }
-            
-            $sql .= " ORDER BY n.created_at DESC";
+            $params[] = $limit;
+            $params[] = $offset;
             
             $stmt = $pdo->prepare($sql);
             $stmt->execute($params);
-            echo json_encode($stmt->fetchAll());
+            $news = $stmt->fetchAll();
+            
+            echo json_encode([
+                'success' => true,
+                'data' => $news,
+                'pagination' => [
+                    'page' => $page,
+                    'limit' => $limit,
+                    'totalRecords' => (int)$totalRecords,
+                    'totalPages' => (int)$totalPages
+                ]
+            ]);
         }
     }catch(PDOException $e){
         echo json_encode(['success'=>false,'message'=>$e->getMessage()]);
+    }
+}
+
+// Get gallery images from previously uploaded news
+function getGalleryImages($pdo) {
+    try {
+        $images = [];
+        $stmt = $pdo->query("SELECT image_url, image_2, image_3, image_4, image_5 FROM news WHERE is_active = 1 ORDER BY created_at DESC LIMIT 100");
+        $rows = $stmt->fetchAll();
+        
+        foreach ($rows as $row) {
+            foreach (['image_url', 'image_2', 'image_3', 'image_4', 'image_5'] as $field) {
+                if (!empty($row[$field]) && !in_array($row[$field], $images)) {
+                    $images[] = $row[$field];
+                }
+            }
+        }
+        
+        echo json_encode(['success' => true, 'images' => $images]);
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     }
 }
 
@@ -205,6 +284,9 @@ function createNews($pdo){
         foreach($image_fields as $field){
             if(isset($_FILES[$field]) && $_FILES[$field]['error']===UPLOAD_ERR_OK){
                 $images[$field] = uploadImage($_FILES[$field],$field);
+            } elseif(!empty($_POST['gallery_'.$field])) {
+                // Use image selected from gallery
+                $images[$field] = $_POST['gallery_'.$field];
             }
         }
 
@@ -270,6 +352,9 @@ function updateNews($pdo){
         foreach($image_fields as $field){
             if(isset($_FILES[$field]) && $_FILES[$field]['error']===UPLOAD_ERR_OK){
                 $images[$field] = uploadImage($_FILES[$field],$field);
+            } elseif(!empty($_POST['gallery_'.$field])) {
+                // Use image selected from gallery
+                $images[$field] = $_POST['gallery_'.$field];
             }
         }
 

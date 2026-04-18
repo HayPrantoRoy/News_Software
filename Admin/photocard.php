@@ -71,57 +71,43 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
         .section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .section h2 { font-size: 18px; margin-bottom: 20px; color: #2d3748; padding-bottom: 12px; border-bottom: 2px solid #308e87; display: flex; align-items: center; gap: 10px; }
         
-        .photocards-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .photocards-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; justify-items: center; }
         .photocard-wrapper { display: flex; flex-direction: column; align-items: center; }
         .photocard-label { font-weight: 600; color: #4a5568; margin-bottom: 10px; font-size: 14px; }
         
         /* Design 1 - Clean White & Blue */
-        .card-design-1 { width: 300px; height: 360px; background: #ffffff; position: relative; overflow: hidden; font-family: 'SolaimanLipi', sans-serif !important; border: 1px solid #2563eb;  }
-        
+        .card-design-1 { width: 300px; height: 360px; background: #ffffff; position: relative; overflow: hidden; font-family: 'SolaimanLipi', sans-serif !important; border: 1px solid #2563eb; }
         .card-design-1 .logo { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; background: white; padding: 4px; }
         .card-design-1 .date-badge { color: white; font-size: 12px; font-weight: 500; }
         .card-design-1 .news-image { width: 100%; height: 240px; object-fit: cover; }
         .card-design-1 .category-badge { position: absolute; top: 230px; left: 15px; background: #2563eb; color: white; padding: 4px 8px; border-radius: 2px; font-size: 14px; }
-        .card-design-1 .title { position: absolute; bottom: 50px; left: 15px; right: 15px; color: #1e293b; font-size: 17px;  font-family: 'Hind Siliguri', sans-serif; font-weight: 600; line-height: 1.5; }
+        .card-design-1 .title { position: absolute; bottom: 50px; left: 15px; right: 15px; color: #1e293b; font-size: 17px; font-family: 'Hind Siliguri', sans-serif; font-weight: 600; line-height: 1.5; }
         .card-design-1 .title .highlight { color: #2563eb; }
         .card-design-1 .footer { position: absolute; bottom: 0; left: 0; right: 0; background: #f1f5f9; padding: 5px 15px; display: flex; justify-content: space-between; color: #475569; font-size: 11px; font-weight: 500; }
         
-        /* Design 2 - Red Gradient (Matching Reference) */
-        .card-design-2 { width: 300px; height: 360px; position: relative; overflow: hidden; background:  linear-gradient(360deg, hsla(0, 100%, 50%, 1) 0%, hsla(33, 33%, 95%, 1) 100%); font-family: 'SolaimanLipi', sans-serif !important; border-radius: 0; }
+        /* Design 2 - Red Gradient */
+        .card-design-2 { width: 300px; height: 360px; position: relative; overflow: hidden; background: linear-gradient(360deg, hsla(0, 100%, 50%, 1) 0%, hsla(33, 33%, 95%, 1) 100%); font-family: 'SolaimanLipi', sans-serif !important; border-radius: 0; }
         .card-design-2 .header { position: absolute; top: 0; left: 0; right: 0; padding: 12px 15px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 20; }
-        .card-design-2 .logo-overlay {  padding: 6px 10px; border-radius: 6px; z-index: 20; }
-        .card-design-2 .logo-overlay img { height: 30px; width: auto; display: block; margin-top: -8px;}
+        .card-design-2 .logo-overlay { padding: 6px 10px; border-radius: 6px; z-index: 20; }
+        .card-design-2 .logo-overlay img { height: 30px; width: auto; display: block; margin-top: -8px; }
         .card-design-2 .date-badge { color: black; font-size: 13px; font-weight: 500; padding-top: 8px; }
         .card-design-2 .image-wrapper { position: absolute; top: 45px; left: 20px; right: 20px; height: 220px; overflow: hidden; border-radius: 8px; }
         .card-design-2 .news-image { width: 100%; height: 160px; object-fit: cover; cursor: pointer; border: 2px solid white; margin-top: 10px; border-radius: 8px; }
         .card-design-2 .title-area { position: absolute; bottom: 50px; left: 0; right: 0; padding: 0 20px; text-align: center; }
-        .card-design-2 .title { color: white; font-size: 20px;  font-family: 'Hind Siliguri', sans-serif; line-height: 1.4; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); font-weight: 500; cursor: pointer; }
+        .card-design-2 .title { color: white; font-size: 20px; font-family: 'Hind Siliguri', sans-serif; line-height: 1.4; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); font-weight: 500; cursor: pointer; }
         .card-design-2 .title .highlight { color: #FFD700; }
         .card-design-2 .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; background: #8B0000; padding: 12px 20px; text-align: center; color: white; font-size: 14px; font-weight: 600; }
         
         /* Design 3 - Minimal Red Accent */
-        .card-design-3 { width: 360px; height: 400px; position: relative; overflow: hidden; background: #fafafa; font-family: 'SolaimanLipi', sans-serif !important; border: 1px solid #2563eb;}
+        .card-design-3 { width: 320px; height: 400px; position: relative; overflow: hidden; background: #fafafa; font-family: 'SolaimanLipi', sans-serif !important; border: 1px solid #2563eb; }
         .card-design-3 .logo-top { position: absolute; top: 15px; left: 15px; z-index: 10; display: flex; align-items: center; gap: 8px; }
         .card-design-3 .logo-top img { height: 32px; width: auto; }
         .card-design-3 .logo-top span { color: #1e293b; font-size: 14px; }
         .card-design-3 .news-image { width: 100%; height: 220px; object-fit: cover; margin-top: 60px; }
         .card-design-3 .content { padding: 15px 20px; }
-        .card-design-3 .title { color: #1e293b; font-size: 17px;  font-family: 'Hind Siliguri', sans-serif; font-weight: 600; line-height: 1.5; margin-bottom: 8px; }
+        .card-design-3 .title { color: #1e293b; font-size: 17px; font-family: 'Hind Siliguri', sans-serif; font-weight: 600; line-height: 1.5; margin-bottom: 8px; }
         .card-design-3 .title .highlight { color: #dc2626; }
         .card-design-3 .meta { display: flex; justify-content: space-between; color: #64748b; font-size: 12px; margin-top: 18px; }
-        
-        /* Design 4 - Premium Minimal */
-        .card-design-4 { width: 360px; height: 450px; position: relative; overflow: hidden; background: #ffffff; font-family: 'SolaimanLipi', sans-serif !important; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .card-design-4 .image-container { width: 100%; height: 260px; overflow: hidden; position: relative; }
-        .card-design-4 .news-image { width: 100%; height: 100%; object-fit: cover; transition: all 0.3s; }
-        .card-design-4 .logo-badge { position: absolute; bottom: -20px; left: 20px; z-index: 10; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 8px; }
-        .card-design-4 .logo-badge img { height: 28px; width: auto; }
-        .card-design-4 .logo-badge span { font-size: 13px; color: #1e293b; }
-        .card-design-4 .content { padding: 35px 20px 15px; }
-        .card-design-4 .title { color: #1e293b; font-size: 18px;  font-family: 'Hind Siliguri', sans-serif; font-weight: 600; line-height: 1.5; margin-bottom: 12px; }
-        .card-design-4 .title .highlight { color: #0891b2; }
-        .card-design-4 .date-badge { color: #64748b; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
-        .card-design-4 .accent-line { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0891b2, #06b6d4); }
         
         .download-btn { margin-top: 12px; padding: 10px 18px; background: #308e87; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; }
         .download-btn:hover { background: #267872; transform: translateY(-2px); }
@@ -154,7 +140,7 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
         .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
         .pagination .nav-btn { padding: 8px 16px; font-weight: 600; }
         
-        /* Card Controls - For All Cards */
+        /* Card Controls */
         .card-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; justify-content: center; max-width: 360px; }
         .card-controls .control-group { display: flex; align-items: center; gap: 4px; background: #f1f5f9; padding: 4px 8px; border-radius: 6px; }
         .card-controls label { font-size: 10px; font-weight: 600; color: #64748b; white-space: nowrap; }
@@ -162,32 +148,16 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
         .card-controls input[type="color"] { width: 24px; height: 20px; border: none; border-radius: 4px; cursor: pointer; padding: 0; }
         .card-controls input[type="number"] { width: 40px; padding: 2px 4px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 11px; text-align: center; }
         
-        /* Click-to-Edit Styles */
-        .editable-image { cursor: pointer; transition: outline 0.2s; }
-        .editable-image.editing { outline: 3px dashed #3b82f6; outline-offset: 2px; }
-        .editable-text { cursor: pointer; transition: outline 0.2s; }
-        .editable-text.editing { outline: 2px dashed #10b981; outline-offset: 2px; }
-        
-        /* Floating Edit Toolbar */
-        .edit-toolbar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; padding: 12px 20px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); display: none; z-index: 1000; gap: 12px; align-items: center; }
-        .edit-toolbar.active { display: flex; }
-        .edit-toolbar .toolbar-group { display: flex; align-items: center; gap: 6px; padding: 0 12px; border-right: 1px solid #e2e8f0; }
-        .edit-toolbar .toolbar-group:last-child { border-right: none; }
-        .edit-toolbar label { font-size: 11px; font-weight: 600; color: #64748b; }
-        .edit-toolbar input[type="range"] { width: 80px; }
-        .edit-toolbar input[type="color"] { width: 30px; height: 26px; border: none; border-radius: 4px; cursor: pointer; }
-        .edit-toolbar button { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; }
-        .edit-toolbar .apply-btn { background: #10b981; color: white; }
-        .edit-toolbar .close-btn { background: #ef4444; color: white; }
-        
-        @media (max-width: 1400px) { .photocards-container { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 1200px) { .card-design-1, .card-design-2, .card-design-3, .card-design-4 { width: 320px; height: 400px; } }
+        /* Responsive */
+        @media (max-width: 1200px) { 
+            .photocards-container { grid-template-columns: repeat(2, 1fr); } 
+            .custom-section { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) { 
             .photocards-container { grid-template-columns: 1fr; } 
-            .card-design-1, .card-design-2, .card-design-3, .card-design-4 { width: 100%; max-width: 340px; height: 420px; } 
+            .card-design-1, .card-design-2, .card-design-3 { width: 100%; max-width: 320px; } 
             .custom-section { grid-template-columns: 1fr; }
             .page-header, .section { padding: 20px; }
-            .card4-controls { flex-direction: column; }
         }
     </style>
 </head>
@@ -232,13 +202,11 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
             <div class="photocard-wrapper">
                 <div class="photocard-label">Design 1</div>
                 <div class="card-design-1" id="card1">
-                    
-                    <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'img/default.jpg' ?>" class="news-image" id="card1Image">
-                  
+                    <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'default.jpg' ?>" class="news-image" id="card1Image">
                     <div class="title" id="card1Title"><?= $latest_news ? htmlspecialchars($latest_news['headline']) : 'সংবাদ শিরোনাম' ?></div>
                     <div class="footer">
                         <span style="margin-top: 8px;"><i class="fa-solid fa-link"></i> বিস্তারিত লিংকে</span>
-                          <div class="logo-overlay"><?php if ($logoBase64): ?><img width="80px" src="<?= $logoBase64 ?>" alt="Logo"><?php elseif ($logoUrl): ?><img width="80px" src="<?= htmlspecialchars($logoUrl) ?>" alt="Logo"><?php endif; ?></div>
+                        <div class="logo-overlay"><?php if ($logoBase64): ?><img width="80px" src="<?= $logoBase64 ?>" alt="Logo"><?php elseif ($logoUrl): ?><img width="80px" src="<?= htmlspecialchars($logoUrl) ?>" alt="Logo"><?php endif; ?></div>
                     </div>
                 </div>
                 <div class="card-controls">
@@ -249,7 +217,7 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
                 <button class="download-btn" onclick="downloadCard('card1', 'design1')"><i class="fas fa-download"></i> Download</button>
             </div>
             
-            <!-- Design 2 - Red Gradient (Matching Reference) -->
+            <!-- Design 2 - Red Gradient -->
             <div class="photocard-wrapper">
                 <div class="photocard-label">Design 2</div>
                 <div class="card-design-2" id="card2">
@@ -258,7 +226,7 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
                         <div class="date-badge" id="card2Date"><?= $latest_news ? formatBanglaDate($latest_news['created_at']) : $defaultDate ?></div>
                     </div>
                     <div class="image-wrapper">
-                        <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'img/default.jpg' ?>" class="news-image" id="card2Image">
+                        <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'default.jpg' ?>" class="news-image" id="card2Image">
                     </div>
                     <div class="title-area">
                         <div class="title" id="card2Title"><?= $latest_news ? htmlspecialchars($latest_news['headline']) : 'সংবাদ শিরোনাম' ?></div>
@@ -278,7 +246,7 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
                 <div class="photocard-label">Design 3</div>
                 <div class="card-design-3" id="card3">
                     <div class="logo-top"><?php if ($logoBase64): ?><img src="<?= $logoBase64 ?>" alt="Logo"><?php elseif ($logoUrl): ?><img src="<?= htmlspecialchars($logoUrl) ?>" alt="Logo"><?php endif; ?></div>
-                    <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'img/default.jpg' ?>" class="news-image" id="card3Image">
+                    <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'default.jpg' ?>" class="news-image" id="card3Image">
                     <div class="content">
                         <div class="title" id="card3Title"><?= $latest_news ? htmlspecialchars($latest_news['headline']) : 'সংবাদ শিরোনাম' ?></div>
                         <div class="meta">
@@ -293,28 +261,6 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
                     <div class="control-group"><label>Words</label><input type="number" min="0" max="10" value="0" onchange="updateCardHighlightWords(3, this.value)"></div>
                 </div>
                 <button class="download-btn" onclick="downloadCard('card3', 'design3')"><i class="fas fa-download"></i> Download</button>
-            </div>
-            
-            <!-- Design 4 - Premium Minimal -->
-            <div class="photocard-wrapper">
-                <div class="photocard-label">Design 4</div>
-                <div class="card-design-4" id="card4">
-                    <div class="image-container">
-                        <img src="img/<?= $latest_news ? htmlspecialchars($latest_news['image_url']) : 'img/default.jpg' ?>" class="news-image" id="card4Image">
-                        <div class="logo-badge"><?php if ($logoBase64): ?><img src="<?= $logoBase64 ?>" alt="Logo"><?php elseif ($logoUrl): ?><img src="<?= htmlspecialchars($logoUrl) ?>" alt="Logo"><?php endif; ?><span><?= htmlspecialchars($portalName) ?></span></div>
-                    </div>
-                    <div class="content">
-                        <div class="title" id="card4Title"><?= $latest_news ? htmlspecialchars($latest_news['headline']) : 'সংবাদ শিরোনাম' ?></div>
-                        <div class="date-badge"><i class="far fa-calendar"></i> <span id="card4Date"><?= $latest_news ? formatBanglaDate($latest_news['created_at']) : $defaultDate ?></span></div>
-                    </div>
-                    <div class="accent-line"></div>
-                </div>
-                <div class="card-controls">
-                    <div class="control-group"><label>Image ←→</label><input type="range" min="-50" max="50" value="0" onchange="updateCardImage(4, this.value, 'x')"></div>
-                    <div class="control-group"><label>Color</label><input type="color" value="#0891b2" onchange="updateCardHighlight(4, this.value)"></div>
-                    <div class="control-group"><label>Words</label><input type="number" min="0" max="10" value="0" onchange="updateCardHighlightWords(4, this.value)"></div>
-                </div>
-                <button class="download-btn" onclick="downloadCard('card4', 'design4')"><i class="fas fa-download"></i> Download</button>
             </div>
         </div>
     </div>
@@ -364,22 +310,23 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
         let currentPage = 1;
         const perPage = 10;
         
-        // Store original titles and highlight settings for all cards
         const cardOriginalTitles = {
             1: '<?= $latest_news ? addslashes($latest_news['headline']) : 'সংবাদ শিরোনাম' ?>',
             2: '<?= $latest_news ? addslashes($latest_news['headline']) : 'সংবাদ শিরোনাম' ?>',
-            3: '<?= $latest_news ? addslashes($latest_news['headline']) : 'সংবাদ শিরোনাম' ?>',
-            4: '<?= $latest_news ? addslashes($latest_news['headline']) : 'সংবাদ শিরোনাম' ?>'
+            3: '<?= $latest_news ? addslashes($latest_news['headline']) : 'সংবাদ শিরোনাম' ?>'
         };
-        const cardHighlightColors = { 1: '#2563eb', 2: '#fbbf24', 3: '#dc2626', 4: '#0891b2' };
-        const cardHighlightWords = { 1: 0, 2: 0, 3: 0, 4: 0 };
+        const cardHighlightColors = { 1: '#2563eb', 2: '#fbbf24', 3: '#dc2626' };
+        const cardHighlightWords = { 1: 0, 2: 0, 3: 0 };
 
-        // Load news
-        fetch('api.php?action=get_news')
+        fetch('api.php?action=get_news&limit=1000')
             .then(r => r.json())
-            .then(data => {
-                allNews = Array.isArray(data) ? data : [];
+            .then(response => {
+                allNews = response.data && Array.isArray(response.data) ? response.data : (Array.isArray(response) ? response : []);
                 renderTable();
+            })
+            .catch(err => {
+                console.error('Error loading news:', err);
+                document.getElementById('newsTableBody').innerHTML = '<tr><td colspan="5" style="text-align:center;color:red;">Error loading news</td></tr>';
             });
 
         function renderTable() {
@@ -394,7 +341,7 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
             
             tbody.innerHTML = pageData.map(n => `
                 <tr>
-                    <td><img src="img/${n.image_url || 'img/default.jpg'}" class="news-thumb"></td>
+                    <td><img src="img/${n.image_url || 'default.jpg'}" class="news-thumb"></td>
                     <td class="headline-cell">${escapeHtml(n.headline)}</td>
                     <td>${escapeHtml(n.category_name || '-')}</td>
                     <td>${formatDate(n.created_at)}</td>
@@ -446,26 +393,22 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
         }
 
         function updateCards(imgUrl, title, category, date) {
-            // Update all cards with new content
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById('card' + i + 'Image').src = imgUrl;
-                document.getElementById('card' + i + 'Title').textContent = title;
-                cardOriginalTitles[i] = title;
-                if (document.getElementById('card' + i + 'Date')) {
-                    document.getElementById('card' + i + 'Date').textContent = date;
+            for (let i = 1; i <= 3; i++) {
+                const img = document.getElementById('card' + i + 'Image');
+                const titleEl = document.getElementById('card' + i + 'Title');
+                if (img) img.src = imgUrl;
+                if (titleEl) {
+                    titleEl.textContent = title;
+                    cardOriginalTitles[i] = title;
                 }
-            }
-            if (document.getElementById('card1Category')) {
-                document.getElementById('card1Category').textContent = category;
-            }
-            if (document.getElementById('card3Date')) {
-                document.getElementById('card3Date').textContent = date;
+                const dateEl = document.getElementById('card' + i + 'Date');
+                if (dateEl) dateEl.textContent = date;
             }
         }
 
         function updateCardImage(cardNum, value, axis) {
             const img = document.getElementById('card' + cardNum + 'Image');
-            if (axis === 'x') {
+            if (img && axis === 'x') {
                 img.style.objectPosition = (50 + parseInt(value)) + '% center';
             }
         }
@@ -591,164 +534,6 @@ if ($logoUrl && file_exists('../' . $logoUrl)) {
             currentPage = 1;
             renderTable();
         }
-
-        // ============ CLICK-TO-EDIT FUNCTIONALITY ============
-        let activeElement = null;
-        let activeType = null; // 'image' or 'text'
-        let activeCardNum = null;
-
-        // Initialize click handlers for all images and titles
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers to all card images
-            for (let i = 1; i <= 4; i++) {
-                const img = document.getElementById('card' + i + 'Image');
-                const title = document.getElementById('card' + i + 'Title');
-                
-                if (img) {
-                    img.classList.add('editable-image');
-                    img.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        selectElement(this, 'image', i);
-                    });
-                }
-                
-                if (title) {
-                    title.classList.add('editable-text');
-                    title.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        selectElement(this, 'text', i);
-                    });
-                }
-            }
-            
-            // Close toolbar when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.edit-toolbar') && !e.target.closest('.editable-image') && !e.target.closest('.editable-text')) {
-                    closeToolbar();
-                }
-            });
-        });
-
-        function selectElement(el, type, cardNum) {
-            // Remove previous selection
-            document.querySelectorAll('.editing').forEach(e => e.classList.remove('editing'));
-            
-            // Set new selection
-            el.classList.add('editing');
-            activeElement = el;
-            activeType = type;
-            activeCardNum = cardNum;
-            
-            // Show appropriate toolbar
-            showToolbar(type, cardNum);
-        }
-
-        function showToolbar(type, cardNum) {
-            const toolbar = document.getElementById('editToolbar');
-            const imageControls = document.getElementById('imageControls');
-            const textControls = document.getElementById('textControls');
-            const colorControls = document.getElementById('colorControls');
-            
-            toolbar.classList.add('active');
-            
-            if (type === 'image') {
-                imageControls.style.display = 'flex';
-                textControls.style.display = 'none';
-                colorControls.style.display = 'none';
-            } else {
-                imageControls.style.display = 'none';
-                textControls.style.display = 'flex';
-                colorControls.style.display = 'flex';
-            }
-        }
-
-        function closeToolbar() {
-            document.getElementById('editToolbar').classList.remove('active');
-            document.querySelectorAll('.editing').forEach(e => e.classList.remove('editing'));
-            activeElement = null;
-            activeType = null;
-            activeCardNum = null;
-        }
-
-        // Image controls
-        function adjustImageZoom(value) {
-            if (activeElement && activeType === 'image') {
-                activeElement.style.transform = `scale(${value / 100})`;
-            }
-        }
-
-        function adjustImageX(value) {
-            if (activeElement && activeType === 'image') {
-                activeElement.style.objectPosition = `${50 + parseInt(value)}% center`;
-            }
-        }
-
-        // Text controls
-        function adjustTextSize(value) {
-            if (activeElement && activeType === 'text') {
-                activeElement.style.fontSize = value + 'px';
-            }
-        }
-
-        function adjustTextPosition(value) {
-            if (activeElement && activeType === 'text') {
-                activeElement.style.transform = `translateY(${value}px)`;
-            }
-        }
-
-        // Apply color to selected text
-        function applyColorToSelection() {
-            const selection = window.getSelection();
-            const color = document.getElementById('selectionColor').value;
-            
-            if (selection.rangeCount > 0 && !selection.isCollapsed) {
-                const range = selection.getRangeAt(0);
-                const selectedText = range.toString();
-                
-                if (selectedText && activeElement && activeElement.contains(range.commonAncestorContainer)) {
-                    const span = document.createElement('span');
-                    span.className = 'highlight';
-                    span.style.color = color;
-                    
-                    try {
-                        range.surroundContents(span);
-                        selection.removeAllRanges();
-                    } catch(e) {
-                        // If selection spans multiple elements, use alternative method
-                        const content = range.extractContents();
-                        span.appendChild(content);
-                        range.insertNode(span);
-                        selection.removeAllRanges();
-                    }
-                }
-            } else {
-                alert('Please select some text first, then click Apply Color');
-            }
-        }
     </script>
-
-    <!-- Floating Edit Toolbar -->
-    <div class="edit-toolbar" id="editToolbar">
-        <div class="toolbar-group" id="imageControls" style="display:none;">
-            <label>Zoom</label>
-            <input type="range" min="100" max="200" value="100" oninput="adjustImageZoom(this.value)">
-            <label>←→</label>
-            <input type="range" min="-50" max="50" value="0" oninput="adjustImageX(this.value)">
-        </div>
-        <div class="toolbar-group" id="textControls" style="display:none;">
-            <label>Size</label>
-            <input type="range" min="12" max="30" value="18" oninput="adjustTextSize(this.value)">
-            <label>↕</label>
-            <input type="range" min="-20" max="20" value="0" oninput="adjustTextPosition(this.value)">
-        </div>
-        <div class="toolbar-group" id="colorControls" style="display:none;">
-            <label>Color</label>
-            <input type="color" id="selectionColor" value="#FFD700">
-            <button class="apply-btn" onclick="applyColorToSelection()">Apply</button>
-        </div>
-        <div class="toolbar-group">
-            <button class="close-btn" onclick="closeToolbar()"><i class="fas fa-times"></i></button>
-        </div>
-    </div>
 </body>
 </html>

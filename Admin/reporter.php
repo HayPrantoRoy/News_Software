@@ -491,27 +491,27 @@
 
                         <div class="form-group">
                             <label for="email">ইমেইল</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email">
                         </div>
 
                         <div class="form-group">
                             <label for="phone_number">ফোন নম্বর</label>
-                            <input type="text" id="phone_number" name="mobile" required>
+                            <input type="text" id="phone_number" name="mobile">
                         </div>
 
                         <div class="form-group">
                             <label for="id_card">আইডি কার্ড নম্বর</label>
-                            <input type="text" id="id_card" name="id_card" required>
+                            <input type="text" id="id_card" name="id_card">
                         </div>
 
                         <div class="form-group full-width">
                             <label for="address">ঠিকানা</label>
-                            <textarea id="address" name="address" rows="3" required></textarea>
+                            <textarea id="address" name="address" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="photo">ফটো</label>
-                            <input type="file" id="photo" name="photo" accept="image/*" required>
+                            <input type="file" id="photo" name="photo" accept="image/*">
                             <div class="file-info" id="photo-info">সর্বোচ্চ 80KB</div>
                             <div class="image-preview hidden" id="photo-preview">
                                 <span>প্রিভিউ</span>
@@ -520,7 +520,7 @@
 
                         <div class="form-group">
                             <label for="id_card_photo">আইডি কার্ড ফটো</label>
-                            <input type="file" id="id_card_photo" name="id_card_photo" accept="image/*" required>
+                            <input type="file" id="id_card_photo" name="id_card_photo" accept="image/*">
                             <div class="file-info" id="id-card-photo-info">সর্বোচ্চ 80KB</div>
                             <div class="image-preview hidden" id="id-card-photo-preview">
                                 <span>প্রিভিউ</span>

@@ -93,49 +93,37 @@ function getReporter($pdo) {
 }
 
 function createReporter($pdo) {
-    // Validate required fields
-    $required_fields = ['name', 'email', 'mobile', 'id_card', 'address'];
-    foreach ($required_fields as $field) {
-        if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
-            echo json_encode(["success" => false, "message" => "Field $field is required"]);
-            return;
-        }
-    }
-    
-    // Validate files
-    if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
-        echo json_encode(["success" => false, "message" => "Photo is required"]);
+    // Validate required fields - only name is required
+    if (!isset($_POST['name']) || empty(trim($_POST['name']))) {
+        echo json_encode(["success" => false, "message" => "Name is required"]);
         return;
     }
     
-    if (!isset($_FILES['id_card_photo']) || $_FILES['id_card_photo']['error'] !== UPLOAD_ERR_OK) {
-        echo json_encode(["success" => false, "message" => "ID card photo is required"]);
-        return;
-    }
-    
-    // Process file uploads
+    // Process file uploads (optional)
     $upload_dir = 'uploads/reporters/';
     if (!file_exists($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
     
-    $photo_name = uniqid() . '_' . basename($_FILES['photo']['name']);
-    $id_card_photo_name = uniqid() . '_' . basename($_FILES['id_card_photo']['name']);
+    $photo_path = null;
+    $id_card_photo_path = null;
     
-    $photo_path = $upload_dir . $photo_name;
-    $id_card_photo_path = $upload_dir . $id_card_photo_name;
-    
-    // Move uploaded files
-    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photo_path)) {
-        echo json_encode(["success" => false, "message" => "Failed to upload photo"]);
-        return;
+    // Handle photo upload if provided
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+        $photo_name = uniqid() . '_' . basename($_FILES['photo']['name']);
+        $photo_path = $upload_dir . $photo_name;
+        if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photo_path)) {
+            $photo_path = null;
+        }
     }
     
-    if (!move_uploaded_file($_FILES['id_card_photo']['tmp_name'], $id_card_photo_path)) {
-        // Clean up the first file if second upload fails
-        unlink($photo_path);
-        echo json_encode(["success" => false, "message" => "Failed to upload ID card photo"]);
-        return;
+    // Handle id_card_photo upload if provided
+    if (isset($_FILES['id_card_photo']) && $_FILES['id_card_photo']['error'] === UPLOAD_ERR_OK) {
+        $id_card_photo_name = uniqid() . '_' . basename($_FILES['id_card_photo']['name']);
+        $id_card_photo_path = $upload_dir . $id_card_photo_name;
+        if (!move_uploaded_file($_FILES['id_card_photo']['tmp_name'], $id_card_photo_path)) {
+            $id_card_photo_path = null;
+        }
     }
     
     try {
@@ -143,10 +131,10 @@ function createReporter($pdo) {
         $stmt = $pdo->prepare("INSERT INTO reporter (name, email, mobile, id_card, address, image, id_card_photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             trim($_POST['name']),
-            trim($_POST['email']),
-            trim($_POST['mobile']),
-            trim($_POST['id_card']),
-            trim($_POST['address']),
+            isset($_POST['email']) ? trim($_POST['email']) : null,
+            isset($_POST['mobile']) ? trim($_POST['mobile']) : null,
+            isset($_POST['id_card']) ? trim($_POST['id_card']) : null,
+            isset($_POST['address']) ? trim($_POST['address']) : null,
             $photo_path,
             $id_card_photo_path
         ]);
@@ -172,13 +160,10 @@ function updateReporter($pdo) {
     
     $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
     
-    // Validate required fields
-    $required_fields = ['name', 'email', 'mobile', 'id_card', 'address'];
-    foreach ($required_fields as $field) {
-        if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
-            echo json_encode(["success" => false, "message" => "Field $field is required"]);
-            return;
-        }
+    // Validate required fields - only name is required
+    if (!isset($_POST['name']) || empty(trim($_POST['name']))) {
+        echo json_encode(["success" => false, "message" => "Name is required"]);
+        return;
     }
     
     try {
